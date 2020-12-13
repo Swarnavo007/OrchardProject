@@ -23,8 +23,9 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTabsModule} from '@angular/material/tabs';
 import {TokenInterceptorService} from '../../services/token-interceptor.service';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 @NgModule({
-  declarations: [AdminComponent, LoginComponent, HomeComponent, AddProductComponent, ViewProductComponent, EmailSubscribersComponent, OrdersComponent, DashboardComponent],
+  declarations: [AdminComponent, LoginComponent, HomeComponent, AddProductComponent, ViewProductComponent, EmailSubscribersComponent, OrdersComponent, DashboardComponent, PageNotFoundComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
