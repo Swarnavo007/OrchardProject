@@ -1,0 +1,20 @@
+mat-toolbar{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.controls{
+    width: 60%;
+    margin: 2% 0 2% 20%;
+}
+
+a{
+    &:hover{
+        background-color: lightskyblue;
+    }
+}
+
+button{
+    outline: none;
+}

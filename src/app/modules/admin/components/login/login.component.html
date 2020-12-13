@@ -1,0 +1,42 @@
+<div class="login-container">
+    <h1>Welcome</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="field">
+        <p class="control has-icons-left" >
+          <input [class.is-invalid]="username.invalid 
+          && username.touched" class="input form-control" type="text" placeholder="username" formControlName="username" (ngModelChange)="onChange()">
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+        </p>
+        <div *ngIf="username.invalid && username.touched">
+            <small *ngIf="username.errors?.required" class="text-danger">username is required</small>
+          </div>
+      </div>
+      
+      <div class="field">
+        <p class="control has-icons-left">
+          <input [class.is-invalid]="password.invalid 
+          && password.touched" class=" form-control input" type="password" placeholder="Password" formControlName="password" (ngModelChange)="onChange()">
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+        </p>
+        <div *ngIf="password.invalid && password.touched">
+          <small *ngIf="password  .errors?.required" class="text-danger">password is required</small>
+        </div>
+      </div>
+      <div class="field">
+        <p class="control">
+          <button [disabled]="!loginForm.valid" class="button is-link is-hovered" type="submit">
+            Login
+          </button>
+        </p>
+      </div>
+      <div class="fail-msg">
+        <small *ngIf="failed" class="text-danger">Invalid User Credentials!</small>
+        <small *ngIf="wrongPass" class="text-danger">Incorrect Password</small>
+    </div>
+    </form>
+  </div>
+  

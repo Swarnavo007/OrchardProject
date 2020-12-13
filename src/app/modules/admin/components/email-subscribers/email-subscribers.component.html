@@ -1,0 +1,20 @@
+<div class="table-container">
+  <h2>Export</h2>
+  <a style="cursor: pointer" (click)="exportexcel()">
+    <mat-icon> cloud_download</mat-icon>
+  </a>
+    <table class="table" id="excel-table">
+        <thead class="thead-dark">
+          <tr>
+            <th>#</th>
+            <th>Email ID</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let subscriber of subscibers; index as i">
+            <tr>
+                <th scope="row">{{i+1}}</th>
+                <td>{{subscriber.email}}</td>
+            </tr>
+        </tbody>
+      </table>
+</div>

@@ -1,0 +1,75 @@
+<mat-toolbar color="accent">
+
+  <button mat-button routerLink="./analysis"><h3>Icy-Licious</h3></button>
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <button mat-button routerLink="./add-product">Add Products</button>
+      <button mat-button routerLink="./view-product">View Products</button>
+      <button mat-button routerLink="./orders">Show Orders</button>
+      <button mat-button routerLink="./analysis">Dashboard</button>
+      <button mat-button routerLink="./subscibers">Subscribers</button>
+      <button mat-button (click)="showDelete()"><mat-icon >account_circle</mat-icon></button>
+  </div>
+  <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+   <mat-icon>menu</mat-icon>
+  </button>
+
+</mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
+      <button mat-menu-item routerLink="./add-product">Add Products</button>
+      <button mat-menu-item routerLink="./view-product">View Products</button>
+      <button mat-menu-item routerLink="./orders">Show Orders</button>
+      <button mat-menu-item routerLink="./analysis">Dashboard</button>
+      <button mat-menu-item routerLink="./subscibers">Subscribers</button>
+      <button mat-menu-item (click)="showDelete()">Logout</button>
+  <!--<button mat-menu-item>Help</button>-->
+</mat-menu>
+
+
+
+
+
+<!-- <mat-toolbar color="primary">
+    <div>
+        <span><button mat-button routerLink="/dashboard"><h3>Icy-Licious</h3></button></span>
+    </div>
+    <div>
+        <button mat-button (click)="showDelete()"><mat-icon >account_circle</mat-icon></button>
+    </div>
+</mat-toolbar>
+ -->
+
+
+<div [style.display]="showDeleteModal ? 'block' : 'none'" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Logout</p>
+        <button class="delete" (click)="closeModal()" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <h1>Are you sure want to logout ?</h1>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-danger" (click)="logout()">Confirm</button>
+        <button class="button" (click)="closeModal()">Cancel</button>
+      </footer>
+    </div>
+  </div>
+
+<!-- Controls -->
+
+<!-- <div class="controls">
+    <nav class="nav nav-pills flex-column flex-sm-row">
+        <a class="flex-sm-fill text-sm-center nav-link" routerLink="add-product" routerLinkActive="active">Add Products</a>
+        <a class="flex-sm-fill text-sm-center nav-link" routerLink="view-product" routerLinkActive="active">View Products</a>
+        <a class="flex-sm-fill text-sm-center nav-link" routerLink="orders" routerLinkActive="active">Show Orders</a>
+        <a class="flex-sm-fill text-sm-center nav-link" routerLink="analysis" routerLinkActive="active">Dashboard</a>
+        <a class="flex-sm-fill text-sm-center nav-link" routerLink="subscibers" routerLinkActive="active">Email Subscibers</a>
+      </nav>
+</div> -->
+
+
+
+<router-outlet></router-outlet>
