@@ -60,6 +60,10 @@ export class ViewProductComponent implements OnInit {
   emptyProducts = false;
   ngOnInit(): void {
     this.service.getProducts().subscribe((response) => {
+      if(response.msg === "Invalid Token"){
+        localStorage.clear();
+        this.route.navigate(['login'])
+      }
       this.products = response;
       if(this.products.length < 1){
         this.emptyProducts = true;

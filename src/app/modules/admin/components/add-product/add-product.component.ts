@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder,Validators,FormGroup} from '@angular/forms';
 import { AddProductService } from 'src/app/services/add-product.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -39,7 +40,7 @@ export class AddProductComponent implements OnInit {
 
   
   
-  constructor(private fb:FormBuilder, private _addProductService: AddProductService, private toaster:ToastrService) { }
+  constructor(private fb:FormBuilder, private _addProductService: AddProductService, private toaster:ToastrService, private route:Router) { }
 
   createForm = this.fb.group({
     productId: ['',[Validators.required,Validators.minLength(4),Validators.maxLength(6)]],
@@ -108,6 +109,10 @@ export class AddProductComponent implements OnInit {
     this._addProductService.create(formData)
       .subscribe(
         response => {
+          if(response.msg === "Invalid Token"){
+            localStorage.clear();
+            this.route.navigate(['login'])
+          }
           console.log("success",response);
           this.toaster.success('Product added!')
           setTimeout(()=>{

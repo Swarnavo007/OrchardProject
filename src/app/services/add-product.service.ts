@@ -13,7 +13,7 @@ export class AddProductService {
 
   create(userData){
     
-    return this._http.post(this._url,userData);
+    return this._http.post<{msg:string}>(this._url,userData);
   }
 
   token;

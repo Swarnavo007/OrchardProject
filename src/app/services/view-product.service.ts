@@ -26,7 +26,7 @@ export class ViewProductService {
   url = 'http://localhost:3000/products';
   constructor(private HttpClient: HttpClient,private route:Router) {}
   getProducts() {
-    return this.HttpClient.get(this.url);
+    return this.HttpClient.get<{msg:string}>(this.url);
   }
   updateProducts(data){
     return this.HttpClient.patch<{msg:string}>('http://localhost:3000/product',data)
