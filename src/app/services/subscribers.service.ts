@@ -9,7 +9,7 @@ export class SubscribersService {
 
   constructor(private HttpClient: HttpClient, private route:Router) { }
 
-  url = 'http://localhost:3000/getemail';
+  url = 'https://icylicious.herokuapp.com/getemail';
   getSubscibers() {
     return this.HttpClient.get<{msg:string}>(this.url);
   }

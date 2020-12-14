@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http'
 })
 export class LoginService {
 
-  loginUrl = "http://localhost:3000/adminlogin";
+  loginUrl = "https://icylicious.herokuapp.com/adminlogin";
 
   constructor(private _http: HttpClient) { }
 

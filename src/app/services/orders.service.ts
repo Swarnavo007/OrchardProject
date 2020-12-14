@@ -10,14 +10,14 @@ export class OrdersService {
   header = new HttpHeaders({
     'Authorization': this.getToken() });
 
-  url="http://localhost:3000/getOrders"
+  url="https://icylicious.herokuapp.com/getOrders"
   constructor(private HttpClient: HttpClient, private route:Router) { }
   getOrdersList() {
     return this.HttpClient.get<{msg:string}>(this.url);
   }
 
   setStatus(orderId,status){
-    return this.HttpClient.patch<{msg:string}>("http://localhost:3000/updateOrderStatus",
+    return this.HttpClient.patch<{msg:string}>("https://icylicious.herokuapp.com/updateOrderStatus",
     {_id:orderId,status:status})
   }
 

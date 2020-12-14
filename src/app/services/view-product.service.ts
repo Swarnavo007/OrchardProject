@@ -23,17 +23,17 @@ export class ViewProductService {
     'Authorization': this.getToken() });
 
 
-  url = 'http://localhost:3000/products';
+  url = 'https://icylicious.herokuapp.com/products';
   constructor(private HttpClient: HttpClient,private route:Router) {}
   getProducts() {
     return this.HttpClient.get<{msg:string}>(this.url);
   }
   updateProducts(data){
-    return this.HttpClient.patch<{msg:string}>('http://localhost:3000/product',data)
+    return this.HttpClient.patch<{msg:string}>('https://icylicious.herokuapp.com/product',data)
   }
 
   deleteProduct(id){
     console.log(id);
-    return this.HttpClient.post<{msg:string}>('http://localhost:3000/deleteproduct',id)
+    return this.HttpClient.post<{msg:string}>('https://icylicious.herokuapp.com/deleteproduct',id)
   }
 }
