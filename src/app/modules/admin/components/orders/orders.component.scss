@@ -1,21 +1,25 @@
-table{
+table {
+  padding: 0rem 5rem;
+  text-align: left;
+}
+td {
+  vertical-align: middle;
+}
+.activeOrder {
+  display: flex;
+  justify-content: center;
+  table {
     padding: 0rem 5rem;
     text-align: left;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    width: auto;
+    box-shadow: 2px 2px 6px #00000061;
+  }
+}
 
-}
-td{
-    vertical-align: middle;
-}
-.activeOrder{
-    display: flex;
-    justify-content: center;
-    table{
-        padding: 0rem 5rem;
-        text-align: left;
-        margin-top: 1rem;
-        border-radius: 1rem;
-        width: auto;
-        box-shadow: 2px 2px 6px #00000061;
-    
-    }
+.orders-container {
+  background-color: rgb(231, 222, 223);
+  height: 90%;
+  overflow-y: auto;
 }

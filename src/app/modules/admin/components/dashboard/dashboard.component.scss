@@ -1,11 +1,14 @@
-*{
-    padding: 0px;
-    margin: 0px;
+* {
+  padding: 0px;
+  margin: 0px;
 }
-.body{
-    margin-bottom:0%;
-    background-color: rgb(224, 227, 231);
+body {
+  background-color: rgb(231, 222, 223);
+  height: 90%;
+  width: 100%;
+  position: absolute;
+  overflow-y: auto;
 }
-.container{
-    padding-left: 4%;
+.container {
+  padding-left: 4%;
 }
