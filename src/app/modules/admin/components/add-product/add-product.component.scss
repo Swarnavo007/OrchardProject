@@ -1,29 +1,33 @@
-.add-container{
-    width: 40%;
-    margin: 1rem auto;
-    border-radius: 1rem;
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
-    padding: 2rem 3rem;
+.add-container {
+  width: 40%;
+  border-radius: 1rem;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+  padding: 2rem 3rem;
 
-    input,textarea,select{
-        font-size: 1rem;
-        border-radius: 0.5rem;
-        border:2px solid #78bbe2
-    }
+  input,
+  textarea,
+  select {
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: 2px solid #78bbe2;
+  }
 }
 
-.ng-invalid .is-invalid{
-    border:2px solid #dc3545;;
+.ng-invalid .is-invalid {
+  border: 2px solid #dc3545;
 }
 
-
-
-@media (max-aspect-ratio:1/1){
-    .add-container{
-        width: 80%;
-        padding: 0rem 2rem;
-    }
+@media (max-aspect-ratio: 1/1) {
+  .add-container {
+    width: 80%;
+    padding: 0rem 2rem;
+  }
 }
 
-
-
+.add-product-container {
+  margin-top: 2%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
