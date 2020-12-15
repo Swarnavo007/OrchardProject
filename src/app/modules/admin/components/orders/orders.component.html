@@ -1,14 +1,15 @@
 
 <mat-tab-group mat-align-tabs="center">
     <mat-tab label="Active Orders">
-      <table class="table table-sm-responsive" id="order-table">
+      <div class="activeOrder">
+      <table class="table table-md-responsive" id="order-table">
         <thead>
         <tr>
           <th scope="col">Order Id</th>
           <th scope="col">User Id</th>
           <th scope="col">Order Date</th>
           <th scope="col">Total Price</th>
-          <th scope="col">Status</th>
+          <!-- <th scope="col">Status</th> -->
           <th scope="col"></th>
           <th scope="col"></th>
         </tr>
@@ -19,7 +20,7 @@
             <td>{{order.userId}}</td>
             <td>{{getDate(order.orderDate)}}</td>
             <td>{{order.totalPrice}}</td>
-            <td>{{order.status}}</td>
+            <!-- <td>{{order.status}}</td> -->
           <td>
             <button class="btn btn-danger" data-toggle="modal" data-target="#confirmModal" (click)="shoPlace()" id="statusbtn{{order._id}}"(click)="setOrderId(order._id)" >Ordered</button>
           </td>
@@ -27,9 +28,10 @@
           </tr>
         </tbody>
       </table>
-  
+    </div>
     </mat-tab>
     <mat-tab label="Order Delivered"> 
+      <div class="activeOrder">
       <table class="table table-sm-responsive" id="order-table">
         <thead>
         <tr>
@@ -52,12 +54,18 @@
           </tr>
         </tbody>
       </table>
+    </div>
     </mat-tab>
   </mat-tab-group>
     
-    
+   
   
-  <div [style.display]="showViewModal ? 'block' : 'none'" class="modal">
+
+
+  
+
+  
+  <div [style.display]="showViewModal ? 'flex' : 'none'" class="modal">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
@@ -91,7 +99,7 @@
   </div>
   
   
-  <div [style.display]="showPlaceOrder ? 'block' : 'none'" class="modal">
+  <div [style.display]="showPlaceOrder ? 'flex' : 'none'" class="modal">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">

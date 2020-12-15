@@ -3,7 +3,7 @@
     Basic validation are done
 -->
 
-<div class="add-container" style="background-color: rgb(224, 227, 231);">
+<div class="add-container" style="background-color: white">
     
     <form [formGroup]="createForm" (ngSubmit)="create()" enctype="multipart/form-data">
         
@@ -66,7 +66,7 @@
             <label class="label">Description</label>
             <div class="control">
               <textarea [class.is-invalid]="description.invalid 
-              && description.touched" class="textarea form-control is-small" rows="2" formControlName="description"  placeholder="Enter product description"></textarea>
+              && description.touched" class="textarea form-control is-small" rows="4" formControlName="description"  placeholder="Enter product description"></textarea>
             </div>
             <div *ngIf="description.invalid && description.touched">
                 <small *ngIf="description.errors?.required" class="text-danger"><i>Description is required</i> </small>
