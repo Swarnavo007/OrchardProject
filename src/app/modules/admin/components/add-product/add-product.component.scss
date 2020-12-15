@@ -2,3 +2,10 @@
     width: 30%;
     margin-left: 35%;
 }
+
+@media all and(max-width:600px){
+    .add-container{
+        margin-left: 25%;
+        width: 50%;
+    }
+}
