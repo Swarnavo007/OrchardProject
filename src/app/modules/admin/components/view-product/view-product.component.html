@@ -1,4 +1,5 @@
 <!-- <p>view-product works!</p> -->
+<div >
 <div *ngIf="emptyProducts" class="container is-max-desktop">
   <div class="notification is-danger">
     <h2 style="text-align: center;">Empty Products</h2>
@@ -6,12 +7,13 @@
 </div>
 <ul>
     <li *ngFor="let product of products">
-      <mat-card class="example-card">
+      <mat-card class="example-card" style="background-color: rgb(255, 247, 247);">
         <mat-card-header>
           <!-- <div mat-card-avatar class="example-header-image"></div> -->
-          <mat-card-title><h1><b>{{ product.productName }}</b></h1></mat-card-title>
-          <mat-card-subtitle>{{ product.productType }}</mat-card-subtitle>
+          <mat-card-title style="color: rgb(243, 11, 100); text-transform: uppercase; text-align: left;"><h1><b>{{ product.productName }}</b></h1></mat-card-title>
+          <mat-card-subtitle style="color: rgb(48, 47, 54); font-family: cursive; text-transform: capitalize; font-size: 20px;"><b><i>{{ product.productType }}</i></b></mat-card-subtitle>
         </mat-card-header>
+        
         <img
           mat-card-image
           
@@ -19,20 +21,19 @@
           alt="{{ product.productName }}"
           style="width: 150px; height: 100px0; margin-left: auto; margin-right: auto; display: block;"
         />
-        <mat-card-content>
-          <div>
-            <b>Description:</b>
-            <p style="word-break: break-all">{{ product.productDescription }}</p>
-            <b>Start Date: </b>{{ product.productStartDate }} <br />
-            <b>End Date: </b>{{ product.productEndDate }} <br />
+        
+        <mat-card-content style="color: rgb(53, 51, 51); font-family:Verdana, Geneva, Tahoma, sans-serif;">
+            <b style="color: rgb(48, 47, 54);">Description:</b>
+            <p style="word-break: break-all; color:rgb(37, 36, 36);">{{ product.productDescription }}</p>
+            <b style="color:  rgb(48, 47, 54);">Start Date: </b>{{ product.productStartDate }} <br />
+            <b style="color:  rgb(48, 47, 54);">End Date: </b>{{ product.productEndDate }} <br />
             <small *ngIf="product.expired" class="text-danger"><h3><b>Expired!</b></h3></small>
-            <h2><b>Price: </b>{{product.productPrice | currency:'INR'}}</h2>
-          </div>
+            <h2 style="color:  rgb(48, 47, 54);"><b>Price: </b>{{product.productPrice | currency:'INR'}}</h2>
         </mat-card-content>
         <mat-card-actions>
           <!-- <button mat-raised-button color="warn">DELETE</button> -->
-          <button mat-raised-button color="primary" id="btn" (click)="getProductfordelete(product)" (click)="show(product)" data-toggle="modal" data-target="#myModal">
-            UPDATE / DELETE
+          <button mat-raised-button color="accent" id="btn" (click)="getProductfordelete(product)" (click)="show(product)" data-toggle="modal" data-target="#myModal">
+            EDIT
           </button>
         </mat-card-actions>
       </mat-card>
@@ -193,3 +194,4 @@
           </footer>
         </div>
       </div>
+    </div>
