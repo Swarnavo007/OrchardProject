@@ -14,7 +14,7 @@ import { ViewProductComponent } from './components/view-product/view-product.com
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'admin', component: LoginComponent, canActivate: [AuthstateGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [AuthstateGuard] },
   {
     path: 'dashboard',
     component: HomeComponent,
