@@ -9,6 +9,20 @@ body {
   position: absolute;
   overflow-y: auto;
 }
-.container {
+// .container {
+//   padding-left: 4%;
+// }
+.container{
   padding-left: 4%;
+  .row{
+      .col-sm-5{
+          .panel-heading{
+          background-color:#f73378}
+          .panel-body{
+            text-align: center;
+            font-size: 5pc
+          }
+      }
+      
+  }
 }
