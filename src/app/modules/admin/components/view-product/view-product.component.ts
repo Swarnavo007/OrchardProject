@@ -62,7 +62,7 @@ export class ViewProductComponent implements OnInit {
     this.service.getProducts().subscribe((response) => {
       if(response.msg === "Invalid Token"){
         localStorage.clear();
-        this.route.navigate(['login'])
+        this.route.navigate(['admin'])
       }
       this.products = response;
       if(this.products.length < 1){
@@ -156,7 +156,7 @@ export class ViewProductComponent implements OnInit {
        console.log(res)
        if(res.msg === "Invalid Token"){
         localStorage.clear();
-        this.route.navigate(['login'])
+        this.route.navigate(['admin'])
       }
        if(res.msg === "Data updated Successfully"){
         this.toaster.success('Product Updated!')
@@ -192,7 +192,7 @@ public tempForDelete;
        console.log(res)
        if(res.msg === "Invalid Token"){
         localStorage.clear();
-        this.route.navigate(['login'])
+        this.route.navigate(['admin'])
       }
       if(res.msg == "Data deleted Successfully"){
         this.toaster.success('Product deleted!')

@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
     res.subscribe((response)=>{
       if(response.msg === "Invalid Token"){
         localStorage.clear();
-        this.route.navigate(['login'])
+        this.route.navigate(['admin'])
       }
     })
     res.subscribe((data)=>this.emailSubscribers=data);
@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
     response.subscribe((res)=>{
       if(res.msg === "Invalid Token"){
         localStorage.clear();
-        this.route.navigate(['login'])
+        this.route.navigate(['admin'])
       }
     })
     //products
@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
     product.subscribe((response)=>{
       if(response.msg === "Invalid Token"){
         localStorage.clear();
-        this.route.navigate(['login'])
+        this.route.navigate(['admin'])
       }
     })
     product.subscribe((data)=>this.products=data);
@@ -51,7 +51,7 @@ export class DashboardComponent implements OnInit {
     users.subscribe((response)=>{
       if(response.msg === "Invalid Token"){
         localStorage.clear();
-        this.route.navigate(['login'])
+        this.route.navigate(['admin'])
       }
     })
     users.subscribe((data)=>this.users=data);

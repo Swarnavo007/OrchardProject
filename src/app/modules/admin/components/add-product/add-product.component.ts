@@ -111,7 +111,7 @@ export class AddProductComponent implements OnInit {
         response => {
           if(response.msg === "Invalid Token"){
             localStorage.clear();
-            this.route.navigate(['login'])
+            this.route.navigate(['admin'])
           }
           console.log("success",response);
           this.toaster.success('Product added!')

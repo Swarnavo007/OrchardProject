@@ -21,7 +21,7 @@ export class SubscribersService {
       return this.token;
     }
     else{
-      this.route.navigate(['login'])
+      this.route.navigate(['admin'])
     }
 
   }

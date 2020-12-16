@@ -14,7 +14,7 @@ export class ViewProductService {
       return this.token;
     }
     else{
-      this.route.navigate(['login'])
+      this.route.navigate(['admin'])
     }
 
   }

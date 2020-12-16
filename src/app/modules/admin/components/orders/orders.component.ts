@@ -24,7 +24,7 @@ export class OrdersComponent implements OnInit {
     this.service.getOrdersList().subscribe((response) => {
       if(response.msg === "Invalid Token"){
         localStorage.clear();
-        this.router.navigate(['login'])
+        this.router.navigate(['admin'])
       }
       this.orders = response;
       console.log(this.orders);
@@ -69,7 +69,7 @@ export class OrdersComponent implements OnInit {
         (val) => {
           if(val.msg === "Invalid Token"){
             localStorage.clear();
-            this.router.navigate(['login'])
+            this.router.navigate(['admin'])
           }
             console.log("PATCH call successful value returned in body", val);
             console.log("statusbtn"+this.orderId)

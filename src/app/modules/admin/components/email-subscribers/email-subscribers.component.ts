@@ -19,7 +19,7 @@ export class EmailSubscribersComponent implements OnInit {
       console.log(response)
       if(response.msg === "Invalid Token"){
         localStorage.clear();
-        this.route.navigate(['login'])
+        this.route.navigate(['admin'])
       }
       this.subscibers = response;
       console.log(this.subscibers)
