@@ -11,6 +11,9 @@
     border-radius: 0.5rem;
     border: 2px solid #78bbe2;
   }
+  form{
+    padding:1rem 0rem;
+  }
 }
 
 .ng-invalid .is-invalid {
@@ -27,12 +30,14 @@
 .add-product-container {
   margin-top: 2%;
   height: fit-content;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .bg-addproduct{
-  background-color: rgb(231, 222, 223);;
+  //background-color: rgb(231, 222, 223);;
+  background-color: transparent;
   overflow-y: auto;
 
 }
