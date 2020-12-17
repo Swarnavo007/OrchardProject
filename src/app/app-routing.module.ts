@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthstateGuard } from '../app/modules/admin/authstate.guard';
-import { AdminModule } from './modules/admin/admin.module';
 import { LoginComponent } from './modules/admin/components/login/login.component';
 
 
