@@ -73,3 +73,16 @@ mat-card-content {
   }
 }
 
+
+
+
+@media all and (max-width:600px){
+  
+  #modal-delete{
+    width: 90%;
+  }
+  #imagemodal{
+    padding-top: 10%;
+    padding-right: 10%;
+  }
+}

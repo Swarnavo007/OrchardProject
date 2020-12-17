@@ -38,3 +38,11 @@ svg{
     background-color: white;
     color: #e91e63;
  }
+
+
+
+ @media all and (max-width:600px){
+     .modal-card{
+         width: 90%;
+     }
+ }
