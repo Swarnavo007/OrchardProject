@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   public wrongPass: boolean = false;
 
   login() {
-    console.log(this.loginForm.value);
+    // console.log(this.loginForm.value);
     this._loginService.login(this.loginForm.value).subscribe((response) => {
       if (response.msg === 'invalid') {
         this.loginForm.reset();
