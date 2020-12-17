@@ -14,6 +14,7 @@ export class AuthstateGuard implements CanActivate {
     if(!this._loginService.loggedIn()){
       return true
     }
+    //changes
     else{
       this._route.navigate(['/dashboard/analysis'])
       return false;

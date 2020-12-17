@@ -33,9 +33,10 @@ describe('EmailSubscribersComponent', () => {
       expect(tables.length).toBe(1);
     });
     it('Table Should have Heading as # and Email ID', () => {
-      const linkDes = fixture.debugElement.queryAll(By.css('table'));
-      const nativeTable: HTMLTableHeaderCellElement = linkDes[0].nativeElement;
-      expect(nativeTable.textContent).toBe('#Email ID');
+      const tableRows = fixture.nativeElement.querySelectorAll('tr');
+      let headerRow = tableRows[0];
+      expect(headerRow.cells[0].textContent).toBe('#');
+      expect(headerRow.cells[1].textContent).toBe('Email ID');
     });
   });
 });
