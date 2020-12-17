@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { DashboardComponent } from './dashboard.component';
@@ -20,6 +21,35 @@ describe('DashboardComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+  // it('should have the 21 div tags',()=>{
+  //   let data=fixture.debugElement.queryAll(By.css('div'));
+  //   expect(data.length).toBe(21);
+  // })
+  it('should have the Number of Orders container',()=>{
+    const dashboard=fixture.debugElement.queryAll(By.css('div'));
+    const orderDivEle:HTMLDivElement=dashboard[5].nativeElement;
+    expect(orderDivEle.textContent).toBe(' Number of Orders ')
+  })
+
+  it('should have the  Number of Customers container',()=>{
+    const dashboard=fixture.debugElement.queryAll(By.css('div'));
+    const customerDivEle:HTMLDivElement=dashboard[8].nativeElement;
+    expect(customerDivEle.textContent).toBe(' Number of Customers   ')
+  })
+
+  it('should have the Number of Products container',()=>{
+    const dashboard=fixture.debugElement.queryAll(By.css('div'));
+    const productDivEle:HTMLDivElement=dashboard[13].nativeElement;
+    expect(productDivEle.textContent).toBe(' Number of Products   ');
+  })
+  
+
+  it('should have the Number of Email Subscribers container',()=>{
+    const dashboard=fixture.debugElement.queryAll(By.css('div'));
+    const productDivEle:HTMLDivElement=dashboard[17].nativeElement;
+    expect(productDivEle.textContent).toBe(' Number of Email Subscribers   ');
+  })
 
   it('should create', () => {
     expect(component).toBeTruthy();
