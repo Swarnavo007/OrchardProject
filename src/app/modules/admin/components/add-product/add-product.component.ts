@@ -44,7 +44,7 @@ export class AddProductComponent implements OnInit {
 
   createForm = this.fb.group({
     productId: ['',[Validators.required,Validators.minLength(4),Validators.maxLength(6)]],
-    productName: ['',[Validators.required,Validators.minLength(4),Validators.maxLength(30)]],
+    productName: ['',[Validators.required,Validators.minLength(4),Validators.maxLength(20)]],
     type: ['',[Validators.required]],
     price: ['',[Validators.required,Validators.min(1)]],
     description : ['',[Validators.required,Validators.minLength(10),Validators.maxLength(100)]],

@@ -52,12 +52,8 @@
               ><i>Product Name is required</i></small
             >
             <small
-              *ngIf="
-                productName.errors?.minlength || productId.errors?.maxlength
-              "
-              class="text-danger"
-              >Product ID should be 4-30 characters</small
-            >
+              *ngIf="productName.errors?.minlength || productName.errors?.maxlength"
+              class="text-danger">Product ID should be 4-20 characters</small>
           </div>
         </div>
 
@@ -76,11 +72,11 @@
               </select>
             </div>
           </div>
-          <div *ngIf="type.invalid && type.touched">
-            <small *ngIf="type.errors?.required" class="text-danger"
-              ><i>Product Type is required</i></small
-            >
-          </div>
+        </div>
+        <div *ngIf="type.invalid && type.touched">
+          <small *ngIf="type.errors?.required" class="text-danger"
+            ><i>Product Type is required</i></small
+          >
         </div>
 
         <div class="field">
