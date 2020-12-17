@@ -10,7 +10,9 @@
       <mat-card class="example-card" style="background-color: white">
         <!-- style="background-color: rgb(255, 247, 247)" -->
         <mat-card-header>
-          <mat-card-title>{{ product.productName }}</mat-card-title>
+          <mat-card-title style="word-break: break-all">
+            {{ product.productName }}
+          </mat-card-title>
           <mat-card-subtitle>{{ product.productType }}</mat-card-subtitle>
         </mat-card-header>
 
@@ -124,7 +126,8 @@
                 >
                 <small
                   *ngIf="
-                    productName.errors?.minlength || productId.errors?.maxlength
+                    productName.errors?.minlength ||
+                    productName.errors?.maxlength
                   "
                   class="text-danger"
                   >Product ID should be 4-30 characters</small
@@ -313,7 +316,9 @@
         </section>
         <footer class="modal-card-foot">
           <button class="button is-danger" (click)="delete()">Confirm</button>
-          <button class="button is-warning" (click)="closeModal()">Cancel</button>
+          <button class="button is-warning" (click)="closeModal()">
+            Cancel
+          </button>
         </footer>
       </div>
     </div>
