@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DashboardService} from '../../../../services/dashboard.service';
 import { Router } from '@angular/router';
+import { OverlayOutsideClickDispatcher } from '@angular/cdk/overlay';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,6 +14,19 @@ export class DashboardComponent implements OnInit {
   public products:any;
   public users:any;
   constructor(private service:DashboardService, private route:Router) { }
+
+
+   navigateOrderPage(){
+    this.route.navigate(['./dashboard/orders'])
+  }
+
+  navigateProductPage(){
+    this.route.navigate(['./dashboard/view-product'])
+  }
+
+  navigateSubscribersPage(){
+    this.route.navigate(['./dashboard/subscibers'])
+  }
 
   ngOnInit(): void {
     //emailSubscribers
@@ -46,6 +60,8 @@ export class DashboardComponent implements OnInit {
     })
     product.subscribe((data)=>this.products=data);
 
+
+    
 
     let users = this.service.getUsersCount();
     users.subscribe((response)=>{

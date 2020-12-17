@@ -15,7 +15,7 @@
               Number of Orders
             </div>
             <!-- <div class="panel-body" style="text-align: center;font-size:5pc;">{{orders}}</div> -->
-            <div class="panel-body" >
+            <div class="panel-body" (click)="this.navigateOrderPage()">
               {{ orders }}
             </div>
           </div>
@@ -26,7 +26,7 @@
               Number of Customers
             </div>
             <!-- <div class="panel-body" style="text-align: center;font-size:5pc;" >{{customers.count}}</div> -->
-            <div class="panel-body" >
+            <div class="panel-body">
               {{ users }}
             </div>
           </div>
@@ -43,7 +43,7 @@
               Number of Products
             </div>
             <!-- <div class="panel-body" style="text-align: center;font-size:5pc;">{{products.Count}} </div> -->
-            <div class="panel-body" >
+            <div class="panel-body" (click)="this.navigateProductPage()">
               {{ products }}
             </div>
           </div>
@@ -55,7 +55,7 @@
               Number of Email Subscribers
             </div>
             <!-- <div class="panel-body" style="text-align: center;font-size:5pc;">{{emailSubscribers.count}}</div> -->
-            <div class="panel-body" >
+            <div class="panel-body" (click)="this.navigateSubscribersPage()">
               {{ emailSubscribers }}
             </div>
           </div>
