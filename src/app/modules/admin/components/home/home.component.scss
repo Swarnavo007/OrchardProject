@@ -1,52 +1,44 @@
-mat-toolbar{
-    display: flex;
-    justify-content: space-between;
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
 }
 
-
-.controls{
-    width: 60%;
-    margin: 2% 0 2% 20%;
+.controls {
+  width: 60%;
+  margin: 2% 0 2% 20%;
 }
 
-a{
-    &:hover{
-        background-color: lightskyblue;
-    }
+a {
+  &:hover {
+    background-color: lightskyblue;
+  }
 }
 
-button{
-    outline: none;
+button {
+  outline: none;
 }
 
-svg{
-    position: fixed;
-    bottom: -27%;
-    left:-10%;
-    width: 120vw;
-    z-index: -1;
-    @media (max-aspect-ratio: 1/1) {
+svg {
+  position: fixed;
+  bottom: -27%;
+  left: -10%;
+  width: 120vw;
+  z-index: -1;
+  @media (max-aspect-ratio: 1/1) {
     height: 50vh;
     bottom: -7%;
     transform: scale(2.3);
     left: -20%;
-    }
-
   }
+}
 
-  .active{
-    background-color: white;
-<<<<<<< HEAD
-    color: #fd266e;
-=======
-    color: #e91e63;
- }
+.active {
+  background-color: white;
+  color: #e91e63;
+}
 
-
-
- @media all and (max-width:600px){
-     .modal-card{
-         width: 90%;
-     }
->>>>>>> 585d9c524c3d1ace0ccf751bb0efec1fd40e7427
- }
+@media all and (max-width: 600px) {
+  .modal-card {
+    width: 90%;
+  }
+}
