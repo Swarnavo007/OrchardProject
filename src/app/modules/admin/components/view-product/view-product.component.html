@@ -1,5 +1,5 @@
 <!-- <p>view-product works!</p> -->
-<div>
+<div class="viewContainer">
   <div *ngIf="emptyProducts" class="container is-max-desktop">
     <div class="notification is-danger">
       <h2 style="text-align: center">Empty Products</h2>
@@ -7,11 +7,8 @@
   </div>
   <ul>
     <li *ngFor="let product of products">
-      <mat-card
-        class="example-card"
-        style="background-color: white"
-      >
-      <!-- style="background-color: rgb(255, 247, 247)" -->
+      <mat-card class="example-card" style="background-color: white">
+        <!-- style="background-color: rgb(255, 247, 247)" -->
         <mat-card-header>
           <mat-card-title>{{ product.productName }}</mat-card-title>
           <mat-card-subtitle>{{ product.productType }}</mat-card-subtitle>
@@ -71,7 +68,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-title" id="myModalLabel">Update Product</h2>
+          <h2 class="modal-title" id="myModalLabel">Edit Product</h2>
           <button
             type="button"
             class="close"
@@ -84,7 +81,7 @@
         <div class="container-fluid">
           <form [formGroup]="updateForm" (ngSubmit)="update()">
             <div class="field">
-              <label class="label">Product ID</label>
+              <label class="label">Product Code</label>
               <div class="control">
                 <input
                   [class.is-invalid]="productId.invalid && productId.touched"
@@ -213,6 +210,7 @@
                   class="input is-small form-control"
                   name="start"
                   min
+                  max
                   formControlName="startDate"
                   type="date"
                 />
@@ -230,6 +228,8 @@
                 <input
                   [class.is-invalid]="endDate.invalid && endDate.touched"
                   class="input is-small form-control"
+                  name="end"
+                  max
                   formControlName="endDate"
                   type="date"
                 />
@@ -309,7 +309,7 @@
           ></button>
         </header>
         <section class="modal-card-body">
-          <h1>Are you sure want to delete?</h1>
+          <h1>Are you Sure, You want to delete?</h1>
         </section>
         <footer class="modal-card-foot">
           <button class="button is-danger" (click)="delete()">Confirm</button>
