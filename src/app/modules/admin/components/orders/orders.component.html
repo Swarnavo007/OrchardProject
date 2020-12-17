@@ -70,7 +70,8 @@
               <td>{{ getDate(order.orderDate) }}</td>
               <td>{{ order.totalPrice }}</td>
               <td>
-                <b>{{ order.status }}</b>
+                <!-- <b>{{ order.status }}</b> -->
+                <b> Delivered</b>
               </td>
               <td>
                 <button
@@ -122,7 +123,9 @@
         (click)="closeModal()"
         class="btn btn-warning"
         data-dismiss="modal"
-      >Close</button>
+      >
+        Close
+      </button>
     </footer>
   </div>
 </div>
@@ -139,10 +142,12 @@
       ></button>
     </header>
     <section class="modal-card-body">
-      <h1>Order delivered?</h1>
+      <h1>Order Delivered?</h1>
     </section>
     <footer class="modal-card-foot">
-      <button class="button is-danger" (click)="setStatus('delivered')">Confirm</button>
+      <button class="button is-danger" (click)="setStatus('Delivered')">
+        Confirm
+      </button>
       <button class="button" (click)="closeplaceOrder()">Cancel</button>
     </footer>
   </div>
