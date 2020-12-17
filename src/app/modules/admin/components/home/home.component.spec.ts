@@ -1,8 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
-
+import {NgbModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 import { HomeComponent } from './home.component';
 
 import { Router } from '@angular/router';
@@ -10,15 +11,18 @@ import { Router } from '@angular/router';
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
+  let modalService: NgbModal;
+  let modalRef: NgbModalRef;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HomeComponent],       //changes
-      imports: [RouterTestingModule, MatMenuModule],
+      imports: [RouterTestingModule, MatMenuModule,MatIconModule],
     }).compileComponents();
   });
 
   beforeEach(() => {
+    modalService = TestBed.get(NgbModal);
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -27,6 +31,11 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // it('Modal Opened', function () {
+  //   component.onModalRequest();
+  //   expect(modalService.open).toHaveBeenCalled();
+  //   });
 
   describe('Simple HTML',()=>{
 
@@ -72,6 +81,13 @@ describe('HomeComponent', () => {
         .queryAll(By.css('button'));
       const nativeButton: HTMLButtonElement=linkDes[5].nativeElement;
       expect(nativeButton.textContent).toBe('Subscribers');
+    })
+
+    it('should have a icon Logout on navigation bar', ()=>{
+      const linkDes=fixture.debugElement
+        .queryAll(By.css('button'));
+      const nativeButton: HTMLButtonElement=linkDes[6].nativeElement;
+      expect(nativeButton.textContent).toBe('account_circle');
     })
   
   })
@@ -150,7 +166,7 @@ describe('HomeComponent', () => {
       skipLocationChange:false, replaceUrl:false, state:undefined
     })
   })
-  
+
   })
 
   
