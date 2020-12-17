@@ -1,5 +1,5 @@
 <!-- <p>view-product works!</p> -->
-<div>
+<div class="viewContainer">
   <div *ngIf="emptyProducts" class="container is-max-desktop">
     <div class="notification is-danger">
       <h2 style="text-align: center">Empty Products</h2>
@@ -84,7 +84,7 @@
         <div class="container-fluid">
           <form [formGroup]="updateForm" (ngSubmit)="update()">
             <div class="field">
-              <label class="label">Product ID</label>
+              <label class="label">Product Code</label>
               <div class="control">
                 <input
                   [class.is-invalid]="productId.invalid && productId.touched"

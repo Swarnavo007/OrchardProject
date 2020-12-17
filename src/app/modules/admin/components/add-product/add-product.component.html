@@ -10,7 +10,7 @@
         enctype="multipart/form-data"
       >
         <div class="field">
-          <label class="label">Product ID</label>
+          <label class="label">Product Code</label>
           <div class="control">
             <input
               [class.is-invalid]="productId.invalid && productId.touched"
@@ -18,7 +18,7 @@
               (change)="idCheck()"
               formControlName="productId"
               type="text"
-              placeholder="ID"
+              placeholder="Code"
             />
           </div>
           <small *ngIf="idAlredyExist" class="text-danger"
