@@ -213,6 +213,7 @@
                   class="input is-small form-control"
                   name="start"
                   min
+                  max
                   formControlName="startDate"
                   type="date"
                 />
@@ -230,6 +231,8 @@
                 <input
                   [class.is-invalid]="endDate.invalid && endDate.touched"
                   class="input is-small form-control"
+                  name="end"
+                  max
                   formControlName="endDate"
                   type="date"
                 />

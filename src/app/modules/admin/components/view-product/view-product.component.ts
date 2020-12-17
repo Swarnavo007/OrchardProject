@@ -79,6 +79,8 @@ export class ViewProductComponent implements OnInit {
     });
     var today = new Date().toISOString().split('T')[0];
     document.getElementsByName("start")[0].setAttribute('min', today);
+    document.getElementsByName("start")[0].setAttribute('max','2022-12-31');
+    document.getElementsByName("end")[0].setAttribute('max','2022-12-31');
   }
 
   dateLessThan(from: string, to: string) {

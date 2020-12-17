@@ -72,6 +72,8 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
     var today = new Date().toISOString().split('T')[0];
     document.getElementsByName("startDate")[0].setAttribute('min', today);
+    document.getElementsByName("startDate")[0].setAttribute('max','2022-12-31');
+    document.getElementsByName("endDate")[0].setAttribute('max','2022-12-31');
   }
 
   public selectedfile =null;
