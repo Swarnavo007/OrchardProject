@@ -36,5 +36,17 @@ svg{
 
   .active{
     background-color: white;
+<<<<<<< HEAD
     color: #fd266e;
+=======
+    color: #e91e63;
+ }
+
+
+
+ @media all and (max-width:600px){
+     .modal-card{
+         width: 90%;
+     }
+>>>>>>> 585d9c524c3d1ace0ccf751bb0efec1fd40e7427
  }

@@ -130,7 +130,7 @@
                     productName.errors?.maxlength
                   "
                   class="text-danger"
-                  >Product ID should be 4-30 characters</small
+                  >Product ID should be 4-20 characters</small
                 >
               </div>
             </div>
@@ -302,7 +302,7 @@
 
     <div [style.display]="showDeleteModal ? 'block' : 'none'" class="modal">
       <div class="modal-background"></div>
-      <div class="modal-card">
+      <div class="modal-card" id="modal-delete">
         <header class="modal-card-head">
           <p class="modal-card-title">Delete</p>
           <button
