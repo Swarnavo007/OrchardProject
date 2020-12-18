@@ -40,68 +40,48 @@ describe('ViewProductComponent', () => {
   //   })
   // })
 
-  describe('Simple HTML element on popup',()=>{
-
-    it('should have a "close" button on popup', ()=>{
-    
-      const linkDesc=fixture.debugElement
-        .queryAll(By.css('button'));
-      const nativeButton: HTMLButtonElement=linkDesc[0].nativeElement;
+  describe('Simple HTML element on popup', () => {
+    it('should have a "close" button on popup', () => {
+      const linkDesc = fixture.debugElement.queryAll(By.css('button'));
+      const nativeButton: HTMLButtonElement = linkDesc[0].nativeElement;
       expect(nativeButton.textContent).toBe('×');
-      
-    })
-  
-    it('should have a Update button on popup', ()=>{
-      
-      const linkDesc=fixture.debugElement
-        .queryAll(By.css('button'));
-      const nativeButton: HTMLButtonElement=linkDesc[1].nativeElement;
+    });
+
+    it('should have a Update button on popup', () => {
+      const linkDesc = fixture.debugElement.queryAll(By.css('button'));
+      const nativeButton: HTMLButtonElement = linkDesc[1].nativeElement;
       expect(nativeButton.textContent).toBe(' Update ');
-      
-    })
-  
-    it('should have a Delete button on popup', ()=>{
-      
-      const linkDesc=fixture.debugElement
-        .queryAll(By.css('button'));
-      const nativeButton: HTMLButtonElement=linkDesc[2].nativeElement;
+    });
+
+    it('should have a Delete button on popup', () => {
+      const linkDesc = fixture.debugElement.queryAll(By.css('button'));
+      const nativeButton: HTMLButtonElement = linkDesc[2].nativeElement;
       expect(nativeButton.textContent).toBe(' Delete ');
-      
-    })
-  })
+    });
+  });
 
-  describe('Simple HTML Element of Confirm Box of Delete option', ()=>{
-
-    it('should have a "close" button on the confirm box of Delete option', ()=>{
-    
-      const linkDesc=fixture.debugElement
-        .queryAll(By.css('button'));
-      const nativeButton: HTMLButtonElement=linkDesc[3].nativeElement;
+  describe('Simple HTML Element of Confirm Box of Delete option', () => {
+    it('should have a "close" button on the confirm box of Delete option', () => {
+      const linkDesc = fixture.debugElement.queryAll(By.css('button'));
+      const nativeButton: HTMLButtonElement = linkDesc[3].nativeElement;
       expect(nativeButton.textContent).toBe('');
-      
-    })
-  
-    it('should have a Confirm button on the confirm box of Delete option', ()=>{
-      
-      const linkDesc=fixture.debugElement
-        .queryAll(By.css('button'));
-      const nativeButton: HTMLButtonElement=linkDesc[4].nativeElement;
+    });
+
+    it('should have a Confirm button on the confirm box of Delete option', () => {
+      const linkDesc = fixture.debugElement.queryAll(By.css('button'));
+      const nativeButton: HTMLButtonElement = linkDesc[4].nativeElement;
       expect(nativeButton.textContent).toBe('Confirm');
-      
-    })
-  
-    it('should have a Cancel button on the confirm box of Delete option', ()=>{
-      
-      const linkDesc=fixture.debugElement
-        .queryAll(By.css('button'));
-      const nativeButton: HTMLButtonElement=linkDesc[5].nativeElement;
-      expect(nativeButton.textContent).toBe('Cancel');
-      
-    })
-  })
+    });
+
+    it('should have a Cancel button on the confirm box of Delete option', () => {
+      const linkDesc = fixture.debugElement.queryAll(By.css('button'));
+      const nativeButton: HTMLButtonElement = linkDesc[5].nativeElement;
+      expect(nativeButton.textContent).toBe(' Cancel ');
+    });
+  });
 
   // it('should have a Cancel button on the confirm box of Delete option', ()=>{
-      
+
   //   const linkDesc=fixture.nativeElement
   //     .querySelectorAll('button');
   //   // const nativeButton: HTMLButtonElement=linkDesc[6].nativeElement;
@@ -109,8 +89,4 @@ describe('ViewProductComponent', () => {
   //   console.log(linkDesc.length)
 
   // })
-
-
-  
-
 });

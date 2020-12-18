@@ -31,47 +31,34 @@ describe('OrdersComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('Simple HTML',()=>{
-    it('should have a button to close order details', ()=>{
-    
-      const linkDes=fixture.debugElement
-        .queryAll(By.css('button'));
-      const nativeButton: HTMLButtonElement=linkDes[0].nativeElement;
-      expect(nativeButton.textContent).toBe('Close');
-      
-    })
-    it('should have a button to close the order details pop up', ()=>{
-    
-      const linkDes=fixture.debugElement
-        .queryAll(By.css('button'));
-      const nativeButton: HTMLButtonElement=linkDes[1].nativeElement;
+  describe('Simple HTML', () => {
+    it('should have a button to close order details', () => {
+      const linkDes = fixture.debugElement.queryAll(By.css('button'));
+      const nativeButton: HTMLButtonElement = linkDes[0].nativeElement;
+      expect(nativeButton.textContent).toBe(' Close ');
+    });
+    it('should have a button to close the order details pop up', () => {
+      const linkDes = fixture.debugElement.queryAll(By.css('button'));
+      const nativeButton: HTMLButtonElement = linkDes[1].nativeElement;
       expect(nativeButton.textContent).toBe('');
-      
-    })
+    });
 
-    it('should have a button to confirm the order status', ()=>{
-    
-      const linkDes=fixture.debugElement
-        .queryAll(By.css('button'));
-      const nativeButton: HTMLButtonElement=linkDes[2].nativeElement;
-      expect(nativeButton.textContent).toBe('Confirm');
-      
-    })
-    
-    it('should have a button to cancel to set order status', ()=>{
-    
-      const linkDes=fixture.debugElement
-        .queryAll(By.css('button'));
-      const nativeButton: HTMLButtonElement=linkDes[3].nativeElement;
+    it('should have a button to confirm the order status', () => {
+      const linkDes = fixture.debugElement.queryAll(By.css('button'));
+      const nativeButton: HTMLButtonElement = linkDes[2].nativeElement;
+      expect(nativeButton.textContent).toBe(' Confirm ');
+    });
+
+    it('should have a button to cancel to set order status', () => {
+      const linkDes = fixture.debugElement.queryAll(By.css('button'));
+      const nativeButton: HTMLButtonElement = linkDes[3].nativeElement;
       expect(nativeButton.textContent).toBe('Cancel');
-      
-    })
+    });
 
     it('Should have two table for order details', () => {
       const tables = fixture.debugElement.queryAll(By.css('table'));
       expect(tables.length).toBe(3);
     });
-
 
     it('Table Should have Headings Order Id , User Id , Order Date, Total Price', () => {
       const tableRows = fixture.nativeElement.querySelectorAll('tr');
@@ -81,15 +68,9 @@ describe('OrdersComponent', () => {
       expect(headerRow.cells[2].textContent).toBe('Order Date');
       expect(headerRow.cells[3].textContent).toBe('Total Price');
     });
+  });
 
-    
-
-
-  })
-
-  describe('Navigation',()=>{
-
-
+  describe('Navigation', () => {
     // it(`after pressing 'Confirm' button should naviate to the analysis page`, ()=>{
     //   const router=TestBed.get(Router);
     //   spyOn(router,'navigateByUrl');
@@ -101,10 +82,5 @@ describe('OrdersComponent', () => {
     //     skipLocationChange:false, replaceUrl:false, state:undefined
     //   })
     // })
-
-
-
-  })
-
-
+  });
 });
