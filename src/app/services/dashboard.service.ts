@@ -8,19 +8,23 @@ import { Router } from '@angular/router';
 export class DashboardService {
 
   constructor(private http:HttpClient, private route:Router) { }
+  url='https://icylicious.herokuapp.com/productCount';
+  ordersUrl='https://icylicious.herokuapp.com/orderCount';
+  subscibersUrl='https://icylicious.herokuapp.com/countemail';
+  usersUrl='https://icylicious.herokuapp.com/countUser';
 
   getProducts(){
-    return this.http.get<{msg:string}>('https://icylicious.herokuapp.com/productCount');
+    return this.http.get<{msg:string}>(this.url);
   }
   getOrders(){
-    return this.http.get<{msg:string}>('https://icylicious.herokuapp.com/orderCount')
+    return this.http.get<{msg:string}>(this.ordersUrl)
   }
   getEmailSubscribers(){
-    return this.http.get<{msg:string}>('https://icylicious.herokuapp.com/countemail' );
+    return this.http.get<{msg:string}>(this.subscibersUrl);
   }
 
   getUsersCount(){
-    return this.http.get<{msg:string}>('https://icylicious.herokuapp.com/countUser' );
+    return this.http.get<{msg:string}>(this.usersUrl);
   }
 
   token;
