@@ -32,7 +32,7 @@ export class OrdersComponent implements OnInit {
         if(ord.status=="ordered"){
           this.activeOrders.push(ord);
         }
-        else if(ord.status=="delivered"){
+        else if(ord.status=="Delivered"){
           this.deliveredOrders.push(ord);
         }
       }
