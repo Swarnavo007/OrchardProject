@@ -19,7 +19,7 @@
               <td>{{ order._id }}</td>
               <td>{{ order.userId }}</td>
               <td>{{ getDate(order.orderDate) }}</td>
-              <td>{{ order.totalPrice }}</td>
+              <td>{{ order.totalPrice | currency: "INR" }}</td>
               <!-- <td>{{order.status}}</td> -->
               <td>
                 <button
@@ -68,7 +68,7 @@
               <td>{{ order._id }}</td>
               <td>{{ order.userId }}</td>
               <td>{{ getDate(order.orderDate) }}</td>
-              <td>{{ order.totalPrice }}</td>
+              <td>{{ order.totalPrice | currency: "INR" }}</td>
               <td>
                 <!-- <b>{{ order.status }}</b> -->
                 <b> Delivered</b>
@@ -112,7 +112,7 @@
             <td>{{ item.productId }}</td>
             <td>{{ item.productName }}</td>
             <td>{{ item.productQty }}</td>
-            <td>{{ item.productPrice }}</td>
+            <td>{{ item.productPrice | currency: "INR" }}</td>
           </tr>
         </tbody>
       </table>
