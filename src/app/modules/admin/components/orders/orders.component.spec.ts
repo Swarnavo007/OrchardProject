@@ -2,9 +2,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule } from 'ngx-toastr';
+import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { OrdersComponent } from './orders.component';
 import { Router } from '@angular/router';
+import { OrdersService } from 'src/app/services/orders.service';
 
 describe('OrdersComponent', () => {
   let component: OrdersComponent;
@@ -18,6 +20,7 @@ describe('OrdersComponent', () => {
         RouterTestingModule,
         ToastrModule.forRoot(),
       ],
+      providers:[{provide: OrdersService, useClass: OrdersServiceStub}]
     }).compileComponents();
   });
 
@@ -84,3 +87,9 @@ describe('OrdersComponent', () => {
     // })
   });
 });
+
+class OrdersServiceStub{
+  getOrdersList(){
+    return of([]);
+  }
+}

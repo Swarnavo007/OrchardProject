@@ -1,10 +1,11 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { of } from 'rxjs';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule } from 'ngx-toastr';
 import { By } from '@angular/platform-browser';
 import { ViewProductComponent } from './view-product.component';
+import { ViewProductService } from 'src/app/services/view-product.service';
 
 describe('ViewProductComponent', () => {
   let component: ViewProductComponent;
@@ -14,11 +15,10 @@ describe('ViewProductComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ViewProductComponent],
       imports: [
-        HttpClientTestingModule,
         RouterTestingModule,
         ToastrModule.forRoot(),
       ],
-      providers: [FormBuilder],
+      providers: [FormBuilder,{ provide: ViewProductService, useClass: ViewProductServiceStub }],
     }).compileComponents();
   });
 
@@ -90,3 +90,9 @@ describe('ViewProductComponent', () => {
 
   // })
 });
+
+class ViewProductServiceStub{
+  getProducts(){
+    return of([]);
+  }
+}

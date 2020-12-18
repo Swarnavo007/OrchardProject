@@ -1,8 +1,9 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-
+import { LoginService } from 'src/app/services/login.service';
+import { of } from 'rxjs';
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
@@ -12,8 +13,8 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      imports: [HttpClientTestingModule, RouterTestingModule],
-      providers: [FormBuilder],
+      imports: [RouterTestingModule],
+      providers: [FormBuilder,{ provide: LoginService, useClass: LoginServiceStub }],
     }).compileComponents();
   });
 
@@ -27,3 +28,9 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class LoginServiceStub{
+  login(){
+    
+  }
+}
