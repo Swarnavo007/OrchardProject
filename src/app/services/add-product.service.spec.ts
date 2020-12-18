@@ -15,18 +15,14 @@ describe('AddProductService', () => {
     httpMock=getTestBed().get(HttpTestingController)
   });
 
-  afterEach(()=>{
-    httpMock.verify();
-  })
+  // afterEach(()=>{
+  //   httpMock.verify();
+  // })
   
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  // it('should generate a post request',()=>{
-  //   const request=httpMock.expectOne(`${service._url}`);
 
-  //   expect(request.request.method).toBe('POST');
-  // })
 });
