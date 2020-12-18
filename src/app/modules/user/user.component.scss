@@ -12,3 +12,51 @@
   }
   
 }
+
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.main-container{
+  display: flex;
+  flex-direction: row;
+  div{
+    width: 50%;
+  }
+}
+
+.first{
+  padding-top: 30%;
+  font-weight: lighter;
+  font-size: 300%
+}
+
+.second{
+  padding-top: 2%;
+  font-weight: bolder;
+  font-size: 700%
+}
+
+.text-content{
+  padding-top: 5%;
+  padding-left: 10%;
+  button{
+    margin-top: 5%;
+    margin-left: 10%;
+  }
+}
+
+
+@media all and(max-width:550px){
+  .main-container{
+    display: flex;
+    flex-direction: column;
+    div{
+      width: 100%;
+    }
+  }
+  .logo{
+    width: 25%;
+  }
+}
