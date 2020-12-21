@@ -23,17 +23,17 @@ export class ViewProductService {
     'Authorization': this.getToken() });
 
 
-  url = 'https://icylicious.herokuapp.com/products';
+  url = 'https://sumit-icylicious-sep-20.herokuapp.com/products';
   constructor(private HttpClient: HttpClient,private route:Router) {}
   getProducts() {
     return this.HttpClient.get<{msg:string}>(this.url);
   }
   updateProducts(data){
-    return this.HttpClient.patch<{msg:string}>('https://icylicious.herokuapp.com/product',data)
+    return this.HttpClient.patch<{msg:string}>('https://sumit-icylicious-sep-20.herokuapp.com/product',data)
   }
 
   deleteProduct(id){
     console.log(id);
-    return this.HttpClient.post<{msg:string}>('https://icylicious.herokuapp.com/deleteproduct',id)
+    return this.HttpClient.post<{msg:string}>('https://sumit-icylicious-sep-20.herokuapp.com/deleteproduct',id)
   }
 }

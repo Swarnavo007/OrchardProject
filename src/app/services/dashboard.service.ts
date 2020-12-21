@@ -10,17 +10,17 @@ export class DashboardService {
   constructor(private http:HttpClient, private route:Router) { }
 
   getProducts(){
-    return this.http.get<{msg:string}>('https://icylicious.herokuapp.com/productCount');
+    return this.http.get<{msg:string}>('https://sumit-icylicious-sep-20.herokuapp.com/productCount');
   }
   getOrders(){
-    return this.http.get<{msg:string}>('https://icylicious.herokuapp.com/orderCount')
+    return this.http.get<{msg:string}>('https://sumit-icylicious-sep-20.herokuapp.com/orderCount')
   }
   getEmailSubscribers(){
-    return this.http.get<{msg:string}>('https://icylicious.herokuapp.com/countemail' );
+    return this.http.get<{msg:string}>('https://sumit-icylicious-sep-20.herokuapp.com/countemail' );
   }
 
   getUsersCount(){
-    return this.http.get<{msg:string}>('https://icylicious.herokuapp.com/countUser' );
+    return this.http.get<{msg:string}>('https://sumit-icylicious-sep-20.herokuapp.com/countUser' );
   }
 
   token;

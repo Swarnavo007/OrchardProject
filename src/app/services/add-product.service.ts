@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 })
 export class AddProductService {
 
-  _url = "https://icylicious.herokuapp.com/product";
+  _url = "https://sumit-icylicious-sep-20.herokuapp.com/product";
   constructor(private _http: HttpClient,private route:Router) { }
    header = new HttpHeaders({
     'Authorization': this.getToken() });
@@ -30,7 +30,7 @@ export class AddProductService {
 
   idCheckUnique(id){
     console.log(id);
-    return this._http.get(`https://icylicious.herokuapp.com/id?id=${id}`)
+    return this._http.get(`https://sumit-icylicious-sep-20.herokuapp.com/id?id=${id}`)
   }
 
 }
