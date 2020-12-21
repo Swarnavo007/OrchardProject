@@ -15,14 +15,31 @@ describe('DashboardService', () => {
     service = TestBed.inject(DashboardService);
     httpMock=TestBed.get(HttpTestingController);
   });
-  // describe('service check',()=>{
-  //   it("should use GET method",()=>{
-  //     service.getEmailSubscribers().subscribe();
-  //     const req=httpMock.expectOne(service.url);
-  //     expect(req.request.method).toBe('GET')
+  describe('service check',()=>{
+    it("should call products GET method",()=>{
+      service.getProducts().subscribe();
+      const req=httpMock.expectOne(service.url);
+      expect(req.request.method).toBe('GET')
+    })
+    it('should call emailSubscibers GET methods',()=>{
+      service.getEmailSubscribers().subscribe();
+      const req=httpMock.expectOne(service.subscibersUrl);
+      expect(req.request.method).toBe('GET');
+    })
 
-  //   })
-  // })
+    it('should call getOrders Method',()=>{
+      service.getOrders().subscribe();
+      const req=httpMock.expectOne(service.ordersUrl);
+      expect(req.request.method).toBe('GET')
+    })
+
+    it('should call getUsers Method',()=>{
+      service.getUsersCount().subscribe();
+      const req=httpMock.expectOne(service.usersUrl);
+      expect(req.request.method).toBe('GET')
+    })
+
+  })
 
   it('should be created', () => {
     expect(service).toBeTruthy();

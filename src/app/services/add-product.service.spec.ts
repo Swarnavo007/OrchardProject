@@ -18,6 +18,17 @@ describe('AddProductService', () => {
   // afterEach(()=>{
   //   httpMock.verify();
   // })
+   describe('Service checking',()=>{
+      it('should call POST method',()=>{
+        let data={
+            productId:"CN101",
+            productName:"chocolate", 
+
+        }
+        service.create(data).subscribe();
+
+      })
+   })
   
 
   it('should be created', () => {
