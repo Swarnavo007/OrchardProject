@@ -115,11 +115,11 @@ export class AddProductComponent implements OnInit {
             localStorage.clear();
             this.route.navigate(['admin'])
           }
+          this.createForm.reset();
           console.log("success",response);
           this.toaster.success('Product added!')
           setTimeout(()=>{
             this.fileName = '';
-            this.createForm.reset();
           },2000)
         },
         error => console.log("error!",error)
