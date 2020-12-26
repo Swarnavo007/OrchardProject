@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ViewProductService } from 'src/app/services/view-product.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { AbstractControl, ValidationErrors } from "@angular/forms"
 
 @Component({
   selector: 'app-view-product',
@@ -37,6 +38,46 @@ export class ViewProductComponent implements OnInit {
   get endDate() {
     return this.updateForm.get('endDate');
   }
+ //product name validation
+ productNameValidators=function(control:AbstractControl):ValidationErrors | null{
+  let value:string=control.value || '';
+  console.log("value is "+value);
+  if(!value)
+  {
+      return null;
+  }
+  let specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
+  if (specialCharacters.test(value) === true) {
+    return { ProductnameValidation: `Product Name should not contain special character` };
+  }
+  if(value.length<4){
+      return { ProductnameValidation: `Product Name should be minimum 4 characters` };
+    }
+    if(value.length > 20){
+      return { ProductnameValidation:`Product Name should be maximum 20 characters ` }
+    }
+    if (/\S/.test(value)===false) {
+      return { ProductnameValidation:`Product Name should not contain the whitespaces ` }
+  }
+  }
+   //description validation
+   descriptionValidators=function(control:AbstractControl):ValidationErrors | null{
+    let value:string=control.value || '';
+    if(!value)
+    {
+        return null;
+    }
+    if (/\S/.test(value)===false) {
+      return { DescriptionValidation:`Description should not contain whitespaces ` }
+  }
+    if(value.replace(/\s/g, "").length < 10){
+        return { DescriptionValidation: `Description should be minimum 10 characters` };
+      }
+      if(value.replace(/\s/g, "").length > 100){
+        return { DescriptionValidation:`Description should be maximum 100 characters ` }
+      }
+    
+    }
 
   constructor(
     private service: ViewProductService,
@@ -55,18 +96,16 @@ export class ViewProductComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(4),
-          Validators.maxLength(20),
+          this.productNameValidators
         ],
       ],
       type: ['', [Validators.required]],
-      price: ['', [Validators.required, Validators.min(1)]],
+      price: ['', [Validators.required, Validators.min(1),Validators.max(10000)]],
       description: [
         '',
         [
           Validators.required,
-          Validators.minLength(10),
-          Validators.maxLength(100),
+          this.descriptionValidators
         ],
       ],
       startDate: ['', [Validators.required]],
