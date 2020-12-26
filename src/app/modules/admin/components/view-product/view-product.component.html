@@ -95,15 +95,13 @@
               </div>
               <div *ngIf="productId.invalid && productId.touched">
                 <small *ngIf="productId.errors?.required" class="text-danger"
-                  ><i>Product ID is required</i></small
-                >
+                  ><i>Product ID is required</i></small>
                 <small
                   *ngIf="
                     productId.errors?.minlength || productId.errors?.maxlength
                   "
                   class="text-danger"
-                  ><i>Product ID should be 4-6 characters</i></small
-                >
+                  ><i>Product ID should be 4-6 characters</i></small>
               </div>
             </div>
 
@@ -121,7 +119,7 @@
                 />
               </div>
               <div *ngIf="productName.invalid && productName.touched">
-                <small *ngIf="productName.errors?.required" class="text-danger"
+                <!-- <small *ngIf="productName.errors?.required" class="text-danger"
                   ><i>Product Name is required</i></small
                 >
                 <small
@@ -130,8 +128,13 @@
                     productName.errors?.maxlength
                   "
                   class="text-danger"
-                  >Product Name should be 4-20 characters</small
-                >
+                  >Product Name should be 4-20 characters</small> -->
+                  <small *ngIf="productName.hasError('required')" class="text-danger"><i>
+                    Product Name is required</i>
+                  </small>
+                  <small class="text-danger" *ngIf="productName.hasError('ProductnameValidation')">
+                  <i> {{productName.errors['ProductnameValidation']}}</i>
+                  </small>
               </div>
             </div>
 
@@ -174,6 +177,7 @@
                 <small *ngIf="price.errors?.min" class="text-danger"
                   ><i>Minimum price will be 1</i></small
                 >
+                <small *ngIf="price.errors?.max" class="text-danger"><i>Maximum price will be 10000</i></small>
               </div>
             </div>
 
@@ -191,17 +195,12 @@
                 ></textarea>
               </div>
               <div *ngIf="description.invalid && description.touched">
-                <small *ngIf="description.errors?.required" class="text-danger"
-                  ><i>Description is required</i>
+                <small *ngIf="description.hasError('required')" class="text-danger"><i>
+                  Description is required</i>
                 </small>
-                <small
-                  *ngIf="
-                    description.errors?.minlength ||
-                    description.errors?.maxlength
-                  "
-                  class="text-danger"
-                  >Description should be 10-100 characters</small
-                >
+                <small class="text-danger" *ngIf="description.hasError('DescriptionValidation')">
+                <i> {{description.errors['DescriptionValidation']}}</i>
+                </small>
               </div>
             </div>
 
