@@ -1,8 +1,11 @@
 <div class="orders-container">
   <mat-tab-group mat-align-tabs="center">
     <mat-tab label="Active Orders">
-      <div class="activeOrder">
-        <table class="table table-responsive-md table-hover" id="order-table">
+      <div  id="activeorder" class="activeOrder">
+        <div class="noOrder" *ngIf="(activeOrders.length==0)">
+          <p><b>No Active Orders present</b></p>
+        </div>
+        <table *ngIf="(activeOrders.length>0)" class="table table-responsive-md table-hover" id="order-table">
           <thead>
             <tr>
               <th scope="col">Order Id</th>
@@ -52,7 +55,10 @@
     </mat-tab>
     <mat-tab label="Order Delivered">
       <div class="activeOrder">
-        <table class="table table-responsive-md" id="order-table">
+        <div class="noOrder" *ngIf="(deliveredOrders.length==0)">
+          <p><b>No Orders Delivered yet</b></p>
+        </div>
+        <table *ngIf="(deliveredOrders.length>0)" class="table table-responsive-md" id="order-table">
           <thead>
             <tr>
               <th scope="col">Order Id</th>
@@ -105,6 +111,7 @@
             <th>Product Name</th>
             <th>Quantity</th>
             <th>Price</th>
+            <th>Total</th>
           </tr>
         </thead>
         <tbody *ngFor="let item of order.itemPurchased">
@@ -113,6 +120,7 @@
             <td>{{ item.productName }}</td>
             <td>{{ item.productQty }}</td>
             <td>{{ item.productPrice | currency: "INR" }}</td>
+            <td>{{ item.productPrice * item.productQty | currency: "INR" }}</td>
           </tr>
         </tbody>
       </table>
