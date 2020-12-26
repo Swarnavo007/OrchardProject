@@ -1,37 +1,52 @@
 <mat-toolbar color="accent">
-
   <button mat-button routerLink="./analysis"><h3>Icy-Licious</h3></button>
   <!-- This fills the remaining space of the current row -->
   <span class="fill-remaining-space"></span>
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
-      <button mat-button routerLink="./add-product" routerLinkActive="active">Add Products</button>
-      <button mat-button routerLink="./view-product" routerLinkActive="active">View Products</button>
-      <button mat-button routerLink="./orders" routerLinkActive="active">Show Orders</button>
-      <button mat-button routerLink="./analysis" routerLinkActive="active">Dashboard</button>
-      <button mat-button routerLink="./subscibers" routerLinkActive="active">Subscribers</button>
-      <button mat-button (click)="showDelete()"><mat-icon >account_circle</mat-icon></button>
+    <button mat-button routerLink="./add-product" routerLinkActive="active">
+      Add Products
+    </button>
+    <button mat-button routerLink="./view-product" routerLinkActive="active">
+      View Products
+    </button>
+    <button mat-button routerLink="./orders" routerLinkActive="active">
+      Show Orders
+    </button>
+    <button mat-button routerLink="./analysis" routerLinkActive="active">
+      Dashboard
+    </button>
+    <button mat-button routerLink="./subscibers" routerLinkActive="active">
+      Subscribers
+    </button>
+    <button mat-button (click)="showDelete()">
+      <mat-icon>login</mat-icon>
+    </button>
   </div>
   <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
-   <mat-icon>menu</mat-icon>
+    <mat-icon>menu</mat-icon>
   </button>
-
 </mat-toolbar>
 <mat-menu x-position="before" #menu="matMenu">
-      <button mat-menu-item routerLink="./add-product">Add Products</button>
-      <button mat-menu-item routerLink="./view-product">View Products</button>
-      <button mat-menu-item routerLink="./orders">Show Orders</button>
-      <button mat-menu-item routerLink="./analysis">Dashboard</button>
-      <button mat-menu-item routerLink="./subscibers">Subscribers</button>
-      <button mat-menu-item (click)="showDelete()">Logout</button>
+  <button mat-menu-item routerLink="./add-product">Add Products</button>
+  <button mat-menu-item routerLink="./view-product">View Products</button>
+  <button mat-menu-item routerLink="./orders">Show Orders</button>
+  <button mat-menu-item routerLink="./analysis">Dashboard</button>
+  <button mat-menu-item routerLink="./subscibers">Subscribers</button>
+  <button mat-menu-item (click)="showDelete()">Logout</button>
   <!--<button mat-menu-item>Help</button>-->
 </mat-menu>
-<svg width="1936" height="682" viewBox="0 0 1936 682" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M0 289.874C784 -556.63 1244 790.323 1936 98.213L1892 566.718C1261.33 698.042 0 826.526 0 289.874Z" fill="#F3BAD6"/>
-  </svg>
-
-
-
-
+<svg
+  width="1936"
+  height="682"
+  viewBox="0 0 1936 682"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M0 289.874C784 -556.63 1244 790.323 1936 98.213L1892 566.718C1261.33 698.042 0 826.526 0 289.874Z"
+    fill="#F3BAD6"
+  />
+</svg>
 
 <!-- <mat-toolbar color="primary">
     <div>
@@ -43,23 +58,22 @@
 </mat-toolbar>
  -->
 
-
 <div [style.display]="showDeleteModal ? 'block' : 'none'" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Logout</p>
-        <button class="delete" (click)="closeModal()" aria-label="close"></button>
-      </header>
-      <section class="modal-card-body">
-        <h1>Are you sure want to logout ?</h1>
-      </section>
-      <footer class="modal-card-foot">
-        <button class="button is-danger" (click)="logout()">Confirm</button>
-        <button class="button is-warning" (click)="closeModal()">Cancel</button>
-      </footer>
-    </div>
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Logout</p>
+      <button class="delete" (click)="closeModal()" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <h1>Are you sure want to logout ?</h1>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-danger" (click)="logout()">Confirm</button>
+      <button class="button is-warning" (click)="closeModal()">Cancel</button>
+    </footer>
   </div>
+</div>
 
 <!-- Controls -->
 
@@ -73,7 +87,4 @@
       </nav>
 </div> -->
 
-
-<router-outlet>
-  
-</router-outlet>
+<router-outlet> </router-outlet>

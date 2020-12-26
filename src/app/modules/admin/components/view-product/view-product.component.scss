@@ -7,21 +7,21 @@
   // max-height: 30rem;
   box-shadow: 0px 4px 3px 6px rgba(0, 0, 0, 0.22);
 
-  img{
-    width:100%;
-    height:35%;
+  img {
+    width: 100%;
+    height: 35%;
     object-fit: cover;
   }
 
-  .mat-card-header{
-    margin-left:-16px;
+  .mat-card-header {
+    margin-left: -16px;
   }
 }
 
 ul {
   display: flex;
   justify-content: space-around;
-  margin-top:2rem;
+  margin-top: 2rem;
   //background-color: rgb(228, 218, 220);
   flex-flow: row wrap;
 }
@@ -57,31 +57,26 @@ mat-card-subtitle {
   font-weight: bold;
 }
 
-
 mat-card-content {
   color: rgb(53, 51, 51);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.mat-card-image{
-  margin:0rem 0rem 1rem 0rem;
+.mat-card-image {
+  margin: 0rem 0rem 1rem 0rem;
 }
 
-.container-fluid{
-  form{
-    margin-top:0.5rem;
+.container-fluid {
+  form {
+    margin-top: 0.5rem;
   }
 }
 
-
-
-
-@media all and (max-width:600px){
-  
-  #modal-delete{
+@media all and (max-width: 600px) {
+  #modal-delete {
     width: 90%;
   }
-  #imagemodal{
+  #imagemodal {
     padding-top: 10%;
     padding-right: 10%;
   }

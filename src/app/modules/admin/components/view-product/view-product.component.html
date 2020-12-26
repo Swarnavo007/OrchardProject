@@ -66,6 +66,12 @@
     role="dialog"
     aria-labelledby="myModalLabel"
     aria-hidden="true"
+    style="
+      backdrop-filter: blur(5px);
+      background-color: #37011c70;
+      height: 100%;
+      width: 100%;
+    "
   >
     <div class="modal-dialog">
       <div class="modal-content">
@@ -76,6 +82,7 @@
             class="close"
             aria-label="Close"
             (click)="hide()"
+            style="color: red"
           >
             <span aria-hidden="true">&times;</span>
           </button>
