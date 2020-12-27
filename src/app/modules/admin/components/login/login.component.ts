@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit {
       } else if (response.msg === 'failed') {
         this.loginForm.patchValue({
           email: this.loginForm.get('username').value,
-          password: '',
         });
         this.wrongPass = true;
       } else if (response.msg === 'success') {
