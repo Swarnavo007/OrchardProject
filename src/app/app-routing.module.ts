@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthstateGuard } from '../app/modules/admin/authstate.guard';
+import { HomeComponent } from './modules/user/components/home/home.component';
 import { LoginComponent } from './modules/admin/components/login/login.component';
 
 
 const routes: Routes = [
-  {path:'admin',component:LoginComponent, canActivate:[AuthstateGuard]}
+  {path:'admin',component:LoginComponent, canActivate:[AuthstateGuard]},
+  {path:'', component:HomeComponent}
 ];
 
 //changes

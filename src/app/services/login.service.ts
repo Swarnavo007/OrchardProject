@@ -7,14 +7,26 @@ import {HttpClient} from '@angular/common/http'
 export class LoginService {
 
   loginUrl = "https://sumit-icylicious-sep-20.herokuapp.com/adminlogin";
+  
+  _url = 'https://sumit-icylicious-sep-20.herokuapp.com/login'
 
   constructor(private _http: HttpClient) { }
 
-  login(data){
+  adminLogin(data){
     return this._http.post<{msg:string,token:string}>(this.loginUrl,data);
   }
 
-  loggedIn(){
-    return !!localStorage.getItem('token')
+  login(data){
+    return this._http.post<{msg:String,id:String,usertoken:String,email:String}>(this._url,data)
   }
+
+  loggedIn(){
+    return !!localStorage.getItem('userToken')
+  }
+
+  userLoggedIn(){
+    return !!localStorage.getItem('userToken')
+  }
+
+
 }

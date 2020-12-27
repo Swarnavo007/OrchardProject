@@ -8,7 +8,7 @@ export class TokenInterceptorService implements HttpInterceptor {
 
   constructor() { }
   intercept(req,next){
-     let token = localStorage.getItem('token')
+     let token = localStorage.getItem('userToken')
      if(token === null){
        token = 'XYZ'
      }

@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     // console.log(this.loginForm.value);
-    this._loginService.login(this.loginForm.value).subscribe((response) => {
+    this._loginService.adminLogin(this.loginForm.value).subscribe((response) => {
       if (response.msg === 'invalid') {
         this.loginForm.reset();
         this.failed = true;
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       } else if (response.msg === 'success') {
         // console.log(response);
         localStorage.setItem('logged', 'true');
-        localStorage.setItem('token', response.token);
+        localStorage.setItem('userToken', response.token);
         this.router.navigate(['dashboard/analysis']);
       }
     });

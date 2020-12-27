@@ -1,0 +1,125 @@
+main {
+    background-image: url("https://raw.githubusercontent.com/jaisayush/IceCream_Images/main/sp.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    .content {
+      margin-left: 2%;
+      width: 25%;
+      button {
+        margin-top: -20%;
+        padding: 3% 8%;
+        margin-left: 10%;
+      }
+    }
+    .store-name {
+      color: #edf2ef;
+      margin-left: 2%;
+      font-size: 60px;
+      font-weight: bolder;
+  
+      // text-shadow: 4px -3px 2px rgb(255, 0, 0);
+    }
+  }
+  
+  .about-us {
+    background-color: orange;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    height: fit-content;
+    .left {
+      padding: 25px 40px 0px 40px;
+      h1 {
+        color: #edf2ef;
+        font-weight: bolder;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        // text-shadow: 4px -3px 2px rgb(255, 0, 0);
+      }
+    }
+  
+    .right {
+      padding: 25px 50px 75px 0px;
+      background-image: url("https://raw.githubusercontent.com/jaisayush/IceCream_Images/main/bg.png");
+      height: 64vh;
+      width: 260rem;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+  .contact-us {
+    h1 {
+      color: #212738;
+      font-weight: bolder;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
+    a {
+      color: #ff5722;
+    }
+    background-color: white;
+    color: #ff5722;
+    display: flex;
+    justify-content: space-around;
+    height: fit-content;
+    .contact-left {
+      padding: 25px 40px 0px 40px;
+    }
+    .contact-right {
+      padding-top: 60px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+  .products {
+    h1 {
+      color: orange;
+      font-weight: bolder;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
+    background-color: #edf2ef;
+    color: #212738;
+    padding: 25px 40px 0px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @media all and (max-width: 768px) {
+    main{
+      .content{
+        width: 50%;
+        margin-top: 45%;
+      }
+    }
+    .about-us {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      flex-flow: row wrap;
+    }
+    .contact-us {
+      margin-top: 0;
+      display: flex;
+      justify-content: space-around;
+      flex-flow: row wrap;
+      .contact-right {
+        padding-top: 10px;
+        padding-left: 10px;
+      }
+    }
+  }
+  
+  app-header {
+    position: fixed;
+    width: 100%;
+  }
+  
