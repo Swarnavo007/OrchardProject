@@ -5,6 +5,7 @@ import { ConfirmedValidator } from '../../../../services/confirmed.validator';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { PasswordStrengthValidator} from '../../../../services/password-strength.validator';
 import { ToastrService } from 'ngx-toastr';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-update-password',
@@ -23,7 +24,10 @@ export class UpdatePasswordComponent implements OnInit {
     return this.resetForm.get('confirmPassword')
   }
 
-  constructor(private fb:FormBuilder,private registrationService: RegistrationService,public router:Router, public route:ActivatedRoute, private toaster:ToastrService) { }
+  constructor(private fb:FormBuilder,private registrationService: RegistrationService,public router:Router, 
+    public route:ActivatedRoute, private toaster:ToastrService,private titleService:Title) {
+      this.titleService.setTitle("Icy-Licious | Reset");
+     }
 
   ngOnInit(): void {
   }

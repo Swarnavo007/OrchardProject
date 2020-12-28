@@ -5,6 +5,7 @@ import { RegistrationService } from 'src/app/services/registration.service';
 import { ConfirmedValidator } from '../../../../services/confirmed.validator';
 import { PasswordStrengthValidator} from '../../../../services/password-strength.validator';
 import { ToastrService } from 'ngx-toastr';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-signup',
@@ -40,7 +41,10 @@ export class SignupComponent implements OnInit {
     return this.registrationForm.get('answer')
   }
 
-  constructor(private fb:FormBuilder,private route:ActivatedRoute, private router:Router ,private _registrationService:RegistrationService, private toaster:ToastrService) { }
+  constructor(private fb:FormBuilder,private route:ActivatedRoute, private router:Router ,
+    private _registrationService:RegistrationService, private toaster:ToastrService, private titleService:Title) { 
+    this.titleService.setTitle("Icy-Licious | Signup");
+  }
 
   ngOnInit(): void {
   }

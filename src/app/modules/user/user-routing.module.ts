@@ -23,7 +23,7 @@ const routes: Routes = [
   {path:'checkout',component:CheckoutComponent},
   {path:'shop',component:ViewProductsComponent},
   {path:'cart',component:CartComponent},
-  {path:'profile',component:ProfileComponent,canActivate:[AuthGuard]},
+  {path:'profile',component:ProfileComponent},
 
 ];
 

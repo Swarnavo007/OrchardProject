@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Cotter from "cotter"; 
 import { RegistrationService } from 'src/app/services/registration.service';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-registration',
@@ -15,7 +16,9 @@ export class RegistrationComponent implements OnInit {
   email = null;
   payloadString = null;
   public emailAlredyExist:boolean = false;
-  constructor(private router:Router,private _registrationService:RegistrationService) { }
+  constructor(private router:Router,private _registrationService:RegistrationService, private titleService:Title) {
+    this.titleService.setTitle("Icy-Licious | Registration");
+   }
 
   ngOnInit(): void {
 

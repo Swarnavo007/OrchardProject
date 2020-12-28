@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 import { ViewProductsService } from 'src/app/services/view-products.service';
+import {Title} from "@angular/platform-browser";
 // import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-view-products',
@@ -10,7 +11,9 @@ import { ViewProductsService } from 'src/app/services/view-products.service';
 })
 export class ViewProductsComponent implements OnInit {
   public emptyProducts=false;
-  constructor(private service:ViewProductsService,private router:Router) { }
+  constructor(private service:ViewProductsService,private router:Router, private titleService:Title) {
+    this.titleService.setTitle("Icy-Licious | Shop");
+   }
   public products:any=[];
   public newProducts:any=[];
   // userId:"navaneetha@gmail.com";

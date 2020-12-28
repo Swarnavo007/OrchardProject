@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../../../services/login.service';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-login',
@@ -20,8 +21,11 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private _loginService: LoginService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private titleService:Title
+  ) {
+    this.titleService.setTitle("Icy-Licious | Admin | Login");
+  }
 
   ngOnInit(): void {}
 
@@ -47,7 +51,7 @@ export class LoginComponent implements OnInit {
       } else if (response.msg === 'success') {
         // console.log(response);
         localStorage.setItem('logged', 'true');
-        localStorage.setItem('token', response.token);
+        localStorage.setItem('userToken', response.token);
         this.router.navigate(['dashboard/analysis']);
       }
     });
