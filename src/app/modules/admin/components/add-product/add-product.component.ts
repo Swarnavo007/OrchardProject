@@ -175,6 +175,7 @@ export class AddProductComponent implements OnInit {
 
   public selectedfile = null;
   public fileName = '';
+  public validfile:boolean = false;
   onFileSelected(event) {
     // if(event.target.files.length > 0)
     //  {
@@ -186,8 +187,17 @@ export class AddProductComponent implements OnInit {
     // console.log(event);
     this.selectedfile = event.target.files[0];
     this.fileName = this.selectedfile.name;
-    console.log(this.selectedfile.name);
+    console.log("file name: ",this.selectedfile.name);
+    let index= (this.selectedfile.name).lastIndexOf('.');
+    let ext = (this.selectedfile.name).slice(index);
+    console.log(ext);
     console.log(this.selectedfile);
+    if(ext=='.jpg' || ext=='.jpeg'||ext=='.png'){
+      this.validfile=true;
+    }
+    else{
+      this.validfile=false;
+    }
   }
 
   checkadded;

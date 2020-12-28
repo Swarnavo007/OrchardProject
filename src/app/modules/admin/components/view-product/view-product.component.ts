@@ -76,7 +76,7 @@ export class ViewProductComponent implements OnInit {
       if(value.replace(/\s/g, "").length > 100){
         return { DescriptionValidation:`Description should be maximum 100 characters ` }
       }
-    
+
     }
 
   constructor(
@@ -161,6 +161,7 @@ export class ViewProductComponent implements OnInit {
   }
 
   public selectedfile = null;
+  public validfile:boolean = true;
   onFileSelected(event) {
     if (event.target.files.length > 0) {
       this.updateForm.patchValue({
@@ -171,6 +172,16 @@ export class ViewProductComponent implements OnInit {
     console.log(event);
     this.selectedfile = event.target.files[0];
     console.log(this.selectedfile.name);
+    let index= (this.selectedfile.name).lastIndexOf('.');
+    let ext = (this.selectedfile.name).slice(index);
+    console.log(ext);
+    console.log(this.selectedfile);
+    if(ext=='.jpg' || ext=='.jpeg'||ext=='.png'){
+      this.validfile=true;
+    }
+    else{
+      this.validfile=false;
+    }
     console.log(this.selectedfile);
   }
 

@@ -281,7 +281,7 @@
 
             <div class="field is-grouped">
               <button
-                [disabled]="!updateForm.valid"
+                [disabled]="!updateForm.valid || !validfile"
                 type="submit"
                 (dbclick)="update()"
                 class="btn btn-lg btn-success is-link"
