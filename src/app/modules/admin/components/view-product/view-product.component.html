@@ -229,6 +229,9 @@
                   ><i>Start Date is required</i></small
                 >
               </div>
+              <div  *ngIf="startDate.dirty">
+              <small *ngIf="updateForm.errors" class="text-danger"><i>{{ updateForm.errors?.date1 | json }}</i></small>
+              </div>
             </div>
 
             <div class="field">
@@ -271,6 +274,7 @@
                     </span>
                     <span class="file-label"> Upload </span>
                   </span>
+                  <h3>{{ fileName }}</h3>
                 </label>
               </div>
               <small class="text-danger">*files allowed jpeg, png</small>

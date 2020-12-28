@@ -114,7 +114,7 @@ export class ViewProductComponent implements OnInit {
       fileName: '',
     },
     {
-      validator: this.dateLessThan('startDate', 'endDate'),
+      validator: [this.dateLessThan('startDate', 'endDate'),this.dateCompare('startDate')],
     }
   );
   emptyProducts = false;
@@ -160,7 +160,21 @@ export class ViewProductComponent implements OnInit {
     };
   }
 
+  dateCompare(from:string){
+    return (group: FormGroup): { [key: string]: any } => {
+      let f= group.controls[from];
+      let t= new Date().toISOString().split('T')[0];
+      if (f.value < t) {
+        return {
+          date1: 'Start date should be greater than today date',
+        };
+      }
+      return {};
+    };
+  }
+
   public selectedfile = null;
+  public fileName:string = '';
   onFileSelected(event) {
     if (event.target.files.length > 0) {
       this.updateForm.patchValue({
@@ -170,6 +184,7 @@ export class ViewProductComponent implements OnInit {
 
     console.log(event);
     this.selectedfile = event.target.files[0];
+    this.fileName = this.selectedfile.name;
     console.log(this.selectedfile.name);
     console.log(this.selectedfile);
   }

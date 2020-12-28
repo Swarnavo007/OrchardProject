@@ -147,7 +147,7 @@ export class AddProductComponent implements OnInit {
       fileName: '',
     },
     {
-      validator: this.dateLessThan('startDate', 'endDate'),
+      validator: [this.dateLessThan('startDate', 'endDate'),this.dateCompare('startDate')],
     }
   );
 
@@ -158,6 +158,19 @@ export class AddProductComponent implements OnInit {
       if (f.value > t.value) {
         return {
           dates: 'End date should be greater than start date',
+        };
+      }
+      return {};
+    };
+  }
+
+  dateCompare(from:string){
+    return (group: FormGroup): { [key: string]: any } => {
+      let f= group.controls[from];
+      let t= new Date().toISOString().split('T')[0];
+      if (f.value < t) {
+        return {
+          date1: 'Start date should be greater than today date',
         };
       }
       return {};

@@ -162,6 +162,9 @@
               ><i>Start Date is required</i></small
             >
           </div>
+          <small *ngIf="createForm.errors" class="text-danger"
+          ><i>{{ createForm.errors?.date1 | json }}</i></small
+        >
         </div>
 
         <div class="field">
