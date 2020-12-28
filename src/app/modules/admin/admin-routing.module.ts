@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AdminComponent } from './admin.component';
-import { AuthGuard } from './auth.guard';
-import { AuthstateGuard } from './authstate.guard';
+
+import { AuthGuard } from '../admin/auth.guard';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EmailSubscribersComponent } from './components/email-subscribers/email-subscribers.component';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DashboardService} from '../../../../services/dashboard.service';
 import { Router } from '@angular/router';
-import { OverlayOutsideClickDispatcher } from '@angular/cdk/overlay';
+import {Title} from "@angular/platform-browser";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,7 +13,9 @@ export class DashboardComponent implements OnInit {
   public emailSubscribers:any;
   public products:any;
   public users:any;
-  constructor(private service:DashboardService, private route:Router) { }
+  constructor(private service:DashboardService, private route:Router, private titleService:Title) {
+    this.titleService.setTitle("Icy-Licious | Admin | Dashboard");
+   }
 
 
    navigateOrderPage(){

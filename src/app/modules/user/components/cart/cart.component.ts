@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import {CartService} from 'src/app/services/cart.service'
 import * as CryptoJS from 'crypto-js';
 import { ToastrService } from 'ngx-toastr';
-
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-cart',
@@ -14,8 +14,8 @@ export class CartComponent  {
 
   cart: any;
   placeOrder:boolean=true;
-  constructor(private service: CartService, private route:Router, private toaster:ToastrService) {
-
+  constructor(private service: CartService, private route:Router, private toaster:ToastrService, private titleService:Title) {
+    this.titleService.setTitle("Icy-Licious | Cart");
   }
   encryptSecretKey = "esrgr54gyse65tgzs56e4tg56s4rg";
   decryptData(data) {

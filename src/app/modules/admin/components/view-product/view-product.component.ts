@@ -4,6 +4,7 @@ import { ViewProductService } from 'src/app/services/view-product.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AbstractControl, ValidationErrors } from "@angular/forms"
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-view-product',
@@ -76,15 +77,18 @@ export class ViewProductComponent implements OnInit {
       if(value.replace(/\s/g, "").length > 100){
         return { DescriptionValidation:`Description should be maximum 100 characters ` }
       }
-    
+
     }
 
   constructor(
     private service: ViewProductService,
     private fb: FormBuilder,
     private toaster: ToastrService,
-    private route: Router
-  ) {}
+    private route: Router,
+    private titleService:Title
+  ) {
+    this.titleService.setTitle("Icy-Licious | Admin | View Products");
+  }
 
   updateForm = this.fb.group(
     {
@@ -114,7 +118,7 @@ export class ViewProductComponent implements OnInit {
       fileName: '',
     },
     {
-      validator: this.dateLessThan('startDate', 'endDate'),
+      validator: [this.dateLessThan('startDate', 'endDate'),this.dateCompare('startDate')],
     }
   );
   emptyProducts = false;
@@ -160,7 +164,22 @@ export class ViewProductComponent implements OnInit {
     };
   }
 
+  dateCompare(from:string){
+    return (group: FormGroup): { [key: string]: any } => {
+      let f= group.controls[from];
+      let t= new Date().toISOString().split('T')[0];
+      if (f.value < t) {
+        return {
+          date1: 'Start date should be greater than today date',
+        };
+      }
+      return {};
+    };
+  }
+
   public selectedfile = null;
+  public fileName:string = '';
+  public validfile:boolean = true;
   onFileSelected(event) {
     if (event.target.files.length > 0) {
       this.updateForm.patchValue({
@@ -170,7 +189,18 @@ export class ViewProductComponent implements OnInit {
 
     console.log(event);
     this.selectedfile = event.target.files[0];
+    this.fileName = this.selectedfile.name;
     console.log(this.selectedfile.name);
+    let index= (this.selectedfile.name).lastIndexOf('.');
+    let ext = (this.selectedfile.name).slice(index);
+    console.log(ext);
+    console.log(this.selectedfile);
+    if(ext=='.jpg' || ext=='.jpeg'||ext=='.png'){
+      this.validfile=true;
+    }
+    else{
+      this.validfile=false;
+    }
     console.log(this.selectedfile);
   }
 

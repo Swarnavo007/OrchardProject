@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/services/profile.service';
 import * as CryptoJS from 'crypto-js';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-profile',
@@ -24,7 +25,10 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  constructor(private route:Router,private service:ProfileService,private router:Router) { }
+  constructor(private route:Router,private service:ProfileService,private router:Router, private titleService:Title) { 
+    this.titleService.setTitle("Icy-Licious | Profile");
+  }
+  
   public orders:any=[];
   public orderByemail:any=[];
   public items:any=[];

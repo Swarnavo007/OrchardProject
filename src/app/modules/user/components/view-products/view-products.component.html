@@ -47,10 +47,17 @@
 <div [style.display]="showViewModal ? 'flex' : 'none'" class="modal" >
   <div class="modal-background"></div>
   <div class="modal-card">
-    <header class="modal-card-head">
-      <h4 class="modal-title">
-        Sorry, You need to login to the website</h4>
+    <header class="modal-card-head" style="display: flex; flex-direction: row-reverse;">
+      <button class="delete" (click)="closeModal()" aria-label="close" style="float: left;"></button>
     </header>
+    <section class="modal-card-body">
+      <h4>Sorry, You need to login to the website</h4>
+    </section>
+    <!-- <button class="delete" style="float: right;" (click)="closeModal()" aria-label="close"></button>
+    <header class="modal-card-head">
+          <h4 class="modal-title">
+            Sorry, You need to login to the website</h4>
+    </header> -->
     <footer class="modal-card-foot">
       <button
         type="button"
@@ -59,6 +66,7 @@
         data-dismiss="modal">
         Login
       </button>
+     
     </footer>
   </div>
 </div>

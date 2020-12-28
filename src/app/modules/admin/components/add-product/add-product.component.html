@@ -162,6 +162,9 @@
               ><i>Start Date is required</i></small
             >
           </div>
+          <small *ngIf="createForm.errors" class="text-danger"
+          ><i>{{ createForm.errors?.date1 | json }}</i></small
+        >
         </div>
 
         <div class="field">
@@ -205,7 +208,7 @@
                 </span>
                 <span class="file-label">Upload</span>
               </span>
-              <h3>{{ fileName }}</h3>
+              <h6>{{ fileName }}</h6>
             </label>
           </div>
           <small class="text-danger">*files allowed jpg , jpeg, png</small>
@@ -216,7 +219,7 @@
 
         <div class="field is-grouped">
           <button
-            [disabled]="!createForm.valid || checkadded"
+            [disabled]="!createForm.valid || checkadded || !validfile"
             type="submit"
             class="button is-link"
           >

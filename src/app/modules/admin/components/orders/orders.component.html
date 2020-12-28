@@ -3,7 +3,7 @@
     <mat-tab label="Active Orders">
       <div  id="activeorder" class="activeOrder">
         <div class="noOrder" *ngIf="(activeOrders.length==0)">
-          <p><b>No Active Orders present</b></p>
+          <p><b>No active orders !</b></p>
         </div>
         <table *ngIf="(activeOrders.length>0)" class="table table-responsive-md table-hover" id="order-table">
           <thead>

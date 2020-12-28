@@ -4,6 +4,7 @@ import { AddProductService } from 'src/app/services/add-product.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-add-product',
@@ -128,8 +129,11 @@ export class AddProductComponent implements OnInit {
     private fb: FormBuilder,
     private _addProductService: AddProductService,
     private toaster: ToastrService,
-    private route: Router
-  ) {}
+    private route: Router,
+    private titleService:Title
+  ) {
+    this.titleService.setTitle("Icy-Licious | Admin | Add Product");
+  }
 
   createForm = this.fb.group(
     {
@@ -147,7 +151,7 @@ export class AddProductComponent implements OnInit {
       fileName: '',
     },
     {
-      validator: this.dateLessThan('startDate', 'endDate'),
+      validator: [this.dateLessThan('startDate', 'endDate'),this.dateCompare('startDate')],
     }
   );
 
@@ -158,6 +162,19 @@ export class AddProductComponent implements OnInit {
       if (f.value > t.value) {
         return {
           dates: 'End date should be greater than start date',
+        };
+      }
+      return {};
+    };
+  }
+
+  dateCompare(from:string){
+    return (group: FormGroup): { [key: string]: any } => {
+      let f= group.controls[from];
+      let t= new Date().toISOString().split('T')[0];
+      if (f.value < t) {
+        return {
+          date1: 'Start date should be greater than today date',
         };
       }
       return {};
@@ -175,6 +192,7 @@ export class AddProductComponent implements OnInit {
 
   public selectedfile = null;
   public fileName = '';
+  public validfile:boolean = false;
   onFileSelected(event) {
     // if(event.target.files.length > 0)
     //  {
@@ -186,8 +204,17 @@ export class AddProductComponent implements OnInit {
     // console.log(event);
     this.selectedfile = event.target.files[0];
     this.fileName = this.selectedfile.name;
-    console.log(this.selectedfile.name);
+    console.log("file name: ",this.selectedfile.name);
+    let index= (this.selectedfile.name).lastIndexOf('.');
+    let ext = (this.selectedfile.name).slice(index);
+    console.log(ext);
     console.log(this.selectedfile);
+    if(ext=='.jpg' || ext=='.jpeg'||ext=='.png'){
+      this.validfile=true;
+    }
+    else{
+      this.validfile=false;
+    }
   }
 
   checkadded;

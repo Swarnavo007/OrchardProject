@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegistrationService } from 'src/app/services/registration.service';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-reset',
@@ -22,7 +23,9 @@ export class ResetComponent implements OnInit {
     return this.resetForm.get('answer');
   }
 
-  constructor(private fb:FormBuilder,private router:Router,private registrationService:RegistrationService) { }
+  constructor(private fb:FormBuilder,private router:Router,private registrationService:RegistrationService, private titleService:Title) { 
+    this.titleService.setTitle("Icy-Licious | Reset");
+  }
   resetForm = this.fb.group({
     email: ['',[Validators.required,Validators.email]],
     question: ['',[Validators.required]],
