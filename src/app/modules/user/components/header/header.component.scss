@@ -36,12 +36,19 @@ mat-toolbar{
        align-items: center;
     }
 
+    .active{
+       border: 2px solid white;
+    }
+
 }
 
 .login-container{
     width: 60%;
     margin: 5% 22%;
 }
+
+
+
 
 @media all and(max-width:600px){
   img{
