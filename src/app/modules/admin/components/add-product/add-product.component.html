@@ -219,7 +219,7 @@
 
         <div class="field is-grouped">
           <button
-            [disabled]="!createForm.valid || checkadded"
+            [disabled]="!createForm.valid || checkadded || !validfile"
             type="submit"
             class="button is-link"
           >
