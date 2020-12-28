@@ -4,6 +4,7 @@ import { ViewProductService } from 'src/app/services/view-product.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AbstractControl, ValidationErrors } from "@angular/forms"
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-view-product',
@@ -83,8 +84,11 @@ export class ViewProductComponent implements OnInit {
     private service: ViewProductService,
     private fb: FormBuilder,
     private toaster: ToastrService,
-    private route: Router
-  ) {}
+    private route: Router,
+    private titleService:Title
+  ) {
+    this.titleService.setTitle("Icy-Licious | Admin | View Products");
+  }
 
   updateForm = this.fb.group(
     {

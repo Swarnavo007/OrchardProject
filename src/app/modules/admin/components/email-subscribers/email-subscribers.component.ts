@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SubscribersService } from 'src/app/services/subscribers.service';
 import * as XLSX from 'xlsx'; 
 import { Router } from '@angular/router';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-email-subscribers',
@@ -10,7 +11,9 @@ import { Router } from '@angular/router';
 })
 export class EmailSubscribersComponent implements OnInit {
 
-  constructor(private service:SubscribersService,private route:Router) { }
+  constructor(private service:SubscribersService,private route:Router, private titleService:Title) {
+    this.titleService.setTitle("Icy-Licious | Admin | Subscribers");
+   }
 
 
   subscibers;
