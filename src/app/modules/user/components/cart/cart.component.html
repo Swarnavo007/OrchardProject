@@ -1,80 +1,97 @@
-
 <app-header></app-header>
 <div id="cart-container">
-  <div id="emptycart" *ngIf="(this.cart && this.cart.products.length==0 || this.cart==null) ">
-    <div  style="font-size: 1.5rem;"><b>Sorry, Your Cart Is Empty</b></div>
-    <div><img src="../assets/emptycart (1).jpg"></div>
+  <div
+    id="emptycart"
+    *ngIf="(this.cart && this.cart.products.length == 0) || this.cart == null"
+  >
+    <div style="font-size: 1.5rem"><b>Sorry, Your Cart Is Empty</b></div>
+    <div><img src="../assets/emptycart (1).jpg" /></div>
     <div>
-      <button routerLink="/shop">
-      Buy Now
-    </button></div>
-
+      <button routerLink="/shop">Buy Now</button>
+    </div>
   </div>
-  <div id="list-container" *ngIf="(this.cart && this.cart.products.length>0) ">
-      <mat-list>
-        <mat-list-item *ngFor="let product of cart.products">
-          <div id="list-image" *ngIf="(product.status)"><img src="{{ product.productImage }}"></div>
-          <div id="content">
-            <h3 style="word-break: break-all">{{ product.productName }}</h3>
-            <!-- <div id="description">{{ product.productDescription }}</div> -->
-            <p style="word-break: break-all" *ngIf="(product.status)">Price: {{ product.productPrice }}</p>
-            <button style="border-radius:0.5rem 0rem 0rem 0.5rem;" (click)="decreaseQty(product)">-</button>
-            <input
-              type="text"
-              name="qty"
-              id="{{ product.productId }}"
-              value="{{ product.productQty }}"
-              disabled
-            />
-            <button style="border-radius:0rem 0.5rem 0.5rem 0rem;" (click)="increaseQty(product)">+</button>
-            <div *ngIf="(!product.status)">
-              <p id="outofstock">Currently out of stock, please remove this product</p>
-            </div>
-            <p></p>
+  <div id="list-container" *ngIf="this.cart && this.cart.products.length > 0">
+    <mat-list>
+      <mat-list-item *ngFor="let product of cart.products">
+        <div id="list-image" *ngIf="product.status">
+          <img src="{{ product.productImage }}" />
+        </div>
+        <div id="content">
+          <h3 style="word-break: break-all">{{ product.productName }}</h3>
+          <!-- <div id="description">{{ product.productDescription }}</div> -->
+          <p style="word-break: break-all" *ngIf="product.status">
+            Price: {{ product.productPrice }}
+          </p>
+          <button
+            style="border-radius: 0.5rem 0rem 0rem 0.5rem"
+            (click)="decreaseQty(product)"
+          >
+            -
+          </button>
+          <input
+            type="text"
+            name="qty"
+            id="{{ product.productId }}"
+            value="{{ product.productQty }}"
+            disabled
+          />
+          <button
+            style="border-radius: 0rem 0.5rem 0.5rem 0rem"
+            (click)="increaseQty(product)"
+          >
+            +
+          </button>
+          <div *ngIf="!product.status">
+            <p id="outofstock">
+              Currently out of stock, please remove this product
+            </p>
           </div>
-          <div id="delete" (click)="deleteProduct(product.productId)">
-            <mat-icon>delete_outline</mat-icon>
-          </div>
-        </mat-list-item>
-      </mat-list>
-
-
+          <p></p>
+        </div>
+        <div id="delete" (click)="deleteProduct(product.productId)">
+          <mat-icon>delete_outline</mat-icon>
+        </div>
+      </mat-list-item>
+    </mat-list>
 
     <div class="placeOrder-container">
       <div id="table-container">
-        <table id="order-calculation" >
+        <table id="order-calculation">
           <tr *ngFor="let product of cart.products">
-            <td *ngIf ="(product.status)" class="detail-cell">
-              {{product.productName}} <b> x {{product.productQty}}</b>
+            <td *ngIf="product.status" class="detail-cell">
+              {{ product.productName }} <b> x {{ product.productQty }}</b>
             </td>
 
-            <td *ngIf ="(product.status)" class="total-price-cell">
-              {{product.productQty * product.productPrice}}
+            <td *ngIf="product.status" class="total-price-cell">
+              {{ product.productQty * product.productPrice }}
             </td>
           </tr>
         </table>
-
       </div>
       <table>
         <tr>
-          <td style="padding-left: 2rem ;"><b>Total Price</b></td>
-          <td style="padding-left: 2rem ;">
-             <b>{{this.cart.totalPrice}}</b>
+          <td style="padding-left: 2rem"><b>Total Price</b></td>
+          <td style="padding-left: 2rem">
+            <b>{{ this.cart.totalPrice }}</b>
           </td>
         </tr>
       </table>
       <div>
-        <button  [disabled]="(!placeOrder)" (click)= "showModel()" data-toggle="modal">Place Order</button>
+        <button
+          [disabled]="!placeOrder"
+          (click)="showModel()"
+          data-toggle="modal"
+        >
+          Place Order
+        </button>
       </div>
     </div>
   </div>
-
-
-
-
 </div>
 <div>
-  <ng-container *ngIf="(this.cart && this.cart.products.length>0) else elseTemplate">
+  <ng-container
+    *ngIf="this.cart && this.cart.products.length > 0; else elseTemplate"
+  >
     <app-footer style="position: relative; width: 100%"> </app-footer>
   </ng-container>
   <ng-template #elseTemplate>
@@ -91,11 +108,7 @@
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Order Confirmation</p>
-      <button
-        class="delete"
-        (click)="closeModel()"
-        aria-label="close"
-      ></button>
+      <button class="delete" (click)="closeModel()" aria-label="close"></button>
     </header>
     <section class="modal-card-body">
       <h4>Are you sure, you want to place order?</h4>
