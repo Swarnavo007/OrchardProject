@@ -1,8 +1,10 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
+import { FormBuilder } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-
+import { ProfileService } from 'src/app/services/profile.service';
 import { ProfileComponent } from './profile.component';
 
 describe('ProfileComponent', () => {
@@ -13,6 +15,7 @@ describe('ProfileComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ProfileComponent],
       imports: [HttpClientTestingModule, RouterTestingModule],
+      providers: [FormBuilder,{ provide: ProfileService, useClass: ProfileServiceStub }],
     }).compileComponents();
   });
 
@@ -49,3 +52,9 @@ describe('ProfileComponent', () => {
    })
   
 });
+
+class ProfileServiceStub{
+  getOrders(){
+    return of([]);
+  }
+}
