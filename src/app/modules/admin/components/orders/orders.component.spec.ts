@@ -60,16 +60,16 @@ describe('OrdersComponent', () => {
 
     it('Should have two table for order details', () => {
       const tables = fixture.debugElement.queryAll(By.css('table'));
-      expect(tables.length).toBe(3);
+      expect(tables.length).toBe(1);
     });
 
     it('Table Should have Headings Order Id , User Id , Order Date, Total Price', () => {
       const tableRows = fixture.nativeElement.querySelectorAll('tr');
       let headerRow = tableRows[0];
-      expect(headerRow.cells[0].textContent).toBe('Order Id');
-      expect(headerRow.cells[1].textContent).toBe('User Id');
-      expect(headerRow.cells[2].textContent).toBe('Order Date');
-      expect(headerRow.cells[3].textContent).toBe('Total Price');
+      expect(headerRow.cells[0].textContent).toBe('Product Id');
+      expect(headerRow.cells[1].textContent).toBe('Product Name');
+      expect(headerRow.cells[2].textContent).toBe('Quantity');
+      expect(headerRow.cells[3].textContent).toBe('Price');
     });
   });
 
