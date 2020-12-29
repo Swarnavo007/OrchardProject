@@ -3,7 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 import { RegistrationService } from 'src/app/services/registration.service';
-import { PasswordStrengthValidator,nameValidators} from '../../../../services/password-strength.validator';
+import { nameValidators} from '../../../../services/password-strength.validator';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-update-profile',
   templateUrl: './update-profile.component.html',
@@ -42,7 +43,8 @@ export class UpdateProfileComponent implements OnInit {
     }
   }
  public users:any=[];
-  constructor(private fb:FormBuilder,private route:ActivatedRoute,private _registrationService:RegistrationService,private router:Router) {
+  constructor(private fb:FormBuilder, private toaster:ToastrService,
+    private _registrationService:RegistrationService,private router:Router) {
    }
   ngOnInit(): void {
     this._registrationService.getUsers(this.decryptData(localStorage.getItem('email')))
@@ -79,6 +81,7 @@ export class UpdateProfileComponent implements OnInit {
         error => console.log("error!",error)
       );
       this.router.navigate(['profile'])
+      this.toaster.success('Profile Updated!')
     this.updateForm.reset();
   }
 
