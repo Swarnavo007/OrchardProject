@@ -16,7 +16,6 @@ export class CartService {
 
   getCartDetail(userId){
     this.id={'userId':userId};
-    console.log(this.id);
     const header = new HttpHeaders({
       "Authorization":localStorage.getItem('userToken')
     })

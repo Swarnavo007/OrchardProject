@@ -11,7 +11,8 @@ import { LoginComponent } from './components/login/login.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { ViewProductComponent } from './components/view-product/view-product.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-const routes: Routes = [{ path: '', component: LoginComponent},
+import { AuthstateGuard } from './authstate.guard';
+const routes: Routes = [{ path: '', component: LoginComponent, canActivate:[AuthstateGuard]},
   
   {path:'dashboard',component:HomeComponent, children:[{path:'add-product',component:AddProductComponent},
   {path:'view-product',component:ViewProductComponent},
