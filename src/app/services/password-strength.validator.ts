@@ -102,21 +102,27 @@ export const descriptionValidators = function (
   control: AbstractControl
 ): ValidationErrors | null {
   let value: string = control.value || '';
+  let special=/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
+  let digits=/[0-9]+/g
+  let pattern=/[A-Za-z]+/g
+  let specialCharacters = /^[0-9!@#\$%\^\&*\)\(+=._-]+$/;
   if (!value) {
     return null;
   }
+  
   if (/\S/.test(value) === false) {
     return {
       DescriptionValidation: `Description should not contain whitespaces `,
     };
   }
-   let specialCharacters = /^[0-9!@#\$%\^\&*\)\(+=._-]+$/;
-  // if(specialCharacters.test(value)===true)
-  // {
-  //   return {
-  //     DescriptionValidation: `Description should not contain sequence of special characters `,
-  //   };
-  // }
+  if(pattern.test(value)===false)
+  {
+    return {
+      DescriptionValidation: `Description should not contain the special characters `,
+    };
+  }
+   
+  if(value)
   if (value.replace(specialCharacters, '').length < 10) {
     return {
       DescriptionValidation: `Description should be minimum 10 characters`,
@@ -127,7 +133,10 @@ export const descriptionValidators = function (
       DescriptionValidation: `Description should be maximum 100 characters `,
     };
   }
+ 
+ 
 };
+
 
 export const nameValidators=function(control:AbstractControl):ValidationErrors | null{
   let value:string=control.value || '';
