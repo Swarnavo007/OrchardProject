@@ -10,6 +10,7 @@ export class SubscriberService {
 
   _url = "https://sumit-icylicious-sep-20.herokuapp.com/setemail";
   // _url = "http://localhost:3001/setemail";
+  testurl=`https://sumit-icylicious-sep-20.herokuapp.com/email/id?id=${""}`;
 
 
   subscribe(emailData){

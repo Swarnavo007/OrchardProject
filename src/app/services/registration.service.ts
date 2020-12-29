@@ -11,7 +11,8 @@ export class RegistrationService {
   checkMail = "https://sumit-icylicious-sep-20.herokuapp.com/mail";
   registerUrl = "https://sumit-icylicious-sep-20.herokuapp.com/user";
   resetUrl = "https://sumit-icylicious-sep-20.herokuapp.com/reset"
-  updateUrl = "https://sumit-icylicious-sep-20.herokuapp.com/updatePass"
+  updateUrl = "https://sumit-icylicious-sep-20.herokuapp.com/updatePass";
+  testingUrl=`https://sumit-icylicious-sep-20.herokuapp.com/mail?email=${""}`;
   emailCheckUnique(email){
     // console.log(this.checkMail+`?mail=${email}`)
     return this._http.get(this.checkMail+`?email=${email}`)
