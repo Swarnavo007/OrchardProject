@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 import { PasswordStrengthValidator,productCodeValidators,productNameValidators,descriptionValidators} from '../../../../services/password-strength.validator';
+import {Title} from "@angular/platform-browser";
+
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -42,8 +44,11 @@ export class AddProductComponent implements OnInit {
     private fb: FormBuilder,
     private _addProductService: AddProductService,
     private toaster: ToastrService,
-    private route: Router
-  ) {}
+    private route: Router,
+    private titleService:Title
+  ) {
+    this.titleService.setTitle("Icy-Licious | Admin | Add Product");
+  }
 
   createForm = this.fb.group(
     {

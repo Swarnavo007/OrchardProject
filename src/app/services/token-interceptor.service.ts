@@ -7,14 +7,20 @@ import {HttpInterceptor} from '@angular/common/http';
 export class TokenInterceptorService implements HttpInterceptor {
 
   constructor() { }
+  public token;
   intercept(req,next){
-     let token = localStorage.getItem('userToken')
-     if(token === null){
-       token = 'XYZ'
+    if(!!localStorage.getItem('userLogged') === true){
+      this.token = localStorage.getItem('userToken') 
+    }
+    else{
+      this.token = localStorage.getItem('token') 
+    }
+     if(this.token === null){
+       this.token = 'XYZ'
      }
     let tokenizedReq = req.clone({
       setHeaders :{
-        Authorization : token
+        Authorization : this.token
       }
     })
     return next.handle(tokenizedReq)

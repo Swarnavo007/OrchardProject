@@ -34,9 +34,9 @@
           <small *ngIf="product.expired" class="text-danger"
             ><h3><b>Expired!</b></h3></small
           >
-          <h2 style="color: rgb(48, 47, 54)">
+          <h4 style="color: rgb(48, 47, 54)">
             <b>Price: </b>{{ product.productPrice | currency: "INR" }}
-          </h2>
+          </h4>
         </mat-card-content>
         <mat-card-actions>
           <!-- <button mat-raised-button color="warn">DELETE</button> -->
@@ -274,7 +274,7 @@
                     </span>
                     <span class="file-label"> Upload </span>
                   </span>
-                  <h3>{{ fileName }}</h3>
+                  <h6>{{ fileName }}</h6>
                 </label>
               </div>
               <small class="text-danger">*files allowed jpeg, png</small>

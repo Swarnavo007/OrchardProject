@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import {OrdersService} from '../../../../services/orders.service'
 import { ToastrService } from 'ngx-toastr';
+import {Title} from "@angular/platform-browser";
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -15,9 +16,10 @@ export class OrdersComponent implements OnInit {
   deliveredOrders:any=[];
   orders:any=[];
   order:any=[];
-  constructor(private httpClient:HttpClient,private router:Router,private service:OrdersService,private toaster:ToastrService) { 
+  constructor(private httpClient:HttpClient,private router:Router,
+    private service:OrdersService,private toaster:ToastrService, private titleService:Title) { 
     
-
+      this.titleService.setTitle("Icy-Licious | Admin | Orders");
   }
  
   ngOnInit(): void {
