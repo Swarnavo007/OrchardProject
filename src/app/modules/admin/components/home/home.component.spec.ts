@@ -52,42 +52,42 @@ describe('HomeComponent', () => {
       const linkDes=fixture.debugElement
         .queryAll(By.css('button'));
       const nativeButton: HTMLButtonElement=linkDes[1].nativeElement;
-      expect(nativeButton.textContent).toBe('Add Products');
+      expect(nativeButton.textContent).toBe(' Add Products ');
     })
   
     it('should have a button View Product on the navigation bar', ()=>{
       const linkDes=fixture.debugElement
         .queryAll(By.css('button'));
       const nativeButton: HTMLButtonElement=linkDes[2].nativeElement;
-      expect(nativeButton.textContent).toBe('View Products');
+      expect(nativeButton.textContent).toBe(' View Products ');
     })
   
     it('should have a button Show Orders on the navigation bar', ()=>{
       const linkDes=fixture.debugElement
         .queryAll(By.css('button'));
       const nativeButton: HTMLButtonElement=linkDes[3].nativeElement;
-      expect(nativeButton.textContent).toBe('Show Orders');
+      expect(nativeButton.textContent).toBe(' Show Orders ');
     })
   
     it('should have a button Dashboard on the navigation bar', ()=>{
       const linkDes=fixture.debugElement
         .queryAll(By.css('button'));
       const nativeButton: HTMLButtonElement=linkDes[4].nativeElement;
-      expect(nativeButton.textContent).toBe('Dashboard');
+      expect(nativeButton.textContent).toBe(' Dashboard ');
     })
   
     it('should have a button Subscribers on the navigation bar', ()=>{
       const linkDes=fixture.debugElement
         .queryAll(By.css('button'));
       const nativeButton: HTMLButtonElement=linkDes[5].nativeElement;
-      expect(nativeButton.textContent).toBe('Subscribers');
+      expect(nativeButton.textContent).toBe(' Subscribers ');
     })
 
     it('should have a icon Logout on navigation bar', ()=>{
       const linkDes=fixture.debugElement
         .queryAll(By.css('button'));
       const nativeButton: HTMLButtonElement=linkDes[6].nativeElement;
-      expect(nativeButton.textContent).toBe('account_circle');
+      expect(nativeButton.textContent).toBe('login');
     })
   
   })
