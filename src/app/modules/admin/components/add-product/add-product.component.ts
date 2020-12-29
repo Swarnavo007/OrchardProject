@@ -4,7 +4,7 @@ import { AddProductService } from 'src/app/services/add-product.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
-
+import { PasswordStrengthValidator,productCodeValidators,productNameValidators,descriptionValidators} from '../../../../services/password-strength.validator';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -36,93 +36,7 @@ export class AddProductComponent implements OnInit {
   get endDate() {
     return this.createForm.get('endDate');
   }
-  //product code validation
-  productCodeValidators = function (
-    control: AbstractControl
-  ): ValidationErrors | null {
-    let value: string = control.value || '';
-    if (!value) {
-      return null;
-    }
-    let specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-    if (specialCharacters.test(value) === true) {
-      return {
-        ProductCodeValidation: `Product Code should not contain special character`,
-      };
-    }
-    let space = ' ';
-    if (value.indexOf(space) >= 0) {
-      return {
-        ProductCodeValidation: `Product Code should not contain spaces`,
-      };
-    }
-    if (value.length < 4) {
-      return {
-        ProductCodeValidation: `Product Code should be minimum 4 characters`,
-      };
-    }
-    if (value.length > 6) {
-      return {
-        ProductCodeValidation: `Product Code should be maximum 6 characters `,
-      };
-    }
-  };
-
-  //product name validation
-  productNameValidators = function (
-    control: AbstractControl
-  ): ValidationErrors | null {
-    let value: string = control.value || '';
-    if (!value) {
-      return null;
-    }
-    if (/\S/.test(value) === false) {
-      return {
-        ProductnameValidation: `Product Name should not contain the whitespaces`,
-      };
-    }
-    let specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-    if (specialCharacters.test(value) === true) {
-      return {
-        ProductnameValidation: `Product Name should not contain special character`,
-      };
-    }
-    if (value.length < 4) {
-      return {
-        ProductnameValidation: `Product Name should be minimum 4 characters`,
-      };
-    }
-    if (value.length > 20) {
-      return {
-        ProductnameValidation: `Product Name should be maximum 20 characters `,
-      };
-    }
-  };
-
-  //description validation
-  descriptionValidators = function (
-    control: AbstractControl
-  ): ValidationErrors | null {
-    let value: string = control.value || '';
-    if (!value) {
-      return null;
-    }
-    if (/\S/.test(value) === false) {
-      return {
-        DescriptionValidation: `Description should not contain whitespaces `,
-      };
-    }
-    if (value.replace(/\s/g, '').length < 10) {
-      return {
-        DescriptionValidation: `Description should be minimum 10 characters`,
-      };
-    }
-    if (value.replace(/\s/g, '').length > 100) {
-      return {
-        DescriptionValidation: `Description should be maximum 100 characters `,
-      };
-    }
-  };
+ 
 
   constructor(
     private fb: FormBuilder,
@@ -133,14 +47,14 @@ export class AddProductComponent implements OnInit {
 
   createForm = this.fb.group(
     {
-      productId: ['', [Validators.required, this.productCodeValidators]],
-      productName: ['', [Validators.required, this.productNameValidators]],
+      productId: ['', [Validators.required, productCodeValidators]],
+      productName: ['', [Validators.required, productNameValidators]],
       type: ['', [Validators.required]],
       price: [
         '',
         [Validators.required, Validators.min(1), Validators.max(10000)],
       ],
-      description: ['', [Validators.required, this.descriptionValidators]],
+      description: ['', [Validators.required, descriptionValidators]],
       startDate: ['', [Validators.required]],
       endDate: ['', [Validators.required]],
       fileSource: ['', Validators.required],

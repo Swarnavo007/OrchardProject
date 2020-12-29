@@ -4,6 +4,7 @@ import { ViewProductService } from 'src/app/services/view-product.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AbstractControl, ValidationErrors } from "@angular/forms"
+import { PasswordStrengthValidator,productCodeValidators,productNameValidators,descriptionValidators} from '../../../../services/password-strength.validator';
 
 @Component({
   selector: 'app-view-product',
@@ -96,7 +97,7 @@ export class ViewProductComponent implements OnInit {
         '',
         [
           Validators.required,
-          this.productNameValidators
+          productNameValidators
         ],
       ],
       type: ['', [Validators.required]],
@@ -105,7 +106,7 @@ export class ViewProductComponent implements OnInit {
         '',
         [
           Validators.required,
-          this.descriptionValidators
+          descriptionValidators
         ],
       ],
       startDate: ['', [Validators.required]],
