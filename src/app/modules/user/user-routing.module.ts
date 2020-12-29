@@ -12,6 +12,7 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
 import { ViewProductsComponent } from './components/view-products/view-products.component';
 
 import { UserComponent } from './user.component';
+import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full'},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:'shop',component:ViewProductsComponent},
   {path:'cart',component:CartComponent},
   {path:'profile',component:ProfileComponent},
+  {path:'updateProfile',component:UpdateProfileComponent}
 
 ];
 

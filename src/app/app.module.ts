@@ -7,6 +7,7 @@ import { UserModule } from './modules/user/user.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from './modules/admin/auth.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent
@@ -16,7 +17,8 @@ import { AuthGuard } from './modules/admin/auth.guard';
     AppRoutingModule,
     UserModule,
     AdminModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

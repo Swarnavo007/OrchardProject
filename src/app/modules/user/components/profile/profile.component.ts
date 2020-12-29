@@ -92,5 +92,8 @@ export class ProfileComponent implements OnInit {
   updatePassword(){
     this.route.navigate(['update',{email:this.decryptData(localStorage.getItem('email'))}],{skipLocationChange:true})
   }
+  updateProfile(){
+    this.route.navigate(['/updateProfile'])
+  }
 
 }

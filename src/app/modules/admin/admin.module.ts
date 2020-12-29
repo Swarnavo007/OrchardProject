@@ -11,7 +11,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { ViewProductComponent } from './components/view-product/view-product.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -34,7 +33,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    BrowserAnimationsModule,
     MatCardModule,
     ToastrModule.forRoot(),
     FlexLayoutModule,

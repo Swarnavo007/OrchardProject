@@ -9,6 +9,7 @@ export class CartService {
 
   // constructor() { }
 
+  testurl=`https://sumit-icylicious-sep-20.herokuapp.com/product/${""}`;
   id;
   constructor(private http:HttpClient) { }
 
@@ -16,7 +17,6 @@ export class CartService {
 
   getCartDetail(userId){
     this.id={'userId':userId};
-    console.log(this.id);
     const header = new HttpHeaders({
       "Authorization":localStorage.getItem('userToken')
     })
