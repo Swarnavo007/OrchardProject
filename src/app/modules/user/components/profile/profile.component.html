@@ -80,7 +80,7 @@
     </div>
   </div>
 </div>
-<ng-container *ngIf="orderByemail.length <= 1; else elseTemplate">
+<ng-container *ngIf="orderByemail.length < 1; else elseTemplate">
   <app-footer style="position: absolute; bottom: 0; width: 100%"> </app-footer>
 </ng-container>
 <ng-template #elseTemplate>
@@ -134,31 +134,42 @@
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Verify Password</p>
-      <button class="delete" (click)="closeVeifyModal()" aria-label="close"></button>
+      <button
+        class="delete"
+        (click)="closeVeifyModal()"
+        aria-label="close"
+      ></button>
     </header>
     <section class="modal-card-body">
       <form [formGroup]="verifyForm" (ngSubmit)="verifyPassword()">
         <div class="form-group">
           <label>Password</label>
-          <input [class.is-invalid]="passowrd.touched && passowrd.invalid" formControlName="password" type="password" class="form-control">
+          <input
+            [class.is-invalid]="passowrd.touched && passowrd.invalid"
+            formControlName="password"
+            type="password"
+            class="form-control"
+          />
           <div *ngIf="passowrd.invalid && passowrd.touched">
-            <small class="text-danger" *ngIf="passowrd.errors?.required">Password is required</small>
+            <small class="text-danger" *ngIf="passowrd.errors?.required"
+              >Password is required</small
+            >
           </div>
         </div>
-        <button [disabled]="!verifyForm.valid"  class="btn btn-warning">Verify</button>
+        <button [disabled]="!verifyForm.valid" class="btn btn-warning">
+          Verify
+        </button>
       </form>
       <div *ngIf="passwordError">
         <h5 class="text-danger">Wrong password!</h5>
       </div>
     </section>
     <footer class="modal-card-foot">
-      <button class="btn btn-secondary" (click)="closeVeifyModal()">Cancel</button>
+      <button class="btn btn-secondary" (click)="closeVeifyModal()">
+        Cancel
+      </button>
     </footer>
   </div>
 </div>
-
-
-
-
 
 <!-- <app-footer></app-footer> -->
