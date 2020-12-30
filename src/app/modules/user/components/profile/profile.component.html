@@ -18,10 +18,10 @@
         Update Password
       </button>
       <br />
-      <button (click)="updateProfile()"  class="btn btn-outline-primary">
+      <button (click)="updateProfile()" class="btn btn-outline-primary">
         Update Profile
       </button>
-      <br/>
+      <br />
       <button (click)="showDelete()" class="btn btn-danger">Logout</button>
     </div>
   </div>
@@ -37,8 +37,8 @@
             </mat-card-title>
             <mat-card-subtitle>
               <p style="word-break: break-all; color: rgb(37, 36, 36)">
-                Date : {{ getDate(order.orderDate) }} &nbsp;&nbsp;&nbsp;
-                Status : {{ order.status }}
+                Date : {{ getDate(order.orderDate) }} &nbsp;&nbsp;&nbsp; Status
+                : {{ order.status }}
               </p>
             </mat-card-subtitle>
           </mat-card-header>
@@ -59,7 +59,7 @@
                   {{ item.productPrice | currency: "INR" }}
                 </td>
                 <td style="word-break: break-all">
-                  {{ item.productPrice* item.productQty | currency: "INR" }}
+                  {{ item.productPrice * item.productQty | currency: "INR" }}
                 </td>
               </tbody>
             </table>
@@ -80,7 +80,7 @@
     </div>
   </div>
 </div>
-<ng-container *ngIf="orderByemail.length == 0; else elseTemplate">
+<ng-container *ngIf="orderByemail.length <= 1; else elseTemplate">
   <app-footer style="position: absolute; bottom: 0; width: 100%"> </app-footer>
 </ng-container>
 <ng-template #elseTemplate>
