@@ -11,6 +11,7 @@ import { LoginService } from './login.service';
 
 describe('LoginService', () => {
   let service: LoginService;
+  let httpMock:HttpTestingController
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -18,8 +19,33 @@ describe('LoginService', () => {
       providers: [LoginService],
     });
     service = TestBed.inject(LoginService);
+    httpMock=TestBed.get(HttpTestingController);
+    
   });
+  
+  it('should call Post API to create a new admin',()=>{
+    const dummyData = {
+      username:"admin",
+      password:"admin123"
+    }
+    service.adminLogin(dummyData).subscribe();
+    let req=httpMock.expectOne({method:"POST",url:service.loginUrl})
+    expect(req.request.body).toEqual(dummyData);
+  })
 
+  it('should call Post API to create a login admin',()=>{
+    const dummyData = {
+      username:"admin",
+      password:"admin123"
+    }
+    service.login(dummyData).subscribe();
+    let req=httpMock.expectOne({method:"POST",url:service._url})
+    expect(req.request.body).toEqual(dummyData);
+  })
+
+ 
+
+ 
   // it('should be login correctly',fakeAsync(()=>{
   //   const url='https://icylicious.herokuapp.com/adminlogin';
   //   const responceObj={

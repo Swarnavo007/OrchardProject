@@ -144,14 +144,20 @@ export const nameValidators=function(control:AbstractControl):ValidationErrors |
   {
       return null;
   }
+  if (/\S/.test(value) === false) {
+    return {
+      nameValidation: `Name should not contain whitespaces `,
+    };
+  }
   let specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
   if (specialCharacters.test(value) === true) {
     return { nameValidation: `Name should not contain special character` };
   }
-  let space=' ';
-  if(value.indexOf(space)>=0){
-    return { nameValidation: `Name should not contain spaces`};
-  }
+ 
+  // let space=' ';
+  // if(value.indexOf(space)>=0){
+  //   return { nameValidation: `Name should not contain spaces`};
+  // }
   let numberCharacters = /[0-9]+/g
   if (numberCharacters.test(value) === true) {
     return {nameValidation: `Name should not contain numbers ` };
@@ -160,3 +166,5 @@ export const nameValidators=function(control:AbstractControl):ValidationErrors |
       return { nameValidation: `length should be minimum 3 characters` };
     }
 }
+
+
