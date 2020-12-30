@@ -9,8 +9,11 @@
       <br/>
     </div>
     <div class="exist-message" *ngIf="emailAlredyExist">
-      <h4>Email ID already exists! Try Login</h4>
-      <button routerLink="/" class="btn btn-primary">Home</button>
+
+      <div class="alert alert-danger" role="alert">
+        <strong>Email ID already exists!</strong> Try Login.
+      </div>
+      
     </div>
   </div>
 <app-footer></app-footer>
