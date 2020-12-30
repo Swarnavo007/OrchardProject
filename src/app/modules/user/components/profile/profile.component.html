@@ -10,7 +10,7 @@
     </div>
     <div class="details">
       <span class="icon">
-        <h5>{{ name }}</h5>
+        <h5>Hi,{{ name }}</h5>
       </span>
     </div>
     <div class="buttons">
@@ -147,8 +147,11 @@
         </div>
         <button [disabled]="!verifyForm.valid"  class="btn btn-warning">Verify</button>
       </form>
+      <br>
       <div *ngIf="passwordError">
-        <h5 class="text-danger">Wrong password!</h5>
+        <div class="alert alert-danger" role="alert">
+          <strong>Invalid Password</strong> Try again.
+        </div>
       </div>
     </section>
     <footer class="modal-card-foot">
