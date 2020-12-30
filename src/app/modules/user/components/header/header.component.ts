@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,Validators} from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { LoginService } from 'src/app/services/login.service';
 import * as CryptoJS from 'crypto-js';
 import { ToastrService } from 'ngx-toastr';
+import { RegistrationService } from 'src/app/services/registration.service';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +25,7 @@ export class HeaderComponent implements OnInit {
   }
 
   constructor(private fb:FormBuilder,private loginService:LoginService, private route:Router,
-     private service: CartService, private toaster:ToastrService) { }
+     private service: CartService, private toaster:ToastrService, private _registrationService:RegistrationService) { }
 
   loginForm = this.fb.group({
     email: ['',[Validators.required,Validators.email]],
@@ -163,6 +164,43 @@ export class HeaderComponent implements OnInit {
 
   updatePassword(){
     this.route.navigate(['update',{email:this.decryptData(localStorage.getItem('email'))}],{skipLocationChange:true})
+  }
+
+
+  verifyModal:boolean;
+
+  showVeifyModal(){
+    this.verifyModal = true;
+  }
+
+  closeVeifyModal(){
+    this.verifyModal = false;
+  }
+
+  get passowrd(){
+    return this.verifyForm.get('password')
+  }
+
+  verifyForm = this.fb.group({
+    password:['',[Validators.required]]
+  })
+
+  passwordError:boolean
+
+  verifyPassword(){
+    this.verifyForm.addControl('email', this.fb.control('', Validators.required));   
+    this.verifyForm.patchValue({['email']:this.decryptData(localStorage.getItem('email'))})
+    console.log(this.verifyForm.value)
+    this._registrationService.verifyPassword(this.verifyForm.value)
+    .subscribe((response)=>{
+      console.log(response)
+      if(response.msg === "success"){
+        this.route.navigate(['updateProfile',{email:this.decryptData(localStorage.getItem('email'))}],{skipLocationChange:true})
+      }
+      else{
+        this.passwordError = true
+      }
+    })
   }
 
 }
