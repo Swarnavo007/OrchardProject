@@ -124,6 +124,10 @@ export class ProfileComponent implements OnInit {
       }
       else{
         this.passwordError = true
+        setTimeout(()=>{
+          this.passwordError = false
+        },2000)
+        this.verifyForm.reset();
       }
     })
   }
