@@ -66,6 +66,7 @@ export class ViewProductsComponent implements OnInit {
             this.newProducts.push(this.products[i]);
           }
         }
+        // s
         // if(this.products[i].productEndDate > today && type=='all'){
         //   this.newProducts.push(this.products[i])
         //   console.log(this.newProducts[i]);
@@ -108,9 +109,16 @@ export class ViewProductsComponent implements OnInit {
           }
         }
       }
+      if (this.newProducts.length < 1) {
+        this.emptyProducts = true;
+      }
+
+
+      console.log(this.newProducts.length)
       console.log('products are ' + this.newProducts);
     });
   }
+
   setDate(string) {
     return string.substr(0, string.indexOf('T'));
   }
@@ -152,5 +160,10 @@ export class ViewProductsComponent implements OnInit {
   hideloader() {
     document.getElementById('loading').style.display = 'none';
     document.getElementById('footer').style.display = 'block';
+  }
+
+  checkEmptyProducts(){
+    console.log("called");
+    document.getElementById("checkProductEmpty").style.display="block"
   }
 }
