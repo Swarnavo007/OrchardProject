@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { LoginService } from 'src/app/services/login.service';
 import * as CryptoJS from 'crypto-js';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +23,8 @@ export class HeaderComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  constructor(private fb:FormBuilder,private loginService:LoginService, private route:Router, private service: CartService) { }
+  constructor(private fb:FormBuilder,private loginService:LoginService, private route:Router,
+     private service: CartService, private toaster:ToastrService) { }
 
   loginForm = this.fb.group({
     email: ['',[Validators.required,Validators.email]],
@@ -79,7 +81,9 @@ export class HeaderComponent implements OnInit {
             localStorage.setItem('email', this.encryptData(response.email.toString()));
             this.loginForm.reset();
             this.route.navigate(['/']);
+            this.toaster.success('Logged In!')
             this.hide();
+            this
           }
           else{
             this.loginForm.reset();

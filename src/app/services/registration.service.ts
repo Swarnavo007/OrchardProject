@@ -40,7 +40,7 @@ export class RegistrationService {
   getUsers(email){
     const header = new HttpHeaders({
       'Authorization': localStorage.getItem('userToken') });
-      return this._http.get(this.users+`?email=${email}`,{headers: header})
+      return this._http.get<{name:string}>(this.users+`?email=${email}`,{headers: header})
   }
  
 }
