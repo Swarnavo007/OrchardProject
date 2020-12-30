@@ -2,11 +2,7 @@
 <div class="d-flex justify-content-center">
   <span class="sr-only" id="loading" class="loading"></span>
 </div>
-<div *ngIf="emptyProducts" class="container is-max-desktop">
-  <div class="notification is-danger">
-    <h2 style="text-align: center">Empty Products</h2>
-  </div>
-</div>
+
 <div class="field">
   <label class="label">Type</label>
   <div class="control">
@@ -20,8 +16,11 @@
     </div>
   </div>
 </div>
+<div *ngIf="(emptyProducts)" class="container is-max-desktop">
+    <h2 style="text-align: center; height:4rem; color:#f23527">No Product Found</h2>
+</div>
 <ul>
-  <li *ngFor="let product of newProducts">
+  <li  *ngFor="let product of newProducts">
     <mat-card class="card">
       <mat-card-header>
         <mat-card-title style="word-break: break-all; color: rgb(244 67 54)">
@@ -102,6 +101,10 @@
 </div>
 <!-- <div class="footerSpace">
 </div> -->
-<div id="footer">
+<div id="emptyContainer" *ngIf="(emptyProducts)">
+  <app-footer></app-footer>
+</div>
+<div *ngIf="(!emptyProducts)" id="footer">
+
   <app-footer></app-footer>
 </div>
