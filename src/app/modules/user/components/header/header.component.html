@@ -13,7 +13,7 @@
     <div  fxLayout="row" fxShow="false" fxShow.gt-sm>
       <button mat-button data-toggle="logoutModal" routerLink="/cart" routerLinkActive="active" data-target="#exampleModal" *ngIf="logged"><mat-icon  matBadge="{{productLength}}" matBadgePosition="after" >shopping_cart</mat-icon></button>
       <button mat-button routerLink="/profile" routerLinkActive="active" *ngIf="logged"><mat-icon>person</mat-icon></button>
-      <button mat-button (click)="showLogin()" *ngIf="!logged">Login</button>
+      <button mat-button (click)="showLogin()" *ngIf="!logged">Login/Signup</button>
     </div>
 
     <button  mat-button *ngIf="logged" routerLink="/cart"  fxHide="false" fxHide.gt-sm><div id="loginbtn"><mat-icon matBadge="{{productLength}}" matBadgePosition="after">shopping_cart</mat-icon></div></button>
@@ -25,7 +25,7 @@
   <mat-menu x-position="before" #menu="matMenu">
     <button mat-menu-item routerLink="">Home</button>
     <button mat-menu-item routerLink="/shop">Shop</button>
-    <button mat-menu-item (click)="showLogin()" *ngIf="!logged">Login</button>
+    <button mat-menu-item (click)="showLogin()" *ngIf="!logged">Login/Signup</button>
     <button mat-menu-item  *ngIf="logged" routerLink="/profile">Orders</button>
     <button mat-menu-item  (click)="updatePassword()" *ngIf="logged" routerLink="/profile">Update Password</button>
     <button mat-menu-item (click)="logout()" *ngIf="logged">Logout</button>
