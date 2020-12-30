@@ -14,7 +14,7 @@ export class ProfileService {
     const header = new HttpHeaders({
       'Authorization': localStorage.getItem('userToken') });
     // console.log("emailId"+emailId);
-    return this.httpClient.get(this.url,{headers:header}); 
+    return this.httpClient.get<{msg:string}>(this.url,{headers:header}); 
 
     // return this.httpClient.get(`http://localhost:3000/orderByemail/${emailId}`,{headers:header}); 
   }

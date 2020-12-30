@@ -30,7 +30,7 @@ export class RegistrationService {
   }
 
   updatePassword(data){
-    return this._http.patch(this.updateUrl,data);
+    return this._http.patch<{nModified:number}>(this.updateUrl,data);
   }
   updateUserProfile(data){
     const header = new HttpHeaders({
@@ -41,6 +41,11 @@ export class RegistrationService {
     const header = new HttpHeaders({
       'Authorization': localStorage.getItem('userToken') });
       return this._http.get<{name:string}>(this.users+`?email=${email}`,{headers: header})
+  }
+
+
+  verifyPassword(data){
+    return this._http.post<{msg:string}>('https://sumit-icylicious-sep-20.herokuapp.com/verify',data)
   }
  
 }

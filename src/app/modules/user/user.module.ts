@@ -25,6 +25,8 @@ import { ViewProductsComponent } from './components/view-products/view-products.
 import { CartComponent } from './components/cart/cart.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from 'src/app/services/token-interceptor.service';
 @NgModule({
   declarations: [UserComponent, HeaderComponent, HomeComponent, FooterComponent, ResetComponent, UpdatePasswordComponent, RegistrationComponent, SignupComponent, CheckoutComponent, ViewProductsComponent, CartComponent, ProfileComponent, UpdateProfileComponent],
   imports: [
@@ -39,6 +41,11 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
     MatMenuModule,
     MatBadgeModule,
     MatListModule
-  ]
+  ],
+  providers:[{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi:true
+  }]
 })
 export class UserModule { }

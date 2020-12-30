@@ -18,7 +18,7 @@
         Update Password
       </button>
       <br />
-      <button (click)="updateProfile()" class="btn btn-outline-primary">
+      <button (click)="showVeifyModal()" class="btn btn-outline-primary">
         Update Profile
       </button>
       <br />
@@ -128,5 +128,37 @@
     </footer>
   </div>
 </div>
+
+<div [style.display]="verifyModal ? 'block' : 'none'" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Verify Password</p>
+      <button class="delete" (click)="closeVeifyModal()" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <form [formGroup]="verifyForm" (ngSubmit)="verifyPassword()">
+        <div class="form-group">
+          <label>Password</label>
+          <input [class.is-invalid]="passowrd.touched && passowrd.invalid" formControlName="password" type="password" class="form-control">
+          <div *ngIf="passowrd.invalid && passowrd.touched">
+            <small class="text-danger" *ngIf="passowrd.errors?.required">Password is required</small>
+          </div>
+        </div>
+        <button [disabled]="!verifyForm.valid"  class="btn btn-warning">Verify</button>
+      </form>
+      <div *ngIf="passwordError">
+        <h5 class="text-danger">Wrong password!</h5>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="btn btn-secondary" (click)="closeVeifyModal()">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+
+
+
 
 <!-- <app-footer></app-footer> -->
