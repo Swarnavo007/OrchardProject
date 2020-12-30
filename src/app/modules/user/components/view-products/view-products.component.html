@@ -1,54 +1,83 @@
 <app-header></app-header>
-<div *ngIf="emptyProducts" class="container is-max-desktop">
-    <div class="notification is-danger">
-      <h2 style="text-align: center">Empty Products</h2>
-    </div>
+<div class="d-flex justify-content-center">
+  <span class="sr-only" id="loading" class="loading"></span>
 </div>
+
 <div class="field">
-    <label class="label">Type</label>
-    <div class="control">
-      <div class="select is-small">
-        <select
-          class="form-control" id="type" (change)="ontype()">
-          <option value="" disabled >Select Type</option>
-          <option value="all" selected>All Products</option>
-          <option value="classic">Classic</option>
-          <option value="special">Special</option>
-        </select>
-      </div>
+  <label class="label">Type</label>
+  <div class="control">
+    <div class="select is-small">
+      <select class="form-control" id="type" (change)="ontype()">
+        <option value="" disabled>Select Type</option>
+        <option value="all" selected>All Products</option>
+        <option value="classic">Classic</option>
+        <option value="special">Special</option>
+      </select>
     </div>
   </div>
+</div>
+<div *ngIf="(emptyProducts)" class="container is-max-desktop">
+    <h2 style="text-align: center; height:4rem; color:#f23527">No Product Found</h2>
+</div>
 <ul>
-    <li *ngFor="let product of newProducts">
-        <mat-card class="card">
-            <mat-card-header>
-                <mat-card-title style="word-break:break-all; color:rgb(244 67 54)">
-                    {{product.productName}}
-                </mat-card-title>
-                <mat-card-subtitle>{{product.productType}}</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="{{product.productImage}}"
-            alt="{{product.productName}}"/>
-        <mat-card-content>
-            <p style="word-break: break-all; color:rgb(37, 36, 36) ;">{{product.productDescription}}</p>
-            <p><b>Price:</b>{{product.productPrice  | currency:"INR" }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button *ngIf="product.added" color="primary" id="btn{{ product.productId }}" routerLink="/cart">GO TO CART</button>
-            <button mat-raised-button *ngIf="!product.added" color="warn" id="button{{ product.productId }}" (click)="productDetails(product.productId)">ADD TO CART</button>
-        </mat-card-actions>
+  <li  *ngFor="let product of newProducts">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title style="word-break: break-all; color: rgb(244 67 54)">
+          {{ product.productName }}
+        </mat-card-title>
+        <mat-card-subtitle>{{ product.productType }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="{{ product.productImage }}"
+        alt="{{ product.productName }}"
+      />
+      <mat-card-content>
+        <p style="word-break: break-all; color: rgb(37, 36, 36)">
+          {{ product.productDescription }}
+        </p>
+        <p><b>Price:</b>{{ product.productPrice | currency: "INR" }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          *ngIf="product.added"
+          color="primary"
+          id="btn{{ product.productId }}"
+          routerLink="/cart"
+        >
+          GO TO CART
+        </button>
+        <button
+          mat-raised-button
+          *ngIf="!product.added"
+          color="warn"
+          id="button{{ product.productId }}"
+          (click)="productDetails(product.productId)"
+        >
+          ADD TO CART
+        </button>
+      </mat-card-actions>
     </mat-card>
-    <br/>
-    <br/>
-    </li>
+    <br />
+    <br />
+  </li>
 </ul>
 
-
-<div [style.display]="showViewModal ? 'flex' : 'none'" class="modal" >
+<div [style.display]="showViewModal ? 'flex' : 'none'" class="modal">
   <div class="modal-background"></div>
   <div class="modal-card">
-    <header class="modal-card-head" style="display: flex; flex-direction: row-reverse;">
-      <button class="delete" (click)="closeModal()" aria-label="close" style="float: left;"></button>
+    <header
+      class="modal-card-head"
+      style="display: flex; flex-direction: row-reverse"
+    >
+      <button
+        class="delete"
+        (click)="closeModal()"
+        aria-label="close"
+        style="float: left"
+      ></button>
     </header>
     <section class="modal-card-body">
       <h4>Sorry, You need to login to the website</h4>
@@ -63,13 +92,19 @@
         type="button"
         (click)="closeModal()"
         class="btn btn-success"
-        data-dismiss="modal">
+        data-dismiss="modal"
+      >
         Login
       </button>
-     
     </footer>
   </div>
 </div>
 <!-- <div class="footerSpace">
 </div> -->
-<app-footer></app-footer>
+<div id="emptyContainer" *ngIf="(emptyProducts)">
+  <app-footer></app-footer>
+</div>
+<div *ngIf="(!emptyProducts)" id="footer">
+
+  <app-footer></app-footer>
+</div>

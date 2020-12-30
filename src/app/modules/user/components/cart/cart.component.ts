@@ -104,6 +104,10 @@ export class CartComponent  {
   getCart() {
     this.service.getCartDetail(this.decryptData(localStorage.getItem('email'))).subscribe((response) => {
       console.log(response);
+      if (response.msg === 'Invalid Token') {
+        localStorage.clear();
+        this.route.navigate(['/']);
+      }
       if (response) {
         this.cart = response;
         if (this.cart == 'Cart is empty') {

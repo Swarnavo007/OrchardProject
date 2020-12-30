@@ -43,11 +43,11 @@ export class UpdateProfileComponent implements OnInit {
     }
   }
  public users:any=[];
-  constructor(private fb:FormBuilder, private toaster:ToastrService,
+  constructor(private fb:FormBuilder, private toaster:ToastrService, private route:ActivatedRoute,
     private _registrationService:RegistrationService,private router:Router) {
    }
   ngOnInit(): void {
-    this._registrationService.getUsers(this.decryptData(localStorage.getItem('email')))
+    this._registrationService.getUsers(this.route.snapshot.paramMap.get('email'))
     .subscribe((response)=>{
       this.users=response;
       console.log(this.users);
@@ -64,7 +64,7 @@ export class UpdateProfileComponent implements OnInit {
 
   updateForm = this.fb.group({
     name: ['',[Validators.required,nameValidators]],
-    emailID: [{value:this.decryptData(localStorage.getItem('email')), disabled: true}],
+    emailID: [{value:this.route.snapshot.paramMap.get('email'), disabled: true}],
     question: ['',[Validators.required]],
     answer: ['',[Validators.required,Validators.minLength(3)]],
     phone : ['',[Validators.required,Validators.minLength(10),Validators.maxLength(10)]]
@@ -73,7 +73,7 @@ export class UpdateProfileComponent implements OnInit {
   onSubmit(){
     console.log(this.updateForm);
     this.updateForm.addControl('email', this.fb.control('', Validators.required));   
-    this.updateForm.patchValue({['email']:this.decryptData(localStorage.getItem('email'))})
+    this.updateForm.patchValue({['email']:this.route.snapshot.paramMap.get('email')})
 
     this._registrationService.updateUserProfile(this.updateForm.value)
       .subscribe(
