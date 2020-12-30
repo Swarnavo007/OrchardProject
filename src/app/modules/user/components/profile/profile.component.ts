@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/services/profile.service';
 import * as CryptoJS from 'crypto-js';
 import {Title} from "@angular/platform-browser";
+import { RegistrationService } from 'src/app/services/registration.service';
 
 @Component({
   selector: 'app-profile',
@@ -25,7 +26,8 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  constructor(private route:Router,private service:ProfileService,private router:Router, private titleService:Title) { 
+  constructor(private route:Router,private service:ProfileService,private router:Router,
+     private titleService:Title, private _registrationService:RegistrationService) { 
     this.titleService.setTitle("Icy-Licious | Profile");
   }
   
@@ -36,6 +38,7 @@ export class ProfileComponent implements OnInit {
   showDeleteModal:boolean
   showViewModel:boolean
   email = this.decryptData(localStorage.getItem('email'))
+  name;
   
   ngOnInit(){
     console.log("email"+this.email);
@@ -57,6 +60,10 @@ export class ProfileComponent implements OnInit {
       }
       // console.log("length"+this.orderByemail.itemPurchased);
     })
+    this._registrationService.getUsers(this.decryptData(localStorage.getItem('email')))
+      .subscribe(response =>{
+        this.name = response.name;
+      })
 
   }
   getDate(date:any){
