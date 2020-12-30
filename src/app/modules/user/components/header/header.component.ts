@@ -111,14 +111,29 @@ export class HeaderComponent implements OnInit {
   decryptData(data) {
 
     try {
-      const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
+      if(this.ValidateEmail(data)){
+        this.route.navigate([''])
+        localStorage.clear()
+      }
+      else{
+        const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
       if (bytes.toString()) {
         return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
       }
       return data;
+      }
     } catch (e) {
       console.log(e);
     }
+  }
+
+
+  ValidateEmail(mail) {
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail))
+  {
+    return true
+  }
+    return false
   }
 
   public showModal:boolean;
