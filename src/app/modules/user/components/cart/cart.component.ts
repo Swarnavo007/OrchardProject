@@ -1,25 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {CartService} from 'src/app/services/cart.service'
+import { CartService } from 'src/app/services/cart.service';
 import * as CryptoJS from 'crypto-js';
 import { ToastrService } from 'ngx-toastr';
-import {Title} from "@angular/platform-browser";
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
 })
-export class CartComponent  {
-
+export class CartComponent {
   cart: any;
-  placeOrder:boolean=true;
-  constructor(private service: CartService, private route:Router, private toaster:ToastrService, private titleService:Title) {
-    this.titleService.setTitle("Icy-Licious | Cart");
+  placeOrder: boolean = true;
+  constructor(
+    private service: CartService,
+    private route: Router,
+    private toaster: ToastrService,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Icy-Licious | Cart');
   }
-  encryptSecretKey = "esrgr54gyse65tgzs56e4tg56s4rg";
+  encryptSecretKey = 'esrgr54gyse65tgzs56e4tg56s4rg';
   decryptData(data) {
-
     try {
       const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
       if (bytes.toString()) {
@@ -32,39 +35,43 @@ export class CartComponent  {
   }
 
   ngOnInit(): void {
-    console.log(this.decryptData(localStorage.getItem('email')))
+    console.log(this.decryptData(localStorage.getItem('email')));
     this.getCart();
   }
 
-  checkProductExpiry(product){
+  checkProductExpiry(product) {
     let date = new Date();
     let d = date.toISOString().split('T')[0];
-    if(product.productEndDate.split('T')[0]<d || product.productStartDate.split('T')[0]>d){
+    if (
+      product.productEndDate.split('T')[0] < d ||
+      product.productStartDate.split('T')[0] > d
+    ) {
       return false;
-    }
-    else{
+    } else {
       return true;
     }
   }
 
-  deleteUserCartSubscribe(userId){
-    this.service.deleteUserCart(userId).subscribe((response)=>{
-      if(response){
+  deleteUserCartSubscribe(userId) {
+    this.service.deleteUserCart(userId).subscribe((response) => {
+      if (response) {
         console.log(response);
-        console.log("cart is deleted");
-        this.cart=null;
+        console.log('cart is deleted');
+        this.cart = null;
       }
-    })
+    });
   }
 
-  placeOrderSubscribe(orderDetail){
-    this.service.placeOrder(orderDetail).subscribe((response)=>{
-      if(response){
-        console.log("placed");
+  placeOrderSubscribe(orderDetail) {
+    this.service.placeOrder(orderDetail).subscribe((response) => {
+      if (response) {
+        console.log('placed');
         console.log(response);
-        this.deleteUserCartSubscribe(this.decryptData(localStorage.getItem('email')));
+        this.deleteUserCartSubscribe(
+          this.decryptData(localStorage.getItem('email'))
+        );
       }
-    })
+    });
   }
 
   getImageLink(productId, i) {
@@ -85,55 +92,57 @@ export class CartComponent  {
         this.cart.products[i].status = false;
         this.placeOrder = this.placeOrder && false;
       }
-
     });
-
   }
 
-  deleteCartProduct(productDetail){
-    this.service.deleteProduct(productDetail).subscribe((response)=>{
-      if(response){
-        let productsArray = this.cart.products.filter(product=>product.productId!=productDetail.productId);
+  deleteCartProduct(productDetail) {
+    this.service.deleteProduct(productDetail).subscribe((response) => {
+      if (response) {
+        let productsArray = this.cart.products.filter(
+          (product) => product.productId != productDetail.productId
+        );
         this.cart.products = productsArray;
         this.calculateTotalPrice();
         this.getNumberOfProductInStock();
       }
-    })
+    });
   }
 
   getCart() {
-    this.service.getCartDetail(this.decryptData(localStorage.getItem('email'))).subscribe((response) => {
-      console.log(response);
-      if (response.msg === 'Invalid Token') {
-        localStorage.clear();
-        this.route.navigate(['/']);
-      }
-      if (response) {
-        this.cart = response;
-        if (this.cart == 'Cart is empty') {
-          this.cart=null;
-        } else {
-          this.cart.totalPrice = 0;
-          for (let i = 0; i < this.cart.products.length; i++) {
-            this.getImageLink(this.cart.products[i].productId, i);
-          }
-
+    this.service
+      .getCartDetail(this.decryptData(localStorage.getItem('email')))
+      .subscribe((response) => {
+        console.log(response);
+        if (response.msg === 'Invalid Token') {
+          localStorage.clear();
+          this.route.navigate(['/']);
         }
-      }
-    });
+        if (response) {
+          this.hideloader();
+
+          this.cart = response;
+          if (this.cart == 'Cart is empty') {
+            this.cart = null;
+          } else {
+            this.cart.totalPrice = 0;
+            for (let i = 0; i < this.cart.products.length; i++) {
+              this.getImageLink(this.cart.products[i].productId, i);
+            }
+          }
+        }
+      });
   }
   getNumberOfProductInStock() {
     let count = 0;
-    this.placeOrder=true;
-    if(this.cart){
+    this.placeOrder = true;
+    if (this.cart) {
       for (let product of this.cart.products) {
-        console.log(product.status)
+        console.log(product.status);
         if (!product.status) {
-          this.placeOrder=false;
+          this.placeOrder = false;
         }
       }
     }
-
   }
 
   decreaseQty(product) {
@@ -154,7 +163,7 @@ export class CartComponent  {
           let productItem = this.cart.products[itemIndex];
           productItem.productQty = newCart.productQty;
           console.log(this.cart);
-          this.calculateTotalPrice()
+          this.calculateTotalPrice();
         } else {
           alert('something went wrong please try again');
         }
@@ -176,52 +185,51 @@ export class CartComponent  {
         );
         let productItem = this.cart.products[itemIndex];
         productItem.productQty = newCart.productQty;
-        this.calculateTotalPrice()
+        this.calculateTotalPrice();
       } else {
         alert('something went wrong please try again');
       }
     });
   }
 
-  deleteProduct(productId){
-    let productDetail={
-      "productId":productId,
-      "userId":this.decryptData(localStorage.getItem('email'))
-    }
-    this.deleteCartProduct(productDetail)
+  deleteProduct(productId) {
+    let productDetail = {
+      productId: productId,
+      userId: this.decryptData(localStorage.getItem('email')),
+    };
+    this.deleteCartProduct(productDetail);
   }
 
-  calculateTotalPrice(){
+  calculateTotalPrice() {
     var totalPrice = 0;
-    for(let product of this.cart.products){
-      if(product.productPrice){
-        totalPrice = totalPrice + (product.productPrice * product.productQty)
+    for (let product of this.cart.products) {
+      if (product.productPrice) {
+        totalPrice = totalPrice + product.productPrice * product.productQty;
       }
-
     }
-    this.cart.totalPrice=totalPrice;
+    this.cart.totalPrice = totalPrice;
   }
-  modelDisplay:boolean=false;
-  confirmOrder(){
-    let orderDetail={
-      userId:this.decryptData(localStorage.getItem('email')),
-      itemPurchased:this.cart.products,
-      totalPrice:this.cart.totalPrice
-
-    }
+  modelDisplay: boolean = false;
+  confirmOrder() {
+    let orderDetail = {
+      userId: this.decryptData(localStorage.getItem('email')),
+      itemPurchased: this.cart.products,
+      totalPrice: this.cart.totalPrice,
+    };
     this.placeOrderSubscribe(orderDetail);
     console.log(orderDetail);
-    this.modelDisplay=false;
-    this.toaster.success('Order placed!')
-    this.route.navigate(['/checkout'])
+    this.modelDisplay = false;
+    this.toaster.success('Order placed!');
+    this.route.navigate(['/checkout']);
   }
 
-  showModel(){
-    this.modelDisplay=true;
+  showModel() {
+    this.modelDisplay = true;
   }
-  closeModel(){
-    this.modelDisplay=false;
+  closeModel() {
+    this.modelDisplay = false;
   }
-
-
+  hideloader() {
+    document.getElementById('loading').style.display = 'none';
+  }
 }

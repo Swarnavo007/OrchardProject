@@ -6,6 +6,7 @@
     width: 100%;
     height: 35%;
     object-fit: cover;
+    border: none;
   }
   // background-color: pink;
 }
@@ -50,6 +51,7 @@ mat-card-content {
 }
 .mat-card-image {
   margin: 0rem 0rem 1rem 0rem;
+  border: none;
 }
 .footerSpace {
   height: 25%;
@@ -65,13 +67,11 @@ mat-card-content {
 //     padding-left: 60%;
 // }
 .container {
-  margin-top:2rem;
+  margin-top: 2rem;
   height: 66vh;
   display: flex;
   justify-content: center;
   align-items: center;
-
-
 }
 // .deletebutton{
 //     margin-right: -10%;
@@ -103,3 +103,7 @@ mat-card-content {
   display: none;
 }
 
+img.lets-try {
+  background: transparent url("../../../../../assets/loading.gif") no-repeat
+    scroll center center;
+}
