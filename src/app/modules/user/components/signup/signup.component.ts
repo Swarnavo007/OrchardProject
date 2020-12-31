@@ -56,7 +56,7 @@ export class SignupComponent implements OnInit {
     confirmPassword: ['',[Validators.required,Validators.minLength(8)]],
     question: ['',[Validators.required]],
     answer: ['',[Validators.required,Validators.minLength(3)]],
-    phone : ['',[Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.min(6666666666),Validators.max(9999999999)]]
+    phone : ['',[Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.min(6000000000),Validators.max(9999999999)]]
   },{
     validator: ConfirmedValidator('password', 'confirmPassword')
   })

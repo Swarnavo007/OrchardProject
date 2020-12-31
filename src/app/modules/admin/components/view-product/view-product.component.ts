@@ -119,7 +119,7 @@ export class ViewProductComponent implements OnInit {
       fileName: '',
     },
     {
-      validator: [this.dateLessThan('startDate', 'endDate'),this.dateCompare('startDate')],
+      validator: [this.dateLessThan('startDate', 'endDate')],
     }
   );
   emptyProducts = false;
