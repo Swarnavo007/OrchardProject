@@ -9,7 +9,7 @@
       />
     </div>
     <div class="details">
-      <span>
+      <span style="align-content: center; text-align: center;">
         <h4>Hi, {{ name }} <button (click)="showVeifyModal()" class="btn"><i class="fa fa-edit edit-btn" aria-hidden="true"></i></button></h4>
       </span>
     </div>
@@ -23,7 +23,7 @@
   </div>
   <div class="vl"></div>
   <div class="orders">
-    <h3 *ngIf="orderByemail.length != 0">My Orders</h3>
+    <h3 *ngIf="orderByemail.length != 0"><b>My Orders</b></h3>
     <ul>
       <li *ngFor="let order of orderByemail">
         <mat-card class="card">

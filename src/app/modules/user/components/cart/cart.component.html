@@ -24,7 +24,7 @@
           <h3 style="word-break: break-all">{{ product.productName }}</h3>
           <!-- <div id="description">{{ product.productDescription }}</div> -->
           <p style="word-break: break-all" *ngIf="product.status">
-            Price: {{ product.productPrice }}
+           <b>{{ product.productPrice | currency : 'INR' }}</b>
           </p>
           <button
             style="border-radius: 0.5rem 0rem 0rem 0.5rem"
@@ -65,16 +65,16 @@
             </td>
 
             <td *ngIf="product.status" class="total-price-cell">
-              {{ product.productQty * product.productPrice }}
+              <b>{{ product.productQty * product.productPrice | currency : 'INR' }}</b>
             </td>
           </tr>
         </table>
       </div>
       <table>
         <tr>
-          <td style="padding-left: 2rem"><b>Total Price</b></td>
+          <td style="padding-left: 2rem; font-size: large;"><b>Total Amount</b></td>
           <td style="padding-left: 2rem">
-            <b>{{ this.cart.totalPrice }}</b>
+            <b>{{ this.cart.totalPrice | currency : 'INR' }}</b>
           </td>
         </tr>
       </table>

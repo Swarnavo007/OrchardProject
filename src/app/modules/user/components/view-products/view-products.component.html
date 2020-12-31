@@ -32,10 +32,10 @@
       </mat-card-header>
       <img mat-card-image src="{{ product.productImage }}" class="lets-try" />
       <mat-card-content>
-        <p style="word-break: break-all; color: rgb(37, 36, 36)">
+        <p style="word-break: break-all; color: rgb(37, 36, 36) ;font-size:16px">
           {{ product.productDescription }}
         </p>
-        <p><b>Price:</b>{{ product.productPrice | currency: "INR" }}</p>
+        <b style="font-size: 22px;">Price : {{ product.productPrice | currency: "INR" }}</b>
       </mat-card-content>
       <mat-card-actions>
         <button
