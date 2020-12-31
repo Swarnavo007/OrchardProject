@@ -143,7 +143,6 @@ export class CartComponent  {
       productQty: product.productQty,
     };
     if (product.productQty == 1) {
-      alert('product quantity cant be 0');
     } else {
       newCart.productQty = product.productQty - 1;
       // console.log(newCart.productQty);
