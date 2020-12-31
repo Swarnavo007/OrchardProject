@@ -44,7 +44,7 @@ mat-list {
     }
 
     h3 {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       @media all and (max-aspect-ratio: 1/1) {
         font-size: 1rem;
       }
@@ -96,7 +96,7 @@ mat-list {
       border-radius: 1rem 0rem 0rem 1rem;
       overflow: hidden;
       @media all and (max-aspect-ratio: 1/1) {
-        max-width: 47%;
+        max-width: 51%;
         padding: 1rem 0rem 1rem 1rem;
         margin-left: -32px;
       }
