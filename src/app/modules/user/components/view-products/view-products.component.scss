@@ -37,14 +37,13 @@ mat-card-title {
 }
 mat-card-subtitle {
   color: rgb(48, 47, 54);
-  font-family: cursive;
+  // font-family: cursive;
   text-transform: capitalize;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
 }
 mat-card-content {
   color: rgb(53, 51, 51);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   b {
     color: rgb(48, 47, 54);
   }

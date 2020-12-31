@@ -94,15 +94,20 @@ export class ProfileComponent implements OnInit {
   //   // this.showViewModel = false;
   //   this.router.navigate(['shop']);
   // }
+
+  submitButton=false;
   shopNow(){
+    this.submitButton=!this.submitButton;
     this.router.navigate(['shop']);
   }
 
   showDelete(){
+    this.submitButton=!this.submitButton;
     this.showDeleteModal = true;
   }
 
   closeModal(){
+    this.submitButton=!this.submitButton;
     this.showDeleteModal = false;
   }
 
@@ -110,10 +115,12 @@ export class ProfileComponent implements OnInit {
   verifyModal:boolean;
 
   showVeifyModal(){
+    this.submitButton=!this.submitButton;
     this.verifyModal = true;
   }
 
   closeVeifyModal(){
+    this.submitButton=!this.submitButton;
     this.verifyModal = false;
   }
 
@@ -128,6 +135,7 @@ export class ProfileComponent implements OnInit {
   passwordError:boolean
 
   verifyPassword(){
+    this.submitButton=!this.submitButton;
     this.verifyForm.addControl('email', this.fb.control('', Validators.required));   
     this.verifyForm.patchValue({['email']:this.decryptData(localStorage.getItem('email'))})
     console.log(this.verifyForm.value)
@@ -150,15 +158,18 @@ export class ProfileComponent implements OnInit {
   verifyModalPass:boolean
 
   showVeifyModalPass(){
+    this.submitButton=!this.submitButton;
     this.verifyModalPass = true;
   }
 
   closeVeifyModalPass(){
+    this.submitButton=!this.submitButton;
     this.verifyModalPass = false;
   }
 
 
   verifyPasswordUpdate(){
+    this.submitButton=!this.submitButton;
     this.verifyForm.addControl('email', this.fb.control('', Validators.required));   
     this.verifyForm.patchValue({['email']:this.decryptData(localStorage.getItem('email'))})
     console.log(this.verifyForm.value)
@@ -178,6 +189,7 @@ export class ProfileComponent implements OnInit {
   }
 
   logout(){
+    this.submitButton=!this.submitButton;
     localStorage.removeItem('userLogged')
     localStorage.removeItem('userToken')
     localStorage.removeItem('email')

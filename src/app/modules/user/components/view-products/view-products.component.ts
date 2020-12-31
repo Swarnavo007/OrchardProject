@@ -153,7 +153,9 @@ export class ViewProductsComponent implements OnInit {
       }
     }
   }
+  submitButton=false;
   closeModal() {
+    this.submitButton=!this.submitButton;
     this.showViewModal = false;
     // this.router.navigate(['']);
     // location.reload()
@@ -162,7 +164,7 @@ export class ViewProductsComponent implements OnInit {
     document.getElementById('loading').style.display = 'none';
     document.getElementById('footer').style.display = 'block';
   }
-
+  
   checkEmptyProducts(){
     console.log("called");
     document.getElementById("checkProductEmpty").style.display="block"

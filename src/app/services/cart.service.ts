@@ -13,42 +13,45 @@ export class CartService {
   id;
   constructor(private http:HttpClient) { }
 
-
-
+  getCart="https://sumit-icylicious-sep-20.herokuapp.com/getcart";
+  getImageUrl="https://sumit-icylicious-sep-20.herokuapp.com/product";
+  updateCartUrl="https://sumit-icylicious-sep-20.herokuapp.com/setcart";
+  deleteProductUrl="https://sumit-icylicious-sep-20.herokuapp.com/delitem";
+  placeOrderUrl="https://sumit-icylicious-sep-20.herokuapp.com/createOrders";
   getCartDetail(userId){
     this.id={'userId':userId};
     const header = new HttpHeaders({
       "Authorization":localStorage.getItem('userToken')
     })
-    return this.http.post<{msg:string}>("https://sumit-icylicious-sep-20.herokuapp.com/getcart",(this.id),{headers:header});
+    return this.http.post<{msg:string}>(this.getCart,(this.id),{headers:header});
   }
 
   getImageDetail(productId){
     const header = new HttpHeaders({
       "Authorization":localStorage.getItem('userToken')
     })
-    return this.http.get<{msg:string}>(`https://sumit-icylicious-sep-20.herokuapp.com/product/${productId}`,{headers:header});
+    return this.http.get<{msg:string}>(`${this.getImageUrl}/${productId}`,{headers:header});
   }
 
   updateCartDetail(cart){
     const header = new HttpHeaders({
       "Authorization":localStorage.getItem('userToken')
     })
-    return this.http.post<{msg:string}>("https://sumit-icylicious-sep-20.herokuapp.com/setcart",cart, {headers:header});
+    return this.http.post<{msg:string}>(this.updateCartUrl,cart, {headers:header});
   }
 
   deleteProduct(productDetail){
     const header = new HttpHeaders({
       "Authorization":localStorage.getItem('userToken')
     })
-    return this.http.post<{msg:string}>("https://sumit-icylicious-sep-20.herokuapp.com/delitem",productDetail, {headers:header});
+    return this.http.post<{msg:string}>(this.deleteProductUrl,productDetail, {headers:header});
   }
 
   placeOrder(cart){
     const header = new HttpHeaders({
       "Authorization":localStorage.getItem('userToken')
     })
-    return this.http.post<{msg:string}>("https://sumit-icylicious-sep-20.herokuapp.com/createOrders",cart, {headers:header});
+    return this.http.post<{msg:string}>(this.placeOrderUrl,cart, {headers:header});
   }
 
   deleteUserCart(userId){

@@ -22,7 +22,16 @@ describe('SubscriberService', () => {
       const req=httpMock.expectOne(service.testurl);
       expect(req.request.method).toBe('GET')
     })
+    it('should create the email subscribers',()=>{
+      const data={
+        email:"navaneetha@gmail.com"
+      }
+      service.subscribe(data).subscribe();
+      let req=httpMock.expectOne({method:"POST",url:service._url})
+      expect(req.request.body).toEqual(data);
+    })
   })
+
 
   it('should be created', () => {
     expect(service).toBeTruthy();

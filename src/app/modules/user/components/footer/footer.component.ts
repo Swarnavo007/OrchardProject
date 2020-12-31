@@ -22,8 +22,9 @@ export class FooterComponent implements OnInit {
   subscribeForm = this.fb.group({
     email: ['',[Validators.required,Validators.email,Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]],
   })
-
+  submitButton=false;
   subscribe(){
+    this.submitButton=!this.submitButton;
     console.log(this.subscribeForm.value)
     if(this.idAlredyExist==true){
       this.showViewSubs();
@@ -46,6 +47,7 @@ export class FooterComponent implements OnInit {
   public idAlredyExist:boolean = false;
 
   idCheck(){
+    this.submitButton=!this.submitButton;
     this._subscriptionService.idCheckUnique(this.subscribeForm.value.email)
       .subscribe(res => {
         console.log(res)
@@ -65,15 +67,18 @@ export class FooterComponent implements OnInit {
   showSubsViewModal:boolean;
 
   showView() {
+    this.submitButton=!this.submitButton;
     this.showViewModal = true;
   }
 
   closeModal() {
+    this.submitButton=!this.submitButton;
     this.showViewModal = false;
     this.showSubsViewModal=false;
   }
 
   showViewSubs(){
+    this.submitButton=!this.submitButton;
     this.showSubsViewModal=true;
   }
 
