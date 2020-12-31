@@ -6,6 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import {RegistrationService} from 'src/app/services/registration.service'
 import { UpdateProfileComponent } from './update-profile.component';
 
+import { ToastrModule } from 'ngx-toastr';
 describe('UpdateProfileComponent', () => {
   let component: UpdateProfileComponent;
   let fixture: ComponentFixture<UpdateProfileComponent>;
@@ -15,7 +16,8 @@ describe('UpdateProfileComponent', () => {
       declarations: [ UpdateProfileComponent ],
       imports: [
          HttpClientTestingModule,
-        RouterTestingModule
+        RouterTestingModule,
+        ToastrModule.forRoot(),
       ],
       providers: [FormBuilder,{ provide: RegistrationService, useClass: RegistrationServiceStub }],
     })

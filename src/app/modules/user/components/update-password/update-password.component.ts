@@ -39,8 +39,9 @@ export class UpdatePasswordComponent implements OnInit {
   },{
     validator: ConfirmedValidator('password', 'confirmPassword')
   })
-
+submitButton=false;
   onSubmit(){
+    this.submitButton=!this.submitButton
     console.log(this.resetForm.value)
       this.registrationService.updatePassword(this.resetForm.value)
       .subscribe(

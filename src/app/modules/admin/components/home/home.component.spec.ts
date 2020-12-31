@@ -37,6 +37,31 @@ describe('HomeComponent', () => {
   //   expect(modalService.open).toHaveBeenCalled();
   //   });
 
+  describe('button clicks',()=>{
+    it ('check the working of the  logout button', ()=>
+    {
+      expect(component.submitButton).toBe(false, 'not clicked');
+      component.logout();
+      expect(component.submitButton).toBe(true, 'clicked!');
+    })
+  
+    it ('check the working of the  delete button', ()=>
+    {
+      expect(component.deleteButton).toBe(false, 'not clicked');
+      component.showDelete();
+      expect(component.deleteButton).toBe(true, 'clicked!');
+    })
+
+    it ('check the working of the  closemodel button', ()=>
+    {
+      expect(component.submitButton).toBe(false, 'not clicked');
+      component.closeModal();
+      expect(component.submitButton).toBe(true, 'clicked!');
+    })
+  })
+ 
+
+  
   describe('Simple HTML',()=>{
 
     it('should have a button Icy-Lycious on the navigation bar', ()=>{

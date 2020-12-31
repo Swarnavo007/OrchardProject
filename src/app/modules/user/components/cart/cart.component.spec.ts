@@ -25,8 +25,26 @@ describe('CartComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
+   
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  describe('button clicks',()=>{
+    it ('check the working of the showModel button', ()=>
+  {
+    expect(component.submitButton).toBe(false, 'not clicked');
+    component.showModel();
+    expect(component.submitButton).toBe(true, 'clicked');
+  })
+
+  it ('check the working of the closeModel button', ()=>
+  {
+    expect(component.submitButton).toBe(false, 'not clicked');
+    component.closeModel();
+    expect(component.submitButton).toBe(true, 'clicked');
+  })
+
+  })
+
+
 });

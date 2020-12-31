@@ -15,8 +15,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+ submitButton=false;
   logout(){
+    this.submitButton=!this.submitButton
     this.router.navigate(['admin'])
     localStorage.removeItem('logged');
     localStorage.removeItem('token');
@@ -33,12 +34,14 @@ export class HomeComponent implements OnInit {
 
 
   showDeleteModal:boolean
-
+  deleteButton=false
   showDelete(){
+    this.deleteButton=!this.deleteButton
     this.showDeleteModal = true;
   }
 
   closeModal(){
+    this.submitButton=!this.submitButton
     this.showDeleteModal = false;
   }
 

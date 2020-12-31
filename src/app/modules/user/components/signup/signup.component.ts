@@ -61,7 +61,9 @@ export class SignupComponent implements OnInit {
     validator: ConfirmedValidator('password', 'confirmPassword')
   })
 
+  submitButton=false;
   onSubmit(){
+    this.submitButton=!this.submitButton;
     console.log(this.registrationForm);
     this.registrationForm.addControl('email', this.fb.control('', Validators.required));   
     this.registrationForm.patchValue({['email']:this.route.snapshot.paramMap.get('email')})

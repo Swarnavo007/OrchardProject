@@ -31,10 +31,10 @@ export class EmailSubscribersComponent implements OnInit {
 
  
 fileName= 'Subscribers.xlsx';  
-
+submitButton=false;
 exportexcel(): void 
     {
-       
+      this.submitButton=!this.submitButton;  
        let element = document.getElementById('excel-table'); 
        const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
 

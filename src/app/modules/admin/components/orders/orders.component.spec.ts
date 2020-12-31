@@ -73,6 +73,36 @@ describe('OrdersComponent', () => {
     });
   });
 
+describe('button click',()=>{
+  it ('check the working of the showView button', ()=>
+    {
+      expect(component.submitButton).toBe(false, 'not clicked');
+      component.showView();
+      expect(component.submitButton).toBe(true, 'clicked!');
+    })
+    it ('check the working of the closemodel button', ()=>
+    {
+      expect(component.submitButton).toBe(false, 'not clicked');
+      component.closeModal();
+      expect(component.submitButton).toBe(true, 'clicked!');
+    })
+
+    it ('check the working of the shoPlace button', ()=>
+    {
+      expect(component.submitButton).toBe(false, 'not clicked');
+      component.shoPlace();
+      expect(component.submitButton).toBe(true, 'clicked!');
+    })
+
+    it ('check the working of the closeplaceOrder button', ()=>
+    {
+      expect(component.submitButton).toBe(false, 'not clicked');
+      component.closeplaceOrder();
+      expect(component.submitButton).toBe(true, 'clicked!');
+    })
+
+})
+
   describe('Navigation', () => {
     // it(`after pressing 'Confirm' button should naviate to the analysis page`, ()=>{
     //   const router=TestBed.get(Router);

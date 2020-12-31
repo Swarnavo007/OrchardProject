@@ -1,5 +1,5 @@
 import { of } from 'rxjs';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule } from 'ngx-toastr';
@@ -7,6 +7,7 @@ import { By } from '@angular/platform-browser';
 import { ViewProductComponent } from './view-product.component';
 import { ViewProductService } from 'src/app/services/view-product.service';
 
+import * as Rx from 'rxjs';
 describe('ViewProductComponent', () => {
   let component: ViewProductComponent;
   let fixture: ComponentFixture<ViewProductComponent>;
@@ -32,6 +33,7 @@ describe('ViewProductComponent', () => {
     expect(component).toBeTruthy();
   });
 
+
   // describe('Simple HTML element for cards', ()=>{
   //   it('should have tag Empty Products',()=>{
   //     const linkDes = fixture.debugElement.queryAll(By.css('h2'));
@@ -39,6 +41,31 @@ describe('ViewProductComponent', () => {
   //     expect(nativeH2.textContent).toBe('Empty Products');
   //   })
   // })
+
+  describe('button clicks',()=>{
+    it ('check the working of the hide button button', ()=>
+    {
+      expect(component.submitButton).toBe(false, 'not clicked');
+      component.hide();
+      expect(component.submitButton).toBe(true, 'clicked!');
+    })
+
+    it ('check the working of the showDelete button button', ()=>
+    {
+      expect(component.submitButton).toBe(false, 'not clicked');
+      component.showDelete();
+      expect(component.submitButton).toBe(true, 'clicked!');
+    })
+
+    it ('check the working of the closeModal button button', ()=>
+    {
+      expect(component.submitButton).toBe(false, 'not clicked');
+      component.closeModal();
+      expect(component.submitButton).toBe(true, 'clicked!');
+    })
+
+
+  })
 
   describe('Simple HTML element on popup', () => {
     it('should have a "close" button on popup', () => {

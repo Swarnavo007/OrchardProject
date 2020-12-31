@@ -223,13 +223,18 @@ export class CartComponent {
     this.route.navigate(['/checkout']);
   }
 
+  submitButton=false;
+
   showModel() {
+    this.submitButton=!this.submitButton
     this.modelDisplay = true;
   }
   closeModel() {
+    this.submitButton=!this.submitButton
     this.modelDisplay = false;
   }
   hideloader() {
+    this.submitButton=!this.submitButton
     document.getElementById('loading').style.display = 'none';
   }
 }
