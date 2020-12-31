@@ -25,10 +25,10 @@
   <mat-menu x-position="before" #menu="matMenu">
     <button mat-menu-item routerLink="">Home</button>
     <button mat-menu-item routerLink="/shop">Shop</button>
-    <button mat-menu-item (click)="showLogin()" *ngIf="!logged"><pre>Login / Signup</pre></button>
+    <button mat-menu-item (click)="showLogin()" *ngIf="!logged">Login / Signup</button>
     <button mat-menu-item  *ngIf="logged" routerLink="/profile">Orders</button>
     <button mat-menu-item  *ngIf="logged" (click)="showVeifyModal()">Update Profile</button>
-    <button mat-menu-item  (click)="updatePassword()" *ngIf="logged" routerLink="/profile">Update Password</button>
+    <button mat-menu-item  (click)="showVeifyModalPass()" *ngIf="logged">Update Password</button>
     <button mat-menu-item (click)="logout()" *ngIf="logged">Logout</button>
   </mat-menu>
 
@@ -111,7 +111,7 @@
 
 
 
-    <div [style.display]="verifyModal ? 'block' : 'none'" class="verifyModal">
+    <div [style.display]="verifyModal ? 'block' : 'none'" class="modal">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
@@ -135,6 +135,53 @@
         </section>
         <footer class="modal-card-foot">
           <button class="btn btn-secondary" (click)="closeVeifyModal()">Cancel</button>
+        </footer>
+      </div>
+    </div>
+
+
+    <div [style.display]="verifyModalPass ? 'block' : 'none'" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Verify Password</p>
+          <button
+            class="delete"
+            (click)="closeVeifyModalPass()"
+            aria-label="close"
+          ></button>
+        </header>
+        <section class="modal-card-body">
+          <form [formGroup]="verifyForm" (ngSubmit)="verifyPasswordUpdate()">
+            <div class="form-group">
+              <label>Password</label>
+              <input
+                [class.is-invalid]="passowrd.touched && passowrd.invalid"
+                formControlName="password"
+                type="password"
+                class="form-control"
+              />
+              <div *ngIf="passowrd.invalid && passowrd.touched">
+                <small class="text-danger" *ngIf="passowrd.errors?.required"
+                  >Password is required</small
+                >
+              </div>
+            </div>
+            <button [disabled]="!verifyForm.valid" class="btn btn-warning">
+              Verify
+            </button>
+          </form>
+          <br>
+          <div *ngIf="passwordError">
+            <div class="alert alert-danger" role="alert">
+              <strong>Invalid Password</strong> Try again.
+            </div>
+          </div>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="btn btn-secondary" (click)="closeVeifyModalPass()">
+            Cancel
+          </button>
         </footer>
       </div>
     </div>

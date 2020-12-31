@@ -218,4 +218,36 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+
+
+  verifyModalPass:boolean
+
+  showVeifyModalPass(){
+    this.verifyModalPass = true;
+  }
+
+  closeVeifyModalPass(){
+    this.verifyModalPass = false;
+  }
+
+
+  verifyPasswordUpdate(){
+    this.verifyForm.addControl('email', this.fb.control('', Validators.required));   
+    this.verifyForm.patchValue({['email']:this.decryptData(localStorage.getItem('email'))})
+    console.log(this.verifyForm.value)
+    this._registrationService.verifyPassword(this.verifyForm.value)
+    .subscribe((response)=>{
+      console.log(response)
+      if(response.msg === "success"){
+        this.route.navigate(['update',{email:this.decryptData(localStorage.getItem('email'))}],{skipLocationChange:true})
+      }
+      else{
+        this.passwordError = true
+        setTimeout(()=>{
+          this.passwordError = false
+        },2000)
+      }
+    })
+  }
+
 }
