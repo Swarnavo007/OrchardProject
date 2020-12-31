@@ -146,6 +146,37 @@ export class ProfileComponent implements OnInit {
     })
   }
 
+
+  verifyModalPass:boolean
+
+  showVeifyModalPass(){
+    this.verifyModalPass = true;
+  }
+
+  closeVeifyModalPass(){
+    this.verifyModalPass = false;
+  }
+
+
+  verifyPasswordUpdate(){
+    this.verifyForm.addControl('email', this.fb.control('', Validators.required));   
+    this.verifyForm.patchValue({['email']:this.decryptData(localStorage.getItem('email'))})
+    console.log(this.verifyForm.value)
+    this._registrationService.verifyPassword(this.verifyForm.value)
+    .subscribe((response)=>{
+      console.log(response)
+      if(response.msg === "success"){
+        this.route.navigate(['update',{email:this.decryptData(localStorage.getItem('email'))}],{skipLocationChange:true})
+      }
+      else{
+        this.passwordError = true
+        setTimeout(()=>{
+          this.passwordError = false
+        },2000)
+      }
+    })
+  }
+
   logout(){
     localStorage.removeItem('userLogged')
     localStorage.removeItem('userToken')
@@ -156,9 +187,9 @@ export class ProfileComponent implements OnInit {
 
 
 
-  updatePassword(){
-    this.route.navigate(['update',{email:this.decryptData(localStorage.getItem('email'))}],{skipLocationChange:true})
-  }
+  // updatePassword(){
+  //   this.route.navigate(['update',{email:this.decryptData(localStorage.getItem('email'))}],{skipLocationChange:true})
+  // }
   // updateProfile(){
   //   this.route.navigate(['/updateProfile'])
   // }

@@ -16,11 +16,13 @@
     </div>
   </div>
 </div>
-<div *ngIf="(emptyProducts)" class="container is-max-desktop">
-    <h2 style="text-align: center; height:4rem; color:#f23527">No Product Found</h2>
+<div *ngIf="emptyProducts" class="container is-max-desktop">
+  <h2 style="text-align: center; height: 4rem; color: #f23527">
+    No Product Found
+  </h2>
 </div>
 <ul>
-  <li  *ngFor="let product of newProducts">
+  <li *ngFor="let product of newProducts">
     <mat-card class="card">
       <mat-card-header>
         <mat-card-title style="word-break: break-all; color: rgb(244 67 54)">
@@ -28,11 +30,7 @@
         </mat-card-title>
         <mat-card-subtitle>{{ product.productType }}</mat-card-subtitle>
       </mat-card-header>
-      <img
-        mat-card-image
-        src="{{ product.productImage }}"
-        alt="{{ product.productName }}"
-      />
+      <img mat-card-image src="{{ product.productImage }}" class="lets-try" />
       <mat-card-content>
         <p style="word-break: break-all; color: rgb(37, 36, 36)">
           {{ product.productDescription }}
@@ -101,10 +99,9 @@
 </div>
 <!-- <div class="footerSpace">
 </div> -->
-<div id="emptyContainer" *ngIf="(emptyProducts)">
+<div id="emptyContainer" *ngIf="emptyProducts">
   <app-footer></app-footer>
 </div>
-<div *ngIf="(!emptyProducts)" id="footer">
-
+<div *ngIf="!emptyProducts" id="footer">
   <app-footer></app-footer>
 </div>

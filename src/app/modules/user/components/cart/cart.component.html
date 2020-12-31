@@ -1,4 +1,7 @@
 <app-header></app-header>
+<div class="d-flex justify-content-center">
+  <span class="sr-only" id="loading" class="loading"></span>
+</div>
 <div id="cart-container">
   <div
     id="emptycart"
@@ -15,7 +18,7 @@
       <mat-list-item *ngFor="let product of cart.products">
         <div id="list-image">
           <img *ngIf="product.status" src="{{ product.productImage }}" />
-          <img *ngIf="(!product.status)" src="../assets/outofstock.png"/>
+          <img *ngIf="!product.status" src="../assets/outofstock.png" />
         </div>
         <div id="content">
           <h3 style="word-break: break-all">{{ product.productName }}</h3>
@@ -43,9 +46,7 @@
             +
           </button>
           <div *ngIf="!product.status">
-            <p id="outofstock">
-              Please remove this product
-            </p>
+            <p id="outofstock">Please remove this product</p>
           </div>
           <p></p>
         </div>
