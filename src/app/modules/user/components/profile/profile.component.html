@@ -9,17 +9,13 @@
       />
     </div>
     <div class="details">
-      <span class="icon">
-        <h5>Hi,{{ name }}</h5>
+      <span>
+        <h4>Hi, {{ name }} <button (click)="showVeifyModal()" class="btn"><i class="fa fa-edit edit-btn" aria-hidden="true"></i></button></h4>
       </span>
     </div>
     <div class="buttons">
-      <button (click)="updatePassword()" class="btn btn-outline-primary">
+      <button (click)="updatePassword()" class="btn btn-outline-warning pass-btn">
         Update Password
-      </button>
-      <br />
-      <button (click)="showVeifyModal()" class="btn btn-outline-primary">
-        Update Profile
       </button>
       <br />
       <button (click)="showDelete()" class="btn btn-danger">Logout</button>
