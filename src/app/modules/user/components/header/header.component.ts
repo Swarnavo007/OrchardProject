@@ -111,14 +111,29 @@ export class HeaderComponent implements OnInit {
   decryptData(data) {
 
     try {
-      const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
+      if(this.ValidateEmail(data)){
+        this.route.navigate([''])
+        localStorage.clear()
+      }
+      else{
+        const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
       if (bytes.toString()) {
         return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
       }
       return data;
+      }
     } catch (e) {
       console.log(e);
     }
+  }
+
+
+  ValidateEmail(mail) {
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail))
+  {
+    return true
+  }
+    return false
   }
 
   public showModal:boolean;
@@ -199,6 +214,38 @@ export class HeaderComponent implements OnInit {
       }
       else{
         this.passwordError = true
+      }
+    })
+  }
+
+
+
+  verifyModalPass:boolean
+
+  showVeifyModalPass(){
+    this.verifyModalPass = true;
+  }
+
+  closeVeifyModalPass(){
+    this.verifyModalPass = false;
+  }
+
+
+  verifyPasswordUpdate(){
+    this.verifyForm.addControl('email', this.fb.control('', Validators.required));   
+    this.verifyForm.patchValue({['email']:this.decryptData(localStorage.getItem('email'))})
+    console.log(this.verifyForm.value)
+    this._registrationService.verifyPassword(this.verifyForm.value)
+    .subscribe((response)=>{
+      console.log(response)
+      if(response.msg === "success"){
+        this.route.navigate(['update',{email:this.decryptData(localStorage.getItem('email'))}],{skipLocationChange:true})
+      }
+      else{
+        this.passwordError = true
+        setTimeout(()=>{
+          this.passwordError = false
+        },2000)
       }
     })
   }

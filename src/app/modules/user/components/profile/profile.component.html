@@ -3,23 +3,19 @@
   <div class="profile">
     <div>
       <img
-        src="../../../../../assets/img_avatar.png"
+        src="../../../../../assets/img_avatar.jpg"
         alt="Avatar"
         class="avatar"
       />
     </div>
     <div class="details">
-      <span class="icon">
-        <h5>Hi,{{ name }}</h5>
+      <span>
+        <h4>Hi, {{ name }} <button (click)="showVeifyModal()" class="btn"><i class="fa fa-edit edit-btn" aria-hidden="true"></i></button></h4>
       </span>
     </div>
     <div class="buttons">
-      <button (click)="updatePassword()" class="btn btn-outline-primary">
+      <button (click)="showVeifyModalPass()" class="btn btn-outline-warning pass-btn">
         Update Password
-      </button>
-      <br />
-      <button (click)="showVeifyModal()" class="btn btn-outline-primary">
-        Update Profile
       </button>
       <br />
       <button (click)="showDelete()" class="btn btn-danger">Logout</button>
@@ -169,6 +165,54 @@
     </section>
     <footer class="modal-card-foot">
       <button class="btn btn-secondary" (click)="closeVeifyModal()">
+        Cancel
+      </button>
+    </footer>
+  </div>
+</div>
+
+
+
+<div [style.display]="verifyModalPass ? 'block' : 'none'" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Verify Password</p>
+      <button
+        class="delete"
+        (click)="closeVeifyModalPass()"
+        aria-label="close"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+      <form [formGroup]="verifyForm" (ngSubmit)="verifyPasswordUpdate()">
+        <div class="form-group">
+          <label>Password</label>
+          <input
+            [class.is-invalid]="passowrd.touched && passowrd.invalid"
+            formControlName="password"
+            type="password"
+            class="form-control"
+          />
+          <div *ngIf="passowrd.invalid && passowrd.touched">
+            <small class="text-danger" *ngIf="passowrd.errors?.required"
+              >Password is required</small
+            >
+          </div>
+        </div>
+        <button [disabled]="!verifyForm.valid" class="btn btn-warning">
+          Verify
+        </button>
+      </form>
+      <br>
+      <div *ngIf="passwordError">
+        <div class="alert alert-danger" role="alert">
+          <strong>Invalid Password</strong> Try again.
+        </div>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="btn btn-secondary" (click)="closeVeifyModalPass()">
         Cancel
       </button>
     </footer>
