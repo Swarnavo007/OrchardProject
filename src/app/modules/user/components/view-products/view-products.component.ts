@@ -154,8 +154,9 @@ export class ViewProductsComponent implements OnInit {
     }
   }
   closeModal() {
-    // this.showViewModal = false;
-    this.router.navigate(['']);
+    this.showViewModal = false;
+    // this.router.navigate(['']);
+    // location.reload()
   }
   hideloader() {
     document.getElementById('loading').style.display = 'none';

@@ -5,6 +5,7 @@ import * as CryptoJS from 'crypto-js';
 import {Title} from "@angular/platform-browser";
 import { RegistrationService } from 'src/app/services/registration.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -17,17 +18,31 @@ export class ProfileComponent implements OnInit {
   decryptData(data) {
 
     try {
-      const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
+      if(this.ValidateEmail(data)){
+        this.route.navigate([''])
+        localStorage.clear()
+      }
+      else{
+        const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
       if (bytes.toString()) {
         return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
       }
       return data;
+      }
     } catch (e) {
       console.log(e);
     }
   }
 
-  constructor(private route:Router,private service:ProfileService,private router:Router,
+  ValidateEmail(mail) {
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail))
+  {
+    return true
+  }
+    return false
+  }
+
+  constructor(private route:Router,private service:ProfileService,private router:Router, private toaster:ToastrService,
      private titleService:Title, private _registrationService:RegistrationService, private fb:FormBuilder) { 
     this.titleService.setTitle("Icy-Licious | Profile");
   }
@@ -42,7 +57,7 @@ export class ProfileComponent implements OnInit {
   name;
   
   ngOnInit(){
-    console.log("email"+this.email);
+    
     this.service.getOrders().subscribe((response)=>{
       if (response.msg === 'Invalid Token') {
         localStorage.clear();
@@ -124,6 +139,9 @@ export class ProfileComponent implements OnInit {
       }
       else{
         this.passwordError = true
+        setTimeout(()=>{
+          this.passwordError = false
+        },2000)
       }
     })
   }
