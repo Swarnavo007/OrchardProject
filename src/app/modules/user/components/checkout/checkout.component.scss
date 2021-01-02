@@ -24,6 +24,10 @@ app-footer {
 }
 
 @media all and(max-width:600px) {
+  .checkout-container{
+    height:100vh;
+    padding-top:10vh;
+  }
   .main-image {
     margin-left: 12%;
     width: 70%;
@@ -44,5 +48,6 @@ app-footer {
     width: 100%;
     position: absolute;
     bottom: 0;
+    margin-bottom:-0.6rem;
   }
 }

@@ -23,8 +23,8 @@
   </div>
   <div class="vl"></div>
   <div class="orders">
-    <h3 *ngIf="orderByemail.length != 0"><b>My Orders</b></h3>
-    <ul>
+    <h3 *ngIf="orderByemail.length != 0">My Orders</h3>
+    <ul *ngIf="orderByemail.length != 0">
       <li *ngFor="let order of orderByemail">
         <mat-card class="card">
           <mat-card-header>
@@ -66,15 +66,17 @@
         <br />
       </li>
     </ul>
-    <div *ngIf="orderByemail.length == 0">
-      <div class="image">
-        <img src="../../../../../assets/empty.png" alt="Avatar" />
-        <button mat-raised-button color="warn" (click)="shopNow()">
-          SHOP NOW
-        </button>
-      </div>
+    <!-- <div id="emptyOrder" > -->
+    <!-- </div> -->
+    <div class="image" *ngIf="orderByemail.length == 0">
+      <img src="../../../../../assets/empty.png" alt="Avatar" />
+      <button mat-raised-button color="warn" (click)="shopNow()">
+        SHOP NOW
+      </button>
     </div>
   </div>
+
+
 </div>
 <ng-container *ngIf="orderByemail.length < 1; else elseTemplate">
   <app-footer style="position: absolute; bottom: 0; width: 100%"> </app-footer>
@@ -212,7 +214,7 @@
       </div>
     </section>
     <footer class="modal-card-foot">
-      <button class="btn btn-secondary" (click)="closeVeifyModalPass()">
+      <button id="closebtn" class="btn" (click)="closeVeifyModalPass()">
         Cancel
       </button>
     </footer>
