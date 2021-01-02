@@ -37,12 +37,15 @@ export class ResetComponent implements OnInit {
   }
 
   public failed:boolean = false;
-
+  submitButton=false;
   onChange(){
+    this.submitButton=!this.submitButton
     this.failed = false;
   }
 
+
   onSubmit(){
+    this.submitButton=!this.submitButton
     console.log(this.resetForm.value)
     this.registrationService.reset(this.resetForm.value)
       .subscribe(
