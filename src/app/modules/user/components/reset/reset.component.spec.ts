@@ -31,4 +31,19 @@ describe('ResetComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it ('check the working of the closeModel button', ()=>
+  {
+    expect(component.submitButton).toBe(false, 'not clicked');
+    component.onChange();
+    expect(component.submitButton).toBe(true, 'clicked');
+  })
+
+  it ('check the working of the onsubmit button', ()=>
+  {
+    expect(component.submitButton).toBe(false, 'not clicked');
+    component.onSubmit();
+  })
+
+
 });
