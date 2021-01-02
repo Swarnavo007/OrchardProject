@@ -4,16 +4,26 @@
   height: 30%;
 }
 h4 {
-  margin-top: 8%;
-  margin-left: 40%;
+  margin-top: 4%;
+  margin-left: 41%;
 }
 
 .buttons {
   .orders {
     margin-left: 41%;
+    background-color: #f44336;
+    color:white;
+      &:hover{
+        background-color: #fc7369;
+      }
   }
   .shop {
     margin-left: 1%;
+    background-color: #f44336;
+    color:white;
+      &:hover{
+        background-color: #fc7369;
+      }
   }
 }
 
@@ -34,11 +44,11 @@ app-footer {
     // height: 40%;
   }
   h4 {
-    margin-left: 10%;
+    margin-left: 18%;
   }
-  .buttons {
+   .buttons {
     .orders {
-      margin-left: 12%;
+      margin-left: 20%;
     }
     .shop {
       margin-left: 1%;
