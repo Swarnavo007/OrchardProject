@@ -48,3 +48,7 @@
         background-image: url('../../../../../assets/whitePage.JPG');
     }
 }
+
+.required:after {
+    content:" *";
+    color: red;}

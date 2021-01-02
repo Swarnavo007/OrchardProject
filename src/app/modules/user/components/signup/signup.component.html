@@ -5,7 +5,7 @@
     <!-- <h4>Add User</h4> -->
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label>Name</label>
+        <label class="required">Name</label>
         <input [class.is-invalid]="name.invalid 
         && name.touched " formControlName="name" type="text" class="form-control">
         <div *ngIf="name.invalid && name.touched ">
@@ -26,7 +26,7 @@
       </div>
       
       <div class="form-group">
-        <label>Phone Number</label>
+        <label class="required">Phone Number</label>
         <input [class.is-invalid]="phone.invalid && phone.touched " formControlName="phone" type="tel" class="form-control">
         <div *ngIf="phone.invalid && phone.touched">
           <small *ngIf="phone.errors?.required" class="text-danger">phone number is required</small>
@@ -39,7 +39,7 @@
       </div>
 
       <div class="form-group">
-        <label>Password</label>
+        <label class="required">Password</label>
         <input [class.is-invalid]="password.invalid && password.touched " formControlName="password" type="password" class="form-control">
         <div *ngIf="password.invalid && password.touched">
           <!-- <small *ngIf="password.errors?.required" class="text-danger">password is required</small> -->
@@ -56,7 +56,7 @@
       </div>
 
       <div class="form-group">
-        <label>Confirm Password</label>
+        <label class="required">Confirm Password</label>
         <input [class.is-invalid]="confirmPassword.invalid && confirmPassword.touched" formControlName="confirmPassword" type="password" class="form-control">
         <div *ngIf="confirmPassword.invalid && confirmPassword.touched">
           <small *ngIf="confirmPassword.errors?.required" class="text-danger">password is required</small>
@@ -64,7 +64,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label>Security Question</label>
+        <label class="required">Security Question</label>
         <br>
         <select [class.is-invalid]="question.invalid && question.touched " formControlName="question"  class="form-control">
           <option value="0">What was the first name of your first pet?</option>
@@ -76,7 +76,7 @@
       </div>     
       </div>
       <div class="form-group">
-        <label>Answer</label>
+        <label class="required">Answer</label>
         <input [class.is-invalid]="answer.invalid && answer.touched " formControlName="answer" type="text" class="form-control">
         <div *ngIf="answer.invalid && answer.touched">
           <small *ngIf="answer.errors?.required" class="text-danger">answer is required</small>
