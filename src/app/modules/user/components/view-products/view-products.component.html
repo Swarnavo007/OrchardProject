@@ -44,6 +44,7 @@
           color="primary"
           id="btn{{ product.productId }}"
           routerLink="/cart"
+          style="background-color: #eeb407; color:black;outline: none;"
         >
           GO TO CART
         </button>
@@ -53,6 +54,7 @@
           color="warn"
           id="button{{ product.productId }}"
           (click)="productDetails(product.productId)"
+          style="outline: none;"
         >
           ADD TO CART
         </button>
