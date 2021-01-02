@@ -4,7 +4,8 @@ import { FormBuilder } from '@angular/forms';
 import { MatMenu, MatMenuModule } from '@angular/material/menu';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule } from 'ngx-toastr';
-
+import { Router } from '@angular/router';
+import { By } from '@angular/platform-browser';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
@@ -33,6 +34,8 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  
 
   describe('button clicks',()=>{
     it ('check the working of the onChange button', ()=>
@@ -76,6 +79,44 @@ describe('HeaderComponent', () => {
     {
       expect(component.submittButton).toBe(false, 'not clicked');
       component.closeModal();
+      expect(component.submittButton).toBe(true, 'clicked!');
+    });
+
+    it ('check the working of the closeVeifyModal button', ()=>
+    {
+      expect(component.submittButton).toBe(false, 'not clicked');
+      component.closeVeifyModal();
+      expect(component.submittButton).toBe(true, 'clicked!');
+    });
+
+    it ('check the working of the showVeifyModal button', ()=>
+    {
+      expect(component.submittButton).toBe(false, 'not clicked');
+      component.showVeifyModal();
+      expect(component.submittButton).toBe(true, 'clicked!');
+    });
+
+
+    
+    it ('check the working of the showVeifyModalPass button', ()=>
+    {
+      expect(component.submittButton).toBe(false, 'not clicked');
+      component.showVeifyModalPass();
+      expect(component.submittButton).toBe(true, 'clicked!');
+    });
+
+
+    it ('check the working of the closeVeifyModalPass button', ()=>
+    {
+      expect(component.submittButton).toBe(false, 'not clicked');
+      component.closeVeifyModalPass();
+      expect(component.submittButton).toBe(true, 'clicked!');
+    });
+
+    it ('check the working of the logout button', ()=>
+    {
+      expect(component.submittButton).toBe(false, 'not clicked');
+      component.logout();
       expect(component.submittButton).toBe(true, 'clicked!');
     });
 

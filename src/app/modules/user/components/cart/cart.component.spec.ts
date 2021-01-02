@@ -2,6 +2,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule } from 'ngx-toastr';
+import { By } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 import { CartComponent } from './cart.component';
 
@@ -43,7 +45,20 @@ describe('CartComponent', () => {
     component.closeModel();
     expect(component.submitButton).toBe(true, 'clicked');
   })
+  // it(`after pressing 'BuyNow' button should naviate to the  Buy now! page`, ()=>{
+  //   const router=TestBed.get(Router);
+  //   spyOn(router,'navigateByUrl');
+  //   const linkDes=fixture.debugElement
+  //     .queryAll(By.css('button'));
+  //   const nativeButton: HTMLButtonElement=linkDes[0].nativeElement;
+  //   nativeButton.click();
+  //   expect(router.navigateByUrl).toHaveBeenCalledWith(router.createUrlTree(['/shop']),{
+  //     skipLocationChange:false, replaceUrl:false, state:undefined
+  //   })
+  // })
 
+  
+  
   })
 
 
