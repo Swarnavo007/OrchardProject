@@ -113,12 +113,12 @@ describe('HeaderComponent', () => {
       expect(component.submittButton).toBe(true, 'clicked!');
     });
 
-    it ('check the working of the logout button', ()=>
-    {
-      expect(component.submittButton).toBe(false, 'not clicked');
-      component.logout();
-      expect(component.submittButton).toBe(true, 'clicked!');
-    });
+    // it ('check the working of the logout button', ()=>
+    // {
+    //   expect(component.submittButton).toBe(false, 'not clicked');
+    //   component.logout();
+    //   expect(component.submittButton).toBe(true, 'clicked!');
+    // });
 
 
 
