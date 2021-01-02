@@ -38,7 +38,8 @@ export class HeaderComponent implements OnInit {
   });
   cart: any;
   ngOnInit(): void {
-    this.service
+    if(localStorage.getItem('userLogged')){
+      this.service
       .getCartDetail(this.decryptData(localStorage.getItem('email')))
       .subscribe((response) => {
         if (response) {
@@ -55,6 +56,7 @@ export class HeaderComponent implements OnInit {
           }
         }
       });
+    }
   }
 
   public failed: boolean = false;
