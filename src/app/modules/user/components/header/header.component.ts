@@ -182,6 +182,7 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('email')
     localStorage.removeItem('id')
     this.route.navigate([''])
+    document.location.reload();
   }
 
 
