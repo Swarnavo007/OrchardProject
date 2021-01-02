@@ -2,46 +2,88 @@
 <a routerLink="shop">Shopping</a> -->
 
 <mat-toolbar color="warn">
-    <span><button class="btn" routerLink=""><img src="../assets/clientlogoFinal.png"/></button></span>
-    <div  fxLayout="row" fxShow="false" fxShow.gt-sm>
-      <span id="tabs">
-        <button mat-button routerLink="">Home</button>
-        <button mat-button routerLink="/shop" routerLinkActive="active">Shop</button>
-      </span>
-    </div>
+  <span
+    ><button class="btn" routerLink="">
+      <img src="../assets/clientlogoFinal.png" /></button
+  ></span>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <span id="tabs">
+      <button mat-button routerLink="">Home</button>
+      <button mat-button routerLink="/shop" routerLinkActive="active">
+        Shop
+      </button>
+    </span>
+  </div>
 
-    <div  fxLayout="row" fxShow="false" fxShow.gt-sm>
-      <button mat-button data-toggle="logoutModal" routerLink="/cart" routerLinkActive="active" data-target="#exampleModal" *ngIf="logged"><mat-icon  matBadge="{{productLength}}" matBadgePosition="after" >shopping_cart</mat-icon></button>
-      <button mat-button routerLink="/profile" routerLinkActive="active" *ngIf="logged"><mat-icon>person</mat-icon></button>
-      <button mat-button (click)="showLogin()" *ngIf="!logged">Login/Signup</button>
-    </div>
-
-    <button  mat-button *ngIf="logged" routerLink="/cart"  fxHide="false" fxHide.gt-sm><div id="loginbtn"><mat-icon matBadge="{{productLength}}" matBadgePosition="after">shopping_cart</mat-icon></div></button>
-    <button id="menubtn" mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
-     <mat-icon>menu</mat-icon>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <button
+      mat-button
+      data-toggle="logoutModal"
+      routerLink="/cart"
+      routerLinkActive="active"
+      data-target="#exampleModal"
+      *ngIf="logged"
+    >
+      <mat-icon matBadge="{{ productLength }}" matBadgePosition="after"
+        >shopping_cart</mat-icon
+      >
     </button>
+    <button
+      mat-button
+      routerLink="/profile"
+      routerLinkActive="active"
+      *ngIf="logged"
+    >
+      <mat-icon>person</mat-icon>
+    </button>
+    <button mat-button (click)="showLogin()" *ngIf="!logged">
+      Login/Signup
+    </button>
+  </div>
 
-  </mat-toolbar>
-  <mat-menu x-position="before" #menu="matMenu">
-    <button mat-menu-item routerLink="">Home</button>
-    <button mat-menu-item routerLink="/shop">Shop</button>
-    <button mat-menu-item (click)="showLogin()" *ngIf="!logged">Login / Signup</button>
-    <button mat-menu-item  *ngIf="logged" routerLink="/profile">Orders</button>
-    <button mat-menu-item  *ngIf="logged" (click)="showVeifyModal()">Update Profile</button>
-    <button mat-menu-item  (click)="showVeifyModalPass()" *ngIf="logged">Update Password</button>
-    <button mat-menu-item (click)="logout()" *ngIf="logged">Logout</button>
-  </mat-menu>
+  <button
+    mat-button
+    *ngIf="logged"
+    routerLink="/cart"
+    fxHide="false"
+    fxHide.gt-sm
+  >
+    <div id="loginbtn">
+      <mat-icon matBadge="{{ productLength }}" matBadgePosition="after"
+        >shopping_cart</mat-icon
+      >
+    </div>
+  </button>
+  <button
+    id="menubtn"
+    mat-button
+    [mat-menu-trigger-for]="menu"
+    fxHide="false"
+    fxHide.gt-sm
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
+  <button mat-menu-item routerLink="">Home</button>
+  <button mat-menu-item routerLink="/shop">Shop</button>
+  <button mat-menu-item (click)="showLogin()" *ngIf="!logged">
+    Login / Signup
+  </button>
+  <button mat-menu-item *ngIf="logged" routerLink="/profile">Orders</button>
+  <button mat-menu-item *ngIf="logged" (click)="showVeifyModal()">
+    Update Profile
+  </button>
+  <button mat-menu-item (click)="showVeifyModalPass()" *ngIf="logged">
+    Update Password
+  </button>
+  <button mat-menu-item (click)="logout()" *ngIf="logged">Logout</button>
+</mat-menu>
 
-
-
-
-  <!-- Login  -->
-
-
+<!-- Login  -->
 
 <div>
-  
-<div
+  <div
     [style.display]="showModal ? 'block' : 'none'"
     class="modal"
     id="imagemodal"
@@ -64,124 +106,163 @@
           </button>
         </div>
         <div class="login-container">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-              <input [class.is-invalid]="email.invalid
-              && email.touched "formControlName="email" type="email" class="form-control" placeholder="Email" (ngModelChange)="onChange()">
-              <div *ngIf="email.invalid && email.touched">
-                <small *ngIf="email.errors?.required" class="text-danger">Email is required</small>
-                <small *ngIf="email.errors?.email" class="text-danger">Enter valid email id</small>
-              </div>
-        </div>
-
-          <div class="form-group">
-            <input [class.is-invalid]="password.invalid
-            && password.touched "formControlName="password" type="password" class="form-control" placeholder="Password" (ngModelChange)="onChange()">
-            <div *ngIf="password.invalid && password.touched">
-                <small *ngIf="password.errors?.required" class="text-danger">Password is required</small>
-            </div>
-        </div>
-        <div>
-            <a routerLink='/reset'>Forgot password?</a>
-        </div>
-        <br>
-          <div class="field">
-              <button [disabled]="!loginForm.valid" class="button is-success" style="background-color: rgb(248, 53, 63);">
-                Login
-              </button>
-          </div>
-          <div class="fail-msg">
-            <h6 *ngIf="failed" class="text-danger">Invalid User Credentials!</h6>
-            <h6 *ngIf="wrongPass" class="text-danger">Incorrect Password</h6>
-        </div>
-    </form>
-    <br>
-    <small>Don't have an account ??</small>
-    <br>
-    <button class="btn btn-primary" routerLink="/register" style="background-color:rgb(248, 161, 0);">Create account</button>
-</div>
-<div class="modal-footer">
-  </div>
-
-      </div>
-    </div>
-
-</div>
-
-
-
-
-    <div [style.display]="verifyModal ? 'block' : 'none'" class="modal">
-      <div class="modal-background"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Verify Password</p>
-          <button class="delete" (click)="closeVeifyModal()" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body">
-          <form [formGroup]="verifyForm" (ngSubmit)="verifyPassword()">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-              <label>Password</label>
-              <input [class.is-invalid]="passowrd.touched && passowrd.invalid" formControlName="password" type="password" class="form-control">
-              <div *ngIf="passowrd.invalid && passowrd.touched">
-                <small class="text-danger" *ngIf="passowrd.errors?.required">Password is required</small>
-              </div>
-            </div>
-            <button [disabled]="!verifyForm.valid"  class="btn btn-warning">Verify</button>
-          </form>
-          <div *ngIf="passwordError">
-            <h5 class="text-danger">Wrong password!</h5>
-          </div>
-        </section>
-        <footer class="modal-card-foot">
-          <button class="btn btn-secondary" (click)="closeVeifyModal()">Cancel</button>
-        </footer>
-      </div>
-    </div>
-
-
-    <div [style.display]="verifyModalPass ? 'block' : 'none'" class="modal">
-      <div class="modal-background"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Verify Password</p>
-          <button
-            class="delete"
-            (click)="closeVeifyModalPass()"
-            aria-label="close"
-          ></button>
-        </header>
-        <section class="modal-card-body">
-          <form [formGroup]="verifyForm" (ngSubmit)="verifyPasswordUpdate()">
-            <div class="form-group">
-              <label>Password</label>
               <input
-                [class.is-invalid]="passowrd.touched && passowrd.invalid"
+                [class.is-invalid]="email.invalid && email.touched"
+                formControlName="email"
+                type="email"
+                class="form-control"
+                placeholder="Email"
+                (ngModelChange)="onChange()"
+              />
+              <div *ngIf="email.invalid && email.touched">
+                <small *ngIf="email.errors?.required" class="text-danger"
+                  >Email is required</small
+                >
+                <small *ngIf="email.errors?.email" class="text-danger"
+                  >Enter valid email id</small
+                >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input
+                [class.is-invalid]="password.invalid && password.touched"
                 formControlName="password"
                 type="password"
                 class="form-control"
+                placeholder="Password"
+                (ngModelChange)="onChange()"
               />
-              <div *ngIf="passowrd.invalid && passowrd.touched">
-                <small class="text-danger" *ngIf="passowrd.errors?.required"
+              <div *ngIf="password.invalid && password.touched">
+                <small *ngIf="password.errors?.required" class="text-danger"
                   >Password is required</small
                 >
               </div>
             </div>
-            <button [disabled]="!verifyForm.valid" class="btn btn-warning">
-              Verify
-            </button>
-          </form>
-          <br>
-          <div *ngIf="passwordError">
-            <div class="alert alert-danger" role="alert">
-              <strong>Invalid Password</strong> Try again.
+            <div>
+              <a routerLink="/reset">Forgot password?</a>
             </div>
-          </div>
-        </section>
-        <footer class="modal-card-foot">
-          <button class="btn btn-secondary" (click)="closeVeifyModalPass()">
-            Cancel
+            <br />
+            <div class="field">
+              <button
+                [disabled]="!loginForm.valid || checklogin"
+                class="button is-success"
+                style="background-color: rgb(248, 53, 63)"
+              >
+                Login
+              </button>
+            </div>
+            <div class="fail-msg">
+              <h6 *ngIf="failed" class="text-danger">
+                Invalid User Credentials!
+              </h6>
+              <h6 *ngIf="wrongPass" class="text-danger">Incorrect Password</h6>
+            </div>
+          </form>
+          <br />
+          <small>Don't have an account ??</small>
+          <br />
+          <button
+            class="btn btn-primary"
+            routerLink="/register"
+            style="background-color: rgb(248, 161, 0)"
+          >
+            Create account
           </button>
-        </footer>
+        </div>
+        <div class="modal-footer"></div>
       </div>
     </div>
+  </div>
+
+  <div [style.display]="verifyModal ? 'block' : 'none'" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Verify Password</p>
+        <button
+          class="delete"
+          (click)="closeVeifyModal()"
+          aria-label="close"
+        ></button>
+      </header>
+      <section class="modal-card-body">
+        <form [formGroup]="verifyForm" (ngSubmit)="verifyPassword()">
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              [class.is-invalid]="passowrd.touched && passowrd.invalid"
+              formControlName="password"
+              type="password"
+              class="form-control"
+            />
+            <div *ngIf="passowrd.invalid && passowrd.touched">
+              <small class="text-danger" *ngIf="passowrd.errors?.required"
+                >Password is required</small
+              >
+            </div>
+          </div>
+          <button [disabled]="!verifyForm.valid" class="btn btn-warning">
+            Verify
+          </button>
+        </form>
+        <div *ngIf="passwordError">
+          <h5 class="text-danger">Wrong password!</h5>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="btn btn-secondary" (click)="closeVeifyModal()">
+          Cancel
+        </button>
+      </footer>
+    </div>
+  </div>
+
+  <div [style.display]="verifyModalPass ? 'block' : 'none'" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Verify Password</p>
+        <button
+          class="delete"
+          (click)="closeVeifyModalPass()"
+          aria-label="close"
+        ></button>
+      </header>
+      <section class="modal-card-body">
+        <form [formGroup]="verifyForm" (ngSubmit)="verifyPasswordUpdate()">
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              [class.is-invalid]="passowrd.touched && passowrd.invalid"
+              formControlName="password"
+              type="password"
+              class="form-control"
+            />
+            <div *ngIf="passowrd.invalid && passowrd.touched">
+              <small class="text-danger" *ngIf="passowrd.errors?.required"
+                >Password is required</small
+              >
+            </div>
+          </div>
+          <button [disabled]="!verifyForm.valid" class="btn btn-warning">
+            Verify
+          </button>
+        </form>
+        <br />
+        <div *ngIf="passwordError">
+          <div class="alert alert-danger" role="alert">
+            <strong>Invalid Password</strong> Try again.
+          </div>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="btn btn-secondary" (click)="closeVeifyModalPass()">
+          Cancel
+        </button>
+      </footer>
+    </div>
+  </div>
+</div>
