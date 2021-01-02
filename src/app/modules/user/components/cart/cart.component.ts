@@ -133,6 +133,7 @@ export class CartComponent {
       });
   }
   getNumberOfProductInStock() {
+    this.submitButton=!this.submitButton
     let count = 0;
     this.placeOrder = true;
     if (this.cart) {

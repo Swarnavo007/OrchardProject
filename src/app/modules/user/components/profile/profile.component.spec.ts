@@ -61,12 +61,12 @@ describe('ProfileComponent', () => {
     //   expect(component.submitButton).toBe(true, 'clicked!');
     // });
 
-    it ('check the working of the shopNow button', ()=>
-    {
-      expect(component.submitButton).toBe(false, 'not clicked');
-      component.shopNow();
-      expect(component.submitButton).toBe(true, 'clicked!');
-    });
+    // it ('check the working of the shopNow button', ()=>
+    // {
+    //   expect(component.submitButton).toBe(false, 'not clicked');
+    //   component.shopNow();
+    //   expect(component.submitButton).toBe(true, 'clicked!');
+    // });
 
     it ('check the working of the showDelete button', ()=>
     {
