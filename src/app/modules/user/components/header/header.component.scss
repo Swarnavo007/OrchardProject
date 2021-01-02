@@ -4,6 +4,11 @@
   flex: 1 1 auto;
 }
 
+.logo-btn{
+   border: none;
+   outline: none;
+}
+
 mat-toolbar{
        display: flex;
        justify-content: space-between;
