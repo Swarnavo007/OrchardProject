@@ -72,7 +72,7 @@ describe('AddProductComponent', () => {
     })    
 
   })
-
+ 
 
   describe("checking for HTML elements", ()=>{
 
@@ -115,12 +115,15 @@ describe('AddProductComponent', () => {
       const selects = fixture.nativeElement.querySelectorAll("select");
       expect(selects.length).toBe(1);
     })
-
+     
+  
     it("checking for number of buttons",()=>{
       const btns = fixture.nativeElement.querySelectorAll("button");
       expect(btns.length).toBe(1);
       expect(btns[0].textContent).toBe(" Create ");
     })
+
+   
     
   })
 

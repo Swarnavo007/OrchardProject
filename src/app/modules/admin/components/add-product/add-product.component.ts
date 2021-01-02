@@ -131,8 +131,9 @@ export class AddProductComponent implements OnInit {
       this.validfile=false;
     }
   }
-
+  
   checkadded;
+ 
   create() {
     this.checkadded = true;
     const formData = new FormData();
@@ -168,7 +169,7 @@ export class AddProductComponent implements OnInit {
   }
 
   public idAlredyExist: boolean = false;
-
+  submitButton=false;
   idCheck() {
     this._addProductService
       .idCheckUnique(this.createForm.value.productId.toUpperCase())

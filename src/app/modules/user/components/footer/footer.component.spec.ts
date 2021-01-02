@@ -31,4 +31,42 @@ describe('FooterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('button clicks',()=>{
+    it ('check the working of the submitButton button', ()=>
+    {
+      expect(component.submitButton).toBe(false, 'not clicked');
+      component.subscribe();
+      expect(component.submitButton).toBe(true, 'clicked!');
+    });
+
+    it ('check the working of the idcheck button', ()=>
+    {
+      expect(component.submitButton).toBe(false, 'not clicked');
+      component.idCheck();
+      expect(component.submitButton).toBe(true, 'clicked!');
+    });
+
+    it ('check the working of the showView button', ()=>
+    {
+      expect(component.submitButton).toBe(false, 'not clicked');
+      component.showView();
+      expect(component.submitButton).toBe(true, 'clicked!');
+    });
+
+    it ('check the working of the closeModal button', ()=>
+    {
+      expect(component.submitButton).toBe(false, 'not clicked');
+      component.closeModal();
+      expect(component.submitButton).toBe(true, 'clicked!');
+    });
+
+    it ('check the working of the showViewSubs button', ()=>
+    {
+      expect(component.submitButton).toBe(false, 'not clicked');
+      component.showViewSubs();
+      expect(component.submitButton).toBe(true, 'clicked!');
+    });
+     
+  })
 });

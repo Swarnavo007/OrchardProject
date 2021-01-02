@@ -31,4 +31,14 @@ describe('SignupComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('button clicks',()=>{
+  it ('check the working of the submitButton button', ()=>
+  {
+    expect(component.submitButton).toBe(false, 'not clicked');
+    component.onSubmit();
+    expect(component.submitButton).toBe(true, 'clicked');
+  });
+
+  })
 });

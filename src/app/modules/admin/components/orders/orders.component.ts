@@ -91,12 +91,14 @@ export class OrdersComponent implements OnInit {
 
 
   showViewModal: boolean;
-
+  submitButton=false;
   showView() {
+    this.submitButton=!this.submitButton;
     this.showViewModal = true;
   }
 
   closeModal() {
+    this.submitButton=!this.submitButton;
     this.showViewModal = false;
   }
 
@@ -104,9 +106,11 @@ export class OrdersComponent implements OnInit {
   showPlaceOrder:boolean;
 
   shoPlace(){
+    this.submitButton=!this.submitButton;
     this.showPlaceOrder = true;
   }
   closeplaceOrder(){
+    this.submitButton=!this.submitButton;
     this.showPlaceOrder = false;
   }
 

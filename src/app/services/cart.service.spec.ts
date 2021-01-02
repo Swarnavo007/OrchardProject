@@ -24,6 +24,79 @@ describe('CartService', () => {
     })
   })
 
+  describe('test the services',()=>{
+    it('should call updateCartDetail method',()=>{
+      const data=
+      {
+        userId:"navaneetha@gmail",
+        products: [
+          {
+            productId: "BN101",
+            productName:"chocolate",
+            productQty: 1
+          },
+        ]
+    }
+    service.updateCartDetail(data).subscribe();
+    let req=httpMock.expectOne({method:"POST",url:service.updateCartUrl});
+    expect(req.request.body).toEqual(data);
+    });
+
+    it('should call the deleteProduct',()=>{
+      const data=
+      {
+        userId:"navaneetha@gmail",
+        products: [
+          {
+            productId: "BN101",
+            productName:"chocolate",
+            productQty: 1
+          },
+        ]
+      }
+    service.deleteProduct(data).subscribe();
+    let req=httpMock.expectOne({method:"POST",url:service.deleteProductUrl});
+    expect(req.request.body).toEqual(data);
+    })
+
+    it('should call the placeOrder method',()=>{
+      const data=
+      {
+        userId:"navaneetha@gmail",
+        products: [
+          {
+            productId: "BN101",
+            productName:"chocolate",
+            productQty: 1
+          },
+        ]
+      }
+      service.placeOrder(data).subscribe();
+      let req=httpMock.expectOne({method:"POST",url:service.placeOrderUrl});
+      expect(req.request.body).toEqual(data)
+    })
+
+    // it('should call the deleteUserCart',()=>{
+    //   const data=
+    //   {
+    //     userId:"navaneetha@gmail",
+    //     products: [
+    //       {
+    //         productId: "BN101",
+    //         productName:"chocolate",
+    //         productQty: 1
+    //       },
+    //     ]
+    //   }
+   
+    //   service.getImageDetail(data).subscribe();
+    //   let req=httpMock.expectOne({method:"GET",url:`${service.getImageUrl}/${data.products}`});
+    //   expect(req.request.body).toEqual(data);
+    // })
+
+
+  })
+
   it('should be created', () => {
     expect(service).toBeTruthy();
   });

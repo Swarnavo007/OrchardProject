@@ -133,6 +133,7 @@ export class CartComponent {
       });
   }
   getNumberOfProductInStock() {
+    this.submitButton=!this.submitButton
     let count = 0;
     this.placeOrder = true;
     if (this.cart) {
@@ -223,13 +224,18 @@ export class CartComponent {
     this.route.navigate(['/checkout']);
   }
 
+  submitButton=false;
+
   showModel() {
+    this.submitButton=!this.submitButton
     this.modelDisplay = true;
   }
   closeModel() {
+    this.submitButton=!this.submitButton
     this.modelDisplay = false;
   }
   hideloader() {
+    this.submitButton=!this.submitButton
     document.getElementById('loading').style.display = 'none';
   }
 }

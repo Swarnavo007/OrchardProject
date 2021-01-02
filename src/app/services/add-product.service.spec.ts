@@ -23,11 +23,27 @@ describe('AddProductService', () => {
         let data={
             productId:"CN101",
             productName:"chocolate", 
-
+            productType:"classic",
+            productPrice:40,
+            productDescription:"Made with dark chocolate",
+            productStarttDate:"2020-12-31T00:00:00.000+00:00",
+            productEndDate:"2020-12-31T00:00:00.000+00:00",
+            productImage:"http://sumit-icylicious-sep-20.herokuapp.com/1609304175917.jpg"
         }
         service.create(data).subscribe();
+        let req=httpMock.expectOne({method:"POST",url:service._url});
+        expect(req.request.body).toEqual(data);
 
       })
+
+      // it('should called the idCheck method',()=>{
+      //   let data={
+      //     productId:"CN101",
+      //   }
+      //   service.idCheckUnique(data).subscribe();
+      //   let req=httpMock.expectOne({method:"GET",url:`https://sumit-icylicious-sep-20.herokuapp.com/id?id=CN01`})
+      //   expect(req.request.body).toEqual(data);
+      // })
    })
   
 

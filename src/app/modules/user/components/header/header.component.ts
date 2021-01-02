@@ -57,7 +57,9 @@ export class HeaderComponent implements OnInit {
   public failed:boolean = false;
   public wrongPass:boolean = false;
 
+  submittButton=false;
   onChange(){
+    this.submittButton=!this.submittButton;
     this.failed = false;
     this.wrongPass = false;
   }
@@ -65,6 +67,7 @@ export class HeaderComponent implements OnInit {
   logged:boolean = !!localStorage.getItem('userLogged');
 
   onSubmit(){
+    this.submittButton=!this.submittButton;
     console.log(this.loginForm.value)
     this.loginService.login(this.loginForm.value)
       .subscribe(
@@ -140,10 +143,12 @@ export class HeaderComponent implements OnInit {
 
   
   showLogin(){
+    this.submittButton=!this.submittButton;
     this.showModal = true;
   }
 
   hide(){
+    this.submittButton=!this.submittButton;
     this.showModal = false;
   }
 
@@ -161,14 +166,17 @@ export class HeaderComponent implements OnInit {
   showDeleteModal:boolean;
   
   showDelete(){
+    this.submittButton=!this.submittButton;
     this.showDeleteModal = true;
   }
 
   closeModal(){
+    this.submittButton=!this.submittButton;
     this.showDeleteModal = false;
   }
 
   logout(){
+    this.submittButton=!this.submittButton;
     localStorage.removeItem('userLogged')
     localStorage.removeItem('userToken')
     localStorage.removeItem('email')
@@ -185,10 +193,12 @@ export class HeaderComponent implements OnInit {
   verifyModal:boolean;
 
   showVeifyModal(){
+    this.submittButton=!this.submittButton;
     this.verifyModal = true;
   }
 
   closeVeifyModal(){
+    this.submittButton=!this.submittButton;
     this.verifyModal = false;
   }
 
@@ -223,10 +233,12 @@ export class HeaderComponent implements OnInit {
   verifyModalPass:boolean
 
   showVeifyModalPass(){
+    this.submittButton=!this.submittButton;
     this.verifyModalPass = true;
   }
 
   closeVeifyModalPass(){
+    this.submittButton=!this.submittButton;
     this.verifyModalPass = false;
   }
 

@@ -37,7 +37,9 @@ export class LoginComponent implements OnInit {
   public failed: boolean = false;
   public wrongPass: boolean = false;
 
+
   login() {
+   
     // console.log(this.loginForm.value);
     this._loginService.adminLogin(this.loginForm.value).subscribe((response) => {
       if (response.msg === 'invalid') {
@@ -56,7 +58,9 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+  submitButton=false;
   onChange() {
+    this.submitButton=!this.submitButton;
     this.failed = false;
     this.wrongPass = false;
   }

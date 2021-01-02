@@ -227,7 +227,9 @@ export class ViewProductComponent implements OnInit {
     });
   }
 
+  submitButton=false;
   update() {
+    this.submitButton=!this.submitButton;
     const formData = new FormData();
     console.log(this.updateForm);
     formData.append('productId', this.updateForm.get('productId').value);
@@ -257,16 +259,19 @@ export class ViewProductComponent implements OnInit {
     });
   }
   hide() {
+    this.submitButton=!this.submitButton;
     this.showModal = false;
   }
 
   showDeleteModal: boolean;
 
   showDelete() {
+    this.submitButton=!this.submitButton;
     this.showDeleteModal = true;
   }
 
   closeModal() {
+    this.submitButton=!this.submitButton;
     this.showDeleteModal = false;
   }
 

@@ -34,6 +34,11 @@
   width: 85%;
 }
 
+.required:after {
+  content:" *";
+  color: red;
+}
+
 @media all and(max-width:600px) {
   .form-back {
     width: 95%;

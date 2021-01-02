@@ -28,6 +28,13 @@ describe('EmailSubscribersComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it ('check the working of the button', ()=>
+  {
+    expect(component.submitButton).toBe(false, 'not yet clicked');
+    component.exportexcel();
+    expect(component.submitButton).toBe(true, 'clicked!');
+  })
   describe('Simple Html', () => {
     it('Should have exports in h2 tag', () => {
       const nativeH2 = fixture.nativeElement.querySelectorAll('h2');
