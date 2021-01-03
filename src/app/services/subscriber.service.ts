@@ -18,7 +18,7 @@ export class SubscriberService {
   }
 
   idCheckUnique(id){
-    console.log(id);
+    // console.log(id);
     return this._http.get(`https://sumit-icylicious-sep-20.herokuapp.com/email/id?id=${id}`)
     // return this._http.get(`http://localhost:3001/email/id?id=${id}`)
   }

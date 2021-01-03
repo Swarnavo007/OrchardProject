@@ -64,7 +64,7 @@ export class SignupComponent implements OnInit {
   submitButton=false;
   onSubmit(){
     this.submitButton=!this.submitButton;
-    console.log(this.registrationForm);
+    // console.log(this.registrationForm);
     this.registrationForm.addControl('email', this.fb.control('', Validators.required));   
     this.registrationForm.patchValue({['email']:this.route.snapshot.paramMap.get('email')})
     this._registrationService.register(this.registrationForm.value)

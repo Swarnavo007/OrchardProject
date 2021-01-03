@@ -38,10 +38,10 @@ export class ViewProductsComponent implements OnInit {
 
   ontype() {
     var type = (<HTMLInputElement>document.getElementById('type')).value;
-    console.log('option value' + type);
+    // console.log('option value' + type);
     this.newProducts = [];
     var today = new Date().toISOString().split('T')[0];
-    console.log('today date:' + today);
+    // console.log('today date:' + today);
     this.service.getProducts().subscribe((response) => {
       this.products = response;
       if (this.products.length < 1) {
@@ -98,8 +98,8 @@ export class ViewProductsComponent implements OnInit {
           !(this.products[i].productStartDate > today) &&
           this.products[i].productEndDate > today
         ) {
-          console.log('prodyucts ');
-          console.log(this.products[i]);
+          // console.log('prodyucts ');
+          // console.log(this.products[i]);
 
           this.newProducts.push(this.products[i]);
 
@@ -114,8 +114,8 @@ export class ViewProductsComponent implements OnInit {
       }
 
 
-      console.log(this.newProducts.length)
-      console.log('products are ' + this.newProducts);
+      // console.log(this.newProducts.length)
+      // console.log('products are ' + this.newProducts);
     });
   }
 
@@ -128,13 +128,13 @@ export class ViewProductsComponent implements OnInit {
     for (let product of this.newProducts) {
       if (product.productId == productId) {
         var email = this.decryptData(localStorage.getItem('email'));
-        console.log('email:' + email);
+        // console.log('email:' + email);
         if (email == null) {
           // alert("u need to login first");
           this.showViewModal = true;
         } else {
           product.userId = email;
-          console.log('product:' + product.userId);
+          // console.log('product:' + product.userId);
           this.service.createCart(product).subscribe(() => {
             console.log('success');
             let btn = document.getElementById(
@@ -166,7 +166,7 @@ export class ViewProductsComponent implements OnInit {
   }
   
   checkEmptyProducts(){
-    console.log("called");
+    // console.log("called");
     document.getElementById("checkProductEmpty").style.display="block"
   }
 }

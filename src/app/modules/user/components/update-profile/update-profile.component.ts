@@ -50,7 +50,7 @@ export class UpdateProfileComponent implements OnInit {
     this._registrationService.getUsers(this.route.snapshot.paramMap.get('email'))
     .subscribe((response)=>{
       this.users=response;
-      console.log(this.users);
+      // console.log(this.users);
       this.updateForm.patchValue({
         name: this.users.name,
         phone: this.users.phone,
@@ -71,7 +71,7 @@ export class UpdateProfileComponent implements OnInit {
   })
 
   onSubmit(){
-    console.log(this.updateForm);
+    // console.log(this.updateForm);
     this.updateForm.addControl('email', this.fb.control('', Validators.required));   
     this.updateForm.patchValue({['email']:this.route.snapshot.paramMap.get('email')})
 

@@ -33,7 +33,7 @@ export class ViewProductService {
   }
 
   deleteProduct(id){
-    console.log(id);
+    // console.log(id);
     return this.HttpClient.post<{msg:string}>('https://sumit-icylicious-sep-20.herokuapp.com/deleteproduct',id)
   }
 }

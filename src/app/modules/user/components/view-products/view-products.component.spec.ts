@@ -33,4 +33,8 @@ class ViewProductsServiceStub{
   getProducts(){
     return of([]);
   }
+
+  createCart(product){
+    return of([]);
+  }
 }

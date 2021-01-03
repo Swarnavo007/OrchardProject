@@ -119,11 +119,11 @@ export class AddProductComponent implements OnInit {
     // console.log(event);
     this.selectedfile = event.target.files[0];
     this.fileName = this.selectedfile.name;
-    console.log("file name: ",this.selectedfile.name);
+    // console.log("file name: ",this.selectedfile.name);
     let index= (this.selectedfile.name).lastIndexOf('.');
     let ext = (this.selectedfile.name).slice(index);
-    console.log(ext);
-    console.log(this.selectedfile);
+    // console.log(ext);
+    // console.log(this.selectedfile);
     if(ext=='.jpg' || ext=='.jpeg'||ext=='.png'){
       this.validfile=true;
     }
@@ -176,11 +176,11 @@ export class AddProductComponent implements OnInit {
       .subscribe((res) => {
         console.log(res);
         if (res != null) {
-          console.log('already exists');
+          // console.log('already exists');
           this.idAlredyExist = true;
           this.createForm.controls['productId'].setErrors({ incorrect: true });
         } else {
-          console.log('not exists');
+          // console.log('not exists');
           this.idAlredyExist = false;
         }
       });

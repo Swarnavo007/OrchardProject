@@ -43,7 +43,7 @@ export class ViewProductComponent implements OnInit {
  //product name validation
  productNameValidators=function(control:AbstractControl):ValidationErrors | null{
   let value:string=control.value || '';
-  console.log("value is "+value);
+  // console.log("value is "+value);
   if(!value)
   {
       return null;
@@ -144,7 +144,7 @@ export class ViewProductComponent implements OnInit {
           this.products[i]['expired'] = true;
         }
       }
-      console.log(this.products);
+      // console.log(this.products);
     });
     var today = new Date().toISOString().split('T')[0];
     document.getElementsByName('start')[0].setAttribute('min', today);
@@ -188,21 +188,21 @@ export class ViewProductComponent implements OnInit {
       });
     }
 
-    console.log(event);
+    // console.log(event);
     this.selectedfile = event.target.files[0];
     this.fileName = this.selectedfile.name;
-    console.log(this.selectedfile.name);
+    // console.log(this.selectedfile.name);
     let index= (this.selectedfile.name).lastIndexOf('.');
     let ext = (this.selectedfile.name).slice(index);
-    console.log(ext);
-    console.log(this.selectedfile);
+    // console.log(ext);
+    // console.log(this.selectedfile);
     if(ext=='.jpg' || ext=='.jpeg'||ext=='.png'){
       this.validfile=true;
     }
     else{
       this.validfile=false;
     }
-    console.log(this.selectedfile);
+    // console.log(this.selectedfile);
   }
 
   showModal: boolean;
@@ -213,9 +213,9 @@ export class ViewProductComponent implements OnInit {
 
   show(product) {
     this.updateForm.controls['productId'].disable();
-    console.log(product);
+    // console.log(product);
     this.showModal = true;
-    console.log(product.productId);
+    // console.log(product.productId);
     this.updateForm.patchValue({
       productId: product.productId,
       productName: product.productName,
@@ -231,7 +231,7 @@ export class ViewProductComponent implements OnInit {
   update() {
     this.submitButton=!this.submitButton;
     const formData = new FormData();
-    console.log(this.updateForm);
+    // console.log(this.updateForm);
     formData.append('productId', this.updateForm.get('productId').value);
     formData.append('productName', this.updateForm.get('productName').value);
     formData.append('type', this.updateForm.get('type').value);
@@ -242,7 +242,7 @@ export class ViewProductComponent implements OnInit {
     if (this.selectedfile != null) {
       formData.append('image', this.selectedfile, this.selectedfile.name);
     }
-    console.log(formData);
+    // console.log(formData);
     this.service.updateProducts(formData).subscribe((res) => {
       console.log(res);
       if (res.msg === 'Invalid Token') {
@@ -278,7 +278,7 @@ export class ViewProductComponent implements OnInit {
   public tempForDelete;
   delete() {
     let productId = { productId: this.tempForDelete.productId };
-    console.log(productId);
+    // console.log(productId);
 
     this.service.deleteProduct(productId).subscribe((res) => {
       console.log(res);

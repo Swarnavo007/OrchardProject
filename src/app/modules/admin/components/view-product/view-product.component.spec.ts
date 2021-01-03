@@ -27,6 +27,9 @@ describe('ViewProductComponent', () => {
     fixture = TestBed.createComponent(ViewProductComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    spyOn(localStorage, "getItem");
+    spyOn(localStorage, "setItem");
+    spyOn(localStorage,"clear");
   });
 
   it('should create', () => {
@@ -106,6 +109,12 @@ describe('ViewProductComponent', () => {
       expect(nativeButton.textContent).toBe(' Cancel ');
     });
   });
+
+  // describe('Local storage relation',()=>{
+  //   it('should have local',()=>{
+  //     expect(localStorage.clear).toHaveBeenCalled();
+  //   })
+  // })
 
   // it('should have a Cancel button on the confirm box of Delete option', ()=>{
 

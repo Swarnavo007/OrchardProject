@@ -46,7 +46,7 @@ export class ResetComponent implements OnInit {
 
   onSubmit(){
     this.submitButton=!this.submitButton
-    console.log(this.resetForm.value)
+    // console.log(this.resetForm.value)
     this.registrationService.reset(this.resetForm.value)
       .subscribe(
         response => {

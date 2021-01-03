@@ -25,7 +25,7 @@ export class EmailSubscribersComponent implements OnInit {
         this.route.navigate(['admin'])
       }
       this.subscibers = response;
-      console.log(this.subscibers)
+      // console.log(this.subscibers)
     });
   }
 

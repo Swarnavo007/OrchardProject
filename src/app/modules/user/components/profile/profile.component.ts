@@ -67,14 +67,14 @@ export class ProfileComponent implements OnInit {
       for(var i=0;i<this.orders.length;i++){
         if(this.orders[i].userId==this.email){
             this.orderByemail.push(this.orders[i]);
-            console.log(this.orderByemail);
+            // console.log(this.orderByemail);
             this.flag=1;
         }
       }
-      console.log("flag"+this.flag)
+      // console.log("flag"+this.flag)
       if(this.flag==0){
         this.showViewModel=true;
-        console.log("no orders are found");
+        // console.log("no orders are found");
 
 
       }
@@ -172,7 +172,7 @@ export class ProfileComponent implements OnInit {
     this.submitButton=!this.submitButton;
     this.verifyForm.addControl('email', this.fb.control('', Validators.required));   
     this.verifyForm.patchValue({['email']:this.decryptData(localStorage.getItem('email'))})
-    console.log(this.verifyForm.value)
+    // console.log(this.verifyForm.value)
     this._registrationService.verifyPassword(this.verifyForm.value)
     .subscribe((response)=>{
       console.log(response)

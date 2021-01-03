@@ -29,7 +29,7 @@ export class OrdersComponent implements OnInit {
         this.router.navigate(['admin'])
       }
       this.orders = response;
-      console.log(this.orders);
+      // console.log(this.orders);
       for(let ord of this.orders){
         if(ord.status=="ordered"){
           this.activeOrders.push(ord);
@@ -47,16 +47,16 @@ export class OrdersComponent implements OnInit {
     return newDate
   }
   getOrderId(orderId:any){
-    console.log(this.orders)
+    // console.log(this.orders)
     this.orderId=orderId;
-    console.log(orderId)
+    // console.log(orderId)
     for(let i of this.orders){
       if(i._id==orderId){
         this.order = i;
         //console.log(this.order);
       }
     }
-    console.log(this.order);
+    // console.log(this.order);
   }
 
   setOrderId(id:any){
@@ -64,8 +64,8 @@ export class OrdersComponent implements OnInit {
   }
 
   setStatus(status:any){
-    console.log(status);
-    console.log(this.orderId);
+    // console.log(status);
+    // console.log(this.orderId);
     this.service.setStatus(this.orderId,status)
     .subscribe(
         (val) => {
@@ -73,8 +73,8 @@ export class OrdersComponent implements OnInit {
             localStorage.clear();
             this.router.navigate(['admin'])
           }
-            console.log("PATCH call successful value returned in body", val);
-            console.log("statusbtn"+this.orderId)
+            // console.log("PATCH call successful value returned in body", val);
+            // console.log("statusbtn"+this.orderId)
             let btn = document.getElementById("statusbtn"+this.orderId) as HTMLElement
             btn.innerHTML="Delivered";
             btn.style.backgroundColor = "green";

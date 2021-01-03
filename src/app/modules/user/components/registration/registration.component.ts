@@ -39,7 +39,7 @@ export class RegistrationComponent implements OnInit {
           console.log(res)
           if (res != null) {
             this.emailAlredyExist = true;
-            console.log("email already exist");
+            // console.log("email already exist");
           }
           else{
             this.emailAlredyExist = false;

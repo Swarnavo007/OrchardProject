@@ -75,7 +75,7 @@ export class HeaderComponent implements OnInit {
   onSubmit() {
     this.checklogin = true;
     this.submittButton = !this.submittButton;
-    console.log(this.loginForm.value);
+    // console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value).subscribe(
       (response) => {
         console.log(response);

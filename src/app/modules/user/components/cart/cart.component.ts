@@ -56,7 +56,7 @@ export class CartComponent {
     this.service.deleteUserCart(userId).subscribe((response) => {
       if (response) {
         console.log(response);
-        console.log('cart is deleted');
+        // console.log('cart is deleted');
         this.cart = null;
       }
     });
@@ -65,7 +65,7 @@ export class CartComponent {
   placeOrderSubscribe(orderDetail) {
     this.service.placeOrder(orderDetail).subscribe((response) => {
       if (response) {
-        console.log('placed');
+        // console.log('placed');
         console.log(response);
         this.deleteUserCartSubscribe(
           this.decryptData(localStorage.getItem('email'))
@@ -77,7 +77,7 @@ export class CartComponent {
   getImageLink(productId, i) {
     this.service.getImageDetail(productId).subscribe((response) => {
       let product: any;
-      console.log(response);
+      // console.log(response);
       if (response != null && this.checkProductExpiry(response[0])) {
         product = response[0];
         this.cart.products[i].productImage = response[0].productImage;
@@ -163,7 +163,7 @@ export class CartComponent {
           );
           let productItem = this.cart.products[itemIndex];
           productItem.productQty = newCart.productQty;
-          console.log(this.cart);
+          // console.log(this.cart);
           this.calculateTotalPrice();
         } else {
           alert('something went wrong please try again');
@@ -218,7 +218,7 @@ export class CartComponent {
       totalPrice: this.cart.totalPrice,
     };
     this.placeOrderSubscribe(orderDetail);
-    console.log(orderDetail);
+    // console.log(orderDetail);
     this.modelDisplay = false;
     this.toaster.success('Order placed!');
     this.route.navigate(['/checkout']);

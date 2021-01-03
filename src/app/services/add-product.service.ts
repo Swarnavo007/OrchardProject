@@ -29,7 +29,7 @@ export class AddProductService {
   }
 
   idCheckUnique(id){
-    console.log(id);
+    // console.log(id);
     return this._http.get(`https://sumit-icylicious-sep-20.herokuapp.com/id?id=${id}`)
   }
 
