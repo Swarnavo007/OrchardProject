@@ -4,8 +4,13 @@ import { AddProductService } from 'src/app/services/add-product.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
-import { PasswordStrengthValidator,productCodeValidators,productNameValidators,descriptionValidators} from '../../../../services/password-strength.validator';
-import {Title} from "@angular/platform-browser";
+import {
+  PasswordStrengthValidator,
+  productCodeValidators,
+  productNameValidators,
+  descriptionValidators,
+} from '../../../../services/password-strength.validator';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-add-product',
@@ -38,16 +43,15 @@ export class AddProductComponent implements OnInit {
   get endDate() {
     return this.createForm.get('endDate');
   }
- 
 
   constructor(
     private fb: FormBuilder,
     private _addProductService: AddProductService,
     private toaster: ToastrService,
     private route: Router,
-    private titleService:Title
+    private titleService: Title
   ) {
-    this.titleService.setTitle("Icy-Licious | Admin | Add Product");
+    this.titleService.setTitle('Icy-Licious | Admin | Add Product');
   }
 
   createForm = this.fb.group(
@@ -66,7 +70,10 @@ export class AddProductComponent implements OnInit {
       fileName: '',
     },
     {
-      validator: [this.dateLessThan('startDate', 'endDate'),this.dateCompare('startDate')],
+      validator: [
+        this.dateLessThan('startDate', 'endDate'),
+        this.dateCompare('startDate'),
+      ],
     }
   );
 
@@ -83,10 +90,10 @@ export class AddProductComponent implements OnInit {
     };
   }
 
-  dateCompare(from:string){
+  dateCompare(from: string) {
     return (group: FormGroup): { [key: string]: any } => {
-      let f= group.controls[from];
-      let t= new Date().toISOString().split('T')[0];
+      let f = group.controls[from];
+      let t = new Date().toISOString().split('T')[0];
       if (f.value < t) {
         return {
           date1: 'Start date should be greater than today date',
@@ -107,7 +114,7 @@ export class AddProductComponent implements OnInit {
 
   public selectedfile = null;
   public fileName = '';
-  public validfile:boolean = false;
+  public validfile: boolean = false;
   onFileSelected(event) {
     // if(event.target.files.length > 0)
     //  {
@@ -120,20 +127,19 @@ export class AddProductComponent implements OnInit {
     this.selectedfile = event.target.files[0];
     this.fileName = this.selectedfile.name;
     // console.log("file name: ",this.selectedfile.name);
-    let index= (this.selectedfile.name).lastIndexOf('.');
-    let ext = (this.selectedfile.name).slice(index);
+    let index = this.selectedfile.name.lastIndexOf('.');
+    let ext = this.selectedfile.name.slice(index);
     // console.log(ext);
     // console.log(this.selectedfile);
-    if(ext=='.jpg' || ext=='.jpeg'||ext=='.png'){
-      this.validfile=true;
-    }
-    else{
-      this.validfile=false;
+    if (ext == '.jpg' || ext == '.jpeg' || ext == '.png') {
+      this.validfile = true;
+    } else {
+      this.validfile = false;
     }
   }
-  
+
   checkadded;
- 
+
   create() {
     this.checkadded = true;
     const formData = new FormData();
@@ -149,14 +155,14 @@ export class AddProductComponent implements OnInit {
     formData.append('endDate', this.createForm.get('endDate').value);
     formData.append('image', this.selectedfile, this.selectedfile.name);
 
-    console.log(this.createForm.value);
+    // console.log(this.createForm.value);
     this._addProductService.create(formData).subscribe(
       (response) => {
         if (response.msg === 'Invalid Token') {
           localStorage.clear();
           this.route.navigate(['admin']);
         }
-        console.log('success', response);
+        // console.log('success', response);
         this.toaster.success('Product added!');
         setTimeout(() => {
           this.fileName = '';
@@ -169,12 +175,12 @@ export class AddProductComponent implements OnInit {
   }
 
   public idAlredyExist: boolean = false;
-  submitButton=false;
+  submitButton = false;
   idCheck() {
     this._addProductService
       .idCheckUnique(this.createForm.value.productId.toUpperCase())
       .subscribe((res) => {
-        console.log(res);
+        // console.log(res);
         if (res != null) {
           // console.log('already exists');
           this.idAlredyExist = true;
