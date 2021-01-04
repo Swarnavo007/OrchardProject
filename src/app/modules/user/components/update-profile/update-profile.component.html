@@ -51,6 +51,9 @@
         <div *ngIf="answer.invalid && answer.touched">
           <small *ngIf="answer.errors?.required" class="text-danger">answer is required</small>
           <small *ngIf="answer.errors?.min" class="text-danger">answer should be min 3 character length</small>
+          <small class="text-danger" *ngIf="answer.hasError('answervalidation')">
+            {{answer.errors['answervalidation']}}
+           </small>
         </div>
       </div>
       <button [disabled]="!updateForm.valid" class="btn btn-success" type="submit" style="background-color: rgb(243, 38, 123);">Update</button>

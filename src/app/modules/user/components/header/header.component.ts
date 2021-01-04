@@ -61,7 +61,7 @@ export class HeaderComponent implements OnInit {
 
   public failed: boolean = false;
   public wrongPass: boolean = false;
-
+  public checklogin:boolean=true;
   submittButton = false;
   onChange() {
     this.submittButton = !this.submittButton;
@@ -83,6 +83,7 @@ export class HeaderComponent implements OnInit {
             password: '',
           });
           this.wrongPass = true;
+          this.checklogin = false;
         } else if (response.msg === 'success') {
           this.logged = true;
           localStorage.setItem('userLogged', 'true');
@@ -93,14 +94,17 @@ export class HeaderComponent implements OnInit {
             this.encryptData(response.email.toString())
           );
           this.loginForm.reset();
+          // this.checklogin = false;
 
           this.route.navigate(['/']);
           this.toaster.success('Logged In!');
           this.hide();
           this;
+          this.checklogin = true;
         } else {
           this.loginForm.reset();
           this.failed = true;
+          this.checklogin = false;
         }
       },
       (error) => {

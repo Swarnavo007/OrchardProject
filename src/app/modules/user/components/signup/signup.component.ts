@@ -5,7 +5,7 @@ import { RegistrationService } from 'src/app/services/registration.service';
 import { ConfirmedValidator } from '../../../../services/confirmed.validator';
 import {
   PasswordStrengthValidator,
-  nameValidators,
+  nameValidators,answerValidation
 } from '../../../../services/password-strength.validator';
 import { ToastrService } from 'ngx-toastr';
 import { Title } from '@angular/platform-browser';
@@ -65,7 +65,7 @@ export class SignupComponent implements OnInit {
       password: ['', [Validators.required, PasswordStrengthValidator]],
       confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
       question: ['', [Validators.required]],
-      answer: ['', [Validators.required, Validators.minLength(3)]],
+      answer: ['', [Validators.required, Validators.minLength(3),answerValidation]],
       phone: [
         '',
         [
