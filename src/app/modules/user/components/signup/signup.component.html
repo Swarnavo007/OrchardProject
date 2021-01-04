@@ -81,6 +81,9 @@
         <input [class.is-invalid]="answer.invalid && answer.touched " formControlName="answer" type="text" class="form-control">
         <div *ngIf="answer.invalid && answer.touched">
           <small *ngIf="answer.errors?.required" class="text-danger">answer is required</small>
+          <small class="text-danger" *ngIf="answer.hasError('answervalidation')">
+            {{answer.errors['answervalidation']}}
+           </small>
           <small *ngIf="answer.errors?.min" class="text-danger">answer should be min 3 character length</small>
         </div>
       </div>

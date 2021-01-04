@@ -21,10 +21,10 @@ const routes: Routes = [
   {path:'signup',component:SignupComponent},
   {path:'reset',component:ResetComponent},
   {path:'update',component:UpdatePasswordComponent},
-  {path:'checkout',component:CheckoutComponent},
+  {path:'checkout',component:CheckoutComponent,canActivate:[AuthGuard]},
   {path:'shop',component:ViewProductsComponent},
-  {path:'cart',component:CartComponent},
-  {path:'profile',component:ProfileComponent},
+  {path:'cart',component:CartComponent,canActivate:[AuthGuard]},
+  {path:'profile',component:ProfileComponent,canActivate:[AuthGuard]},
   {path:'updateProfile',component:UpdateProfileComponent}
 
 ];

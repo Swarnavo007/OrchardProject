@@ -96,6 +96,19 @@ export const productNameValidators = function (
     };
   }
 };
+//answer Validation
+export const answerValidation=function(control:AbstractControl):ValidationErrors | null{
+  let value: string = control.value || '';
+  if (!value) {
+    return null;
+  }
+  if (/\S/.test(value) === false) {
+    return {
+      answervalidation: `Answer should not contain whitespaces `,
+    };
+  }
+ 
+}
 
 //description validation
 export const descriptionValidators = function (
@@ -136,6 +149,7 @@ export const descriptionValidators = function (
  
  
 };
+
 
 
 export const nameValidators=function(control:AbstractControl):ValidationErrors | null{
