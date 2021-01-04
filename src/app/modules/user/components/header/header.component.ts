@@ -70,10 +70,8 @@ export class HeaderComponent implements OnInit {
   }
 
   logged: boolean = !!localStorage.getItem('userLogged');
-  checklogin;
 
   onSubmit() {
-    this.checklogin = true;
     this.submittButton = !this.submittButton;
     // console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value).subscribe(
@@ -95,7 +93,7 @@ export class HeaderComponent implements OnInit {
             this.encryptData(response.email.toString())
           );
           this.loginForm.reset();
-          this.checklogin = false;
+
           this.route.navigate(['/']);
           this.toaster.success('Logged In!');
           this.hide();
