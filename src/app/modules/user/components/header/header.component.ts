@@ -38,24 +38,24 @@ export class HeaderComponent implements OnInit {
   });
   cart: any;
   ngOnInit(): void {
-    if(localStorage.getItem('userLogged')){
+    if (localStorage.getItem('userLogged')) {
       this.service
-      .getCartDetail(this.decryptData(localStorage.getItem('email')))
-      .subscribe((response) => {
-        if (response) {
-          this.cart = response;
-          if (this.cart == 'Cart is empty') {
-            this.cart = null;
-          } else {
-            console.log(this.cart.products);
-            if (this.cart.products.length > 0) {
-              this.productLength = this.cart.products.length;
+        .getCartDetail(this.decryptData(localStorage.getItem('email')))
+        .subscribe((response) => {
+          if (response) {
+            this.cart = response;
+            if (this.cart == 'Cart is empty') {
+              this.cart = null;
             } else {
-              this.productLength = '';
+              // console.log(this.cart.products);
+              if (this.cart.products.length > 0) {
+                this.productLength = this.cart.products.length;
+              } else {
+                this.productLength = '';
+              }
             }
           }
-        }
-      });
+        });
     }
   }
 
@@ -186,13 +186,13 @@ export class HeaderComponent implements OnInit {
     this.showDeleteModal = false;
   }
 
-  logout(){
-    this.submittButton=!this.submittButton;
-    localStorage.removeItem('userLogged')
-    localStorage.removeItem('userToken')
-    localStorage.removeItem('email')
-    localStorage.removeItem('id')
-    this.route.navigate([''])
+  logout() {
+    this.submittButton = !this.submittButton;
+    localStorage.removeItem('userLogged');
+    localStorage.removeItem('userToken');
+    localStorage.removeItem('email');
+    localStorage.removeItem('id');
+    this.route.navigate(['']);
     document.location.reload();
   }
 
@@ -233,11 +233,11 @@ export class HeaderComponent implements OnInit {
     this.verifyForm.patchValue({
       ['email']: this.decryptData(localStorage.getItem('email')),
     });
-    console.log(this.verifyForm.value);
+    // console.log(this.verifyForm.value);
     this._registrationService
       .verifyPassword(this.verifyForm.value)
       .subscribe((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.msg === 'success') {
           this.route.navigate(
             [
@@ -272,7 +272,7 @@ export class HeaderComponent implements OnInit {
     this.verifyForm.patchValue({
       ['email']: this.decryptData(localStorage.getItem('email')),
     });
-    console.log(this.verifyForm.value);
+    // console.log(this.verifyForm.value);
     this._registrationService
       .verifyPassword(this.verifyForm.value)
       .subscribe((response) => {
