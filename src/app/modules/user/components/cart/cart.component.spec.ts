@@ -45,6 +45,14 @@ describe('CartComponent', () => {
     component.closeModel();
     expect(component.submitButton).toBe(true, 'clicked');
   })
+
+
+  it ('check the working of the hideloader button', ()=>
+  {
+    expect(component.submitButton).toBe(false, 'not clicked');
+    component.hideloader();
+    expect(component.submitButton).toBe(true, 'clicked');
+  })
   // it(`after pressing 'BuyNow' button should naviate to the  Buy now! page`, ()=>{
   //   const router=TestBed.get(Router);
   //   spyOn(router,'navigateByUrl');
