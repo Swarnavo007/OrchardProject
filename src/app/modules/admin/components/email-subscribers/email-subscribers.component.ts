@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SubscribersService } from 'src/app/services/subscribers.service';
-import * as XLSX from 'xlsx'; 
+import * as XLSX from 'xlsx';
 import { Router } from '@angular/router';
 import {Title} from "@angular/platform-browser";
 
@@ -19,7 +19,7 @@ export class EmailSubscribersComponent implements OnInit {
   subscibers;
   ngOnInit(): void {
     this.service.getSubscibers().subscribe((response) => {
-      console.log(response)
+      // console.log(response)
       if(response.msg === "Invalid Token"){
         localStorage.clear();
         this.route.navigate(['admin'])
@@ -29,22 +29,22 @@ export class EmailSubscribersComponent implements OnInit {
     });
   }
 
- 
-fileName= 'Subscribers.xlsx';  
+
+fileName= 'Subscribers.xlsx';
 submitButton=false;
-exportexcel(): void 
+exportexcel(): void
     {
-      this.submitButton=!this.submitButton;  
-       let element = document.getElementById('excel-table'); 
+      this.submitButton=!this.submitButton;
+       let element = document.getElementById('excel-table');
        const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
 
-       
+
        const wb: XLSX.WorkBook = XLSX.utils.book_new();
        XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
-       
+
        XLSX.writeFile(wb, this.fileName);
-			
+
     }
 
 }

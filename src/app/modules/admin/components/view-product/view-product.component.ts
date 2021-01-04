@@ -281,7 +281,7 @@ export class ViewProductComponent implements OnInit {
     // console.log(productId);
 
     this.service.deleteProduct(productId).subscribe((res) => {
-      console.log(res);
+      // console.log(res);
       if (res.msg === 'Invalid Token') {
         localStorage.clear();
         this.route.navigate(['admin']);

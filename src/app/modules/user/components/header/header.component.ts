@@ -78,7 +78,7 @@ export class HeaderComponent implements OnInit {
     // console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value).subscribe(
       (response) => {
-        console.log(response);
+        // console.log(response);
         if (response.msg === 'failed') {
           this.loginForm.patchValue({
             email: this.loginForm.get('email').value,

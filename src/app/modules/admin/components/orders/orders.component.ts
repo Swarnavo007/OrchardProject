@@ -17,11 +17,11 @@ export class OrdersComponent implements OnInit {
   orders:any=[];
   order:any=[];
   constructor(private httpClient:HttpClient,private router:Router,
-    private service:OrdersService,private toaster:ToastrService, private titleService:Title) { 
-    
+    private service:OrdersService,private toaster:ToastrService, private titleService:Title) {
+
       this.titleService.setTitle("Icy-Licious | Admin | Orders");
   }
- 
+
   ngOnInit(): void {
     this.service.getOrdersList().subscribe((response) => {
       if(response.msg === "Invalid Token"){
@@ -40,7 +40,7 @@ export class OrdersComponent implements OnInit {
       }
     });
   }
-  
+
 
   getDate(date:any){
     let newDate = date.substring(0,10)
@@ -85,7 +85,7 @@ export class OrdersComponent implements OnInit {
             },2000)
         },
         response => {
-            console.log("PATCH call in error", response);
+            // console.log("PATCH call in error", response);
          })
   }
 
