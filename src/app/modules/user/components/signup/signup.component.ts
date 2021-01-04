@@ -70,11 +70,11 @@ export class SignupComponent implements OnInit {
     this._registrationService.register(this.registrationForm.value)
       .subscribe(
         response =>{ 
-          console.log("success",response)
+          // console.log("success",response)
           this.toaster.success('Registration completed!')
           this.router.navigate([''])
         },
-        error => console.log("error!",error)
+        // error => console.log("error!",error)
       );
     this.registrationForm.reset();
   }

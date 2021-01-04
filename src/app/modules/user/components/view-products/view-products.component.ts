@@ -47,7 +47,7 @@ export class ViewProductsComponent implements OnInit {
       if (this.products.length < 1) {
         this.emptyProducts = true;
       }
-      console.log('items are :' + this.products);
+      // console.log('items are :' + this.products);
       for (var i = 0; i < this.products.length; i++) {
         this.products[i].productStartDate = this.setDate(
           this.products[i].productStartDate
@@ -136,7 +136,7 @@ export class ViewProductsComponent implements OnInit {
           product.userId = email;
           // console.log('product:' + product.userId);
           this.service.createCart(product).subscribe(() => {
-            console.log('success');
+            // console.log('success');
             let btn = document.getElementById(
               'button' + productId
             ) as HTMLElement;

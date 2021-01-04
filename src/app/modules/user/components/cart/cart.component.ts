@@ -35,7 +35,7 @@ export class CartComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.decryptData(localStorage.getItem('email')));
+    // console.log(this.decryptData(localStorage.getItem('email')));
     this.getCart();
   }
 
@@ -55,7 +55,7 @@ export class CartComponent {
   deleteUserCartSubscribe(userId) {
     this.service.deleteUserCart(userId).subscribe((response) => {
       if (response) {
-        console.log(response);
+        // console.log(response);
         // console.log('cart is deleted');
         this.cart = null;
       }
@@ -66,7 +66,7 @@ export class CartComponent {
     this.service.placeOrder(orderDetail).subscribe((response) => {
       if (response) {
         // console.log('placed');
-        console.log(response);
+        // console.log(response);
         this.deleteUserCartSubscribe(
           this.decryptData(localStorage.getItem('email'))
         );
@@ -112,7 +112,7 @@ export class CartComponent {
     this.service
       .getCartDetail(this.decryptData(localStorage.getItem('email')))
       .subscribe((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.msg === 'Invalid Token') {
           localStorage.clear();
           this.route.navigate(['/']);
@@ -138,7 +138,7 @@ export class CartComponent {
     this.placeOrder = true;
     if (this.cart) {
       for (let product of this.cart.products) {
-        console.log(product.status);
+        // console.log(product.status);
         if (!product.status) {
           this.placeOrder = false;
         }

@@ -175,7 +175,7 @@ export class ProfileComponent implements OnInit {
     // console.log(this.verifyForm.value)
     this._registrationService.verifyPassword(this.verifyForm.value)
     .subscribe((response)=>{
-      console.log(response)
+      // console.log(response)
       if(response.msg === "success"){
         this.route.navigate(['update',{email:this.decryptData(localStorage.getItem('email'))}],{skipLocationChange:true})
       }

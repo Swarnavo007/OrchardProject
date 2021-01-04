@@ -77,8 +77,8 @@ export class UpdateProfileComponent implements OnInit {
 
     this._registrationService.updateUserProfile(this.updateForm.value)
       .subscribe(
-        response => console.log("success",response),
-        error => console.log("error!",error)
+        // response => console.log("success",response),
+        // error => console.log("error!",error)
       );
       this.router.navigate(['profile'])
       this.toaster.success('Profile Updated!')

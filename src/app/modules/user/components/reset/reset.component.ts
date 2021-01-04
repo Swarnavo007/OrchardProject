@@ -50,7 +50,7 @@ export class ResetComponent implements OnInit {
     this.registrationService.reset(this.resetForm.value)
       .subscribe(
         response => {
-          console.log(response)
+          // console.log(response)
           if(response.msg === "invalid" || response.msg === "failed"){
             this.resetForm.reset();
             this.failed = true;
@@ -61,7 +61,7 @@ export class ResetComponent implements OnInit {
           }
           
         },
-        error => console.log("error!",error)
+        // error => console.log("error!",error)
       );
     // this.resetForm.reset();
   }

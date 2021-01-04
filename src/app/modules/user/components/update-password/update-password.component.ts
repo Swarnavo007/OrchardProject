@@ -46,12 +46,12 @@ submitButton=false;
       this.registrationService.updatePassword(this.resetForm.value)
       .subscribe(
         response =>{
-          console.log(response)
+          // console.log(response)
           this.toaster.success('Password Changed Successfully!')
           this.router.navigate(['']);
         },
         error =>{
-          console.log(error)
+          // console.log(error)
         }
       )
   }

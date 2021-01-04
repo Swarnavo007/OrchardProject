@@ -52,12 +52,12 @@ export class FooterComponent implements OnInit {
       .subscribe(res => {
         console.log(res)
         if (res != null) {
-          console.log('already exists')
+          // console.log('already exists')
           this.idAlredyExist = true;
           // this.subscribeForm.controls['email'].setErrors({'incorrect': true});
         }
         else{
-          console.log('not exists')
+          // console.log('not exists')
           this.idAlredyExist = false;
         }
     });

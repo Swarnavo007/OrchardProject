@@ -276,7 +276,7 @@ export class HeaderComponent implements OnInit {
     this._registrationService
       .verifyPassword(this.verifyForm.value)
       .subscribe((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.msg === 'success') {
           this.route.navigate(
             [
