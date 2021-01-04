@@ -7,6 +7,7 @@ import { of } from 'rxjs';
 import { LoginComponent } from './login.component';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 const data={
     "username":"admin",
@@ -63,14 +64,29 @@ describe('LoginComponent', () => {
       component.onChange();
       expect(component.submitButton).toBe(true, 'clicked!');
     });
+
+    it ('check the working of the login button button', ()=>
+    {
+      expect(component.submitButton).toBe(false, 'not clicked');
+      component.login();
+      service.adminLogin(data)
+    //      spyOn(router,'navigateByUrl');
+    // // const linkDes=fixture.debugElement
+    // //   .queryAll(By.css('button'));
+    // // const nativeButton: HTMLButtonElement=linkDes[0].nativeElement;
+    // // nativeButton.click();
+    //    expect(router.navigateByUrl).toHaveBeenCalledWith(router.createUrlTree(['dashboard/analysis']),{
+    //   skipLocationChange:false
+    // })
+    })
  
 });
 
 class LoginServiceStub{
   adminLogin(data:any){
-    return true;
+    return of({});
   }
   login(data:any){
-    return true;
+    return of({});
   }
 }
