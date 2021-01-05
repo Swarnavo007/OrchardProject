@@ -2,7 +2,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrModule } from 'ngx-toastr';
-
+import { RegistrationService } from 'src/app/services/registration.service';
+import { of } from 'rxjs';
 import { RegistrationComponent } from './registration.component';
 
 describe('RegistrationComponent', () => {
@@ -18,6 +19,7 @@ describe('RegistrationComponent', () => {
         ToastrModule.forRoot(),
       ],
       // providers: [FormBuilder],
+      providers:[{provide:RegistrationService,useClass:RegistrationServiceStub}]
     }).compileComponents();
   });
 
@@ -31,3 +33,11 @@ describe('RegistrationComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class RegistrationServiceStub{
+  emailCheckUnique(email)
+  {
+    return of({})
+  }
+}
+

@@ -35,6 +35,37 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('testing for ValidateEmail function',()=>{
+    spyOn(component,'ValidateEmail').and.callThrough();
+    component.ValidateEmail('');
+    expect(component.ValidateEmail).toHaveBeenCalled();
+  })
+
+  it('testing for decryptData',()=>{
+    spyOn(component,'decryptData').and.callThrough();
+    component.decryptData('');
+    expect(component.decryptData).toHaveBeenCalled();
+  })
+
+  it('testing for encryptData',()=>{
+    spyOn(component,'encryptData').and.callThrough();
+    component.encryptData('');
+    expect(component.encryptData).toHaveBeenCalled();
+  })
+
+  it('testing for verifyPassword',()=>{
+    spyOn(component,'verifyPassword').and.callThrough();
+    component.verifyPassword();
+    expect(component.verifyPassword).toHaveBeenCalled();
+  })
+
+  it('testing for verifyPasswordUpdate',()=>{
+    spyOn(component,'verifyPasswordUpdate').and.callThrough();
+    component.verifyPasswordUpdate();
+    expect(component.verifyPasswordUpdate).toHaveBeenCalled();
+  })
+
+
   
 
   describe('button clicks',()=>{
