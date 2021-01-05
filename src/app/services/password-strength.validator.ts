@@ -99,6 +99,8 @@ export const productNameValidators = function (
 //answer Validation
 export const answerValidation=function(control:AbstractControl):ValidationErrors | null{
   let value: string = control.value || '';
+  // let special=/[!@#$%^&*()_+=\[\]{};':"\\|,.<>\/?]+/
+  let special=/[$&+,:;=?@#|'<>.^*()%!]/;
   if (!value) {
     return null;
   }
@@ -107,6 +109,23 @@ export const answerValidation=function(control:AbstractControl):ValidationErrors
       answervalidation: `Answer should not contain whitespaces `,
     };
   }
+  if(special.test(value)===true)
+  {
+    return {
+      answervalidation: `Answer should not contain the special characters `,
+    };
+  }
+  if (value.length < 3) {
+    return {
+      answervalidation: ` Answer should be minimum 4 characters`,
+    };
+  }
+  if (value.length > 30) {
+    return {
+      answervalidation: ` Answer should be maximum 20 characters `,
+    };
+  }
+ 
  
 }
 
@@ -163,11 +182,12 @@ export const nameValidators=function(control:AbstractControl):ValidationErrors |
       nameValidation: `Name should not contain whitespaces `,
     };
   }
-  let specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
+  let specialCharacters = /^[0-9!@#\$%\^\&*\)\(+=._-]+$/;
   if (specialCharacters.test(value) === true) {
     return { nameValidation: `Name should not contain special character` };
   }
  
+  
   // let space=' ';
   // if(value.indexOf(space)>=0){
   //   return { nameValidation: `Name should not contain spaces`};
@@ -176,9 +196,16 @@ export const nameValidators=function(control:AbstractControl):ValidationErrors |
   if (numberCharacters.test(value) === true) {
     return {nameValidation: `Name should not contain numbers ` };
   }
-  if(value.length<3){
-      return { nameValidation: `length should be minimum 3 characters` };
-    }
+  if (value.length < 3) {
+    return {
+      nameValidation: ` Name should be minimum 3 characters`,
+    };
+  }
+  if (value.length > 30) {
+    return {
+      nameValidation: ` Name should be maximum 30 characters `,
+    };
+  }
 }
 
 
