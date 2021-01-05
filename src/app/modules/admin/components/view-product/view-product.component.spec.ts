@@ -36,6 +36,30 @@ describe('ViewProductComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('testing for dateCompare',()=>{
+    spyOn(component,'dateCompare').and.callThrough();
+    component.dateCompare('');
+    expect(component.dateCompare).toHaveBeenCalled();
+  })
+
+  it('testing for setDate',()=>{
+    spyOn(component,'setDate').and.callThrough();
+    component.setDate('')
+    expect(component.setDate).toHaveBeenCalled();
+  })
+
+  it('testing for show',()=>{
+    spyOn(component,'show').and.callThrough();
+    component.show('');
+    expect(component.show).toHaveBeenCalled();
+  })
+
+  it('testing for getProductfordelete',()=>{
+    spyOn(component,'getProductfordelete').and.callThrough();
+    component.getProductfordelete('');
+    expect(component.getProductfordelete).toHaveBeenCalled();
+  })
+
 
   // describe('Simple HTML element for cards', ()=>{
   //   it('should have tag Empty Products',()=>{

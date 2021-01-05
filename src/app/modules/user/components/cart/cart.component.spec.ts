@@ -28,6 +28,25 @@ describe('CartComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('testing for getNumberOfPoductsInStock',()=>{
+    spyOn(component,'getNumberOfProductInStock').and.callThrough();
+    component.getNumberOfProductInStock();
+    expect(component.getNumberOfProductInStock).toHaveBeenCalled();
+  });
+
+  it('testing for calculateTotalPrice',()=>{
+    spyOn(component,'calculateTotalPrice').and.callThrough();
+    component.calculateTotalPrice();
+    expect(component.calculateTotalPrice).toHaveBeenCalled();
+  })
+
+  // it('testing for confirmOrder',()=>{
+  //   spyOn(component,'confirmOrder').and.callThrough();
+  //   component.confirmOrder();
+  //   expect(component.confirmOrder).toHaveBeenCalled();
+  // })
+
   describe('button clicks', () => {
     it('check the working of the showModel button', () => {
       expect(component.submitButton).toBe(true, 'not clicked');

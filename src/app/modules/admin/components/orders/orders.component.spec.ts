@@ -34,6 +34,18 @@ describe('OrdersComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('testing for getDate',()=>{
+    spyOn(component,'getDate').and.callThrough();
+    component.getDate('');
+    expect(component.getDate).toHaveBeenCalled();
+  });
+
+  it('testing for getOrderId',()=>{
+    spyOn(component,'getOrderId').and.callThrough();
+    component.getOrderId('');
+    expect(component.getOrderId).toHaveBeenCalled();
+  })
+
   describe('Simple HTML', () => {
     it('should have a button to close order details', () => {
       const linkDes = fixture.debugElement.queryAll(By.css('button'));
